@@ -2,7 +2,7 @@ import React, {
     // useState, 
     useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FiUser, FiUserPlus } from 'react-icons/fi'
+import { FiUser } from 'react-icons/fi'
 
 // import axios from 'axios';
 
@@ -27,22 +27,11 @@ const Register = () => {
     function handleValidate() {
         localStorage.clear();
 
-        history.push(`/`);
-    }
-
-    
-    function newMember() {
-        localStorage.clear();
-
         history.push(`/user/profile/`);
     }
 
     return (
         <div className="requests-container">
-            <div>
-                <button onClick={newMember}><FiUserPlus /> New Member</button>
-                <h2>You have <b>06</b> new account requests</h2>
-            </div>
 
             <div className="content">
                 <h3>FEG Employees</h3>

@@ -63,7 +63,7 @@
     height: auto;
     position: relative;
     flex-direction: row;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
   .sidebar a {
     float: left;

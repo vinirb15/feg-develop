@@ -10,7 +10,7 @@
 }
 
 .search {
-    display: flex;
+    display: none;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -40,5 +40,9 @@
 @media (max-width: 700px) {
     .HomeContent {
         margin-left: 8%;
+    }
+
+    .search {
+        display: flex;
     }
 }

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { FiUser } from 'react-icons/fi';
+import { FiSettings } from 'react-icons/fi';
 
 import './styles.css';
 
 import ProfileInfo from './ProfileInfo';
 
-const LoginButton = () => {
+const LoginButton = (props: any) => {
 
 const [ extended, setExtended ] = useState(false);
 
@@ -19,7 +19,7 @@ const [ extended, setExtended ] = useState(false);
 
     return (
         <>
-            <div id="LogNav" className="sidenav" style={{ width: extended ? '20%' : '0'}}>
+            <div id="LogNav" className="sidenav" style={{ width: extended ? props.width : '0'}}>
                 <a href="#/" className="closebtn" onClick={closeNav}>&times;</a>
                 <h1>User Profile</h1>
                 <ProfileInfo />
@@ -27,7 +27,7 @@ const [ extended, setExtended ] = useState(false);
 
 
             <button onClick={openNav} type="button">
-                <FiUser size={25} color="#7F43F5" />
+                <FiSettings size={25} color={props.color} />
             </button>
         </>
 

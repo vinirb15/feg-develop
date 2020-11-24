@@ -38,12 +38,32 @@
   border-radius: 8px;
 }
 
+.sidebar button {
+  display: block;
+  background: transparent;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  transition: .6s;
+  border: 0px;
+}
+
+.sidebar button:hover:not(.active) {
+  opacity: 0.3;
+  border-radius: 8px;
+}
+
+#config {
+  display: none;
+}
+
 @media screen and (max-width: 700px) {
   .sidebar {
     width: 100%;
     height: auto;
     position: relative;
     flex-direction: row;
+    margin-bottom: 2rem;
   }
   .sidebar a {
     float: left;
@@ -53,8 +73,14 @@
   }
   .sidebar img {
     width: auto;
-    height: 4vh;
+    height: 10vh;
     margin: 0.5rem 2rem;
+  }
+
+  #config {
+    display: block;
+    position: relative;
+    height: 5rem;
   }
 }
 

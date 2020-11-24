@@ -17,9 +17,6 @@ import SideBar from '../../components/SideBar';
 //925
 const HomePage: React.FC = () => {
 
-    var windowWidth = window.innerWidth;
-
-
     return (
         <>
             <SideBar home="active" />

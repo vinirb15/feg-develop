@@ -34,7 +34,7 @@ const Header = () => {
                     <FiBarChart size={25} color="#7F43F5" />
                 </button>
 
-                <LoginButton />
+                <LoginButton color="#7F43F5" width='20%'/>
 
             </div>
         </header>

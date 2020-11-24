@@ -14,8 +14,11 @@ import CompanyAnnoun from '../../components/Home/CompanyAnnoun';
 
 import SideBar from '../../components/SideBar';
 
-
+//925
 const HomePage: React.FC = () => {
+
+    var windowWidth = window.innerWidth;
+
 
     return (
         <>
@@ -27,27 +30,27 @@ const HomePage: React.FC = () => {
 
                 <div className="HomeContent">
                     <Grid container spacing={3}>
-                        <Grid item xs={4}>
+                        <Grid item lg={4} md={6} xs={12}>
                             <Power />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item lg={4} md={6} xs={12}>
                             <Display />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item lg={4} md={6} xs={12}>
                             <ZendeskManager />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item lg={4} md={6} xs={12}>
                             <Knowledge />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item lg={4} md={6} xs={12}>
                             <CreateTicket />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item lg={4} md={6} xs={12}>
                             <CompanyAnnoun />
                         </Grid>
                     </Grid>

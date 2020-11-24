@@ -11,6 +11,7 @@ import ZendeskManager from '../../components/Home/Zendesk';
 import Knowledge from '../../components/Home/Knowledge';
 import CreateTicket from '../../components/Home/CreateTicket';
 import CompanyAnnoun from '../../components/Home/CompanyAnnoun';
+import SearchBox from '../../components/SearchBox';
 
 import SideBar from '../../components/SideBar';
 
@@ -22,7 +23,9 @@ const HomePage: React.FC = () => {
             <SideBar home="active" />
 
             <div className="full">
-
+                <div className="search">
+                    <input type="text" name="search" placeholder="Search.." />
+                </div>
                 <Header />
 
                 <div className="HomeContent">

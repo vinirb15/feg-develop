@@ -9,6 +9,34 @@
     margin-right: 8%;
 }
 
+.search {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.search input[type=text] {
+    width: 80%;
+    height: 2.5rem;
+    box-sizing: border-box;
+    border: 1px solid #7F43F5;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: transparent;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 1s ease-in-out;
+  }
+  
+  .search input[type=text]:focus {
+    width: 100%;
+    background-color: white;
+  }
+
 @media (max-width: 700px) {
     .HomeContent {
         margin-left: 8%;

@@ -44,6 +44,7 @@ const Management = () => {
                 <table className="users">
                     <tr>
                         <th>ID</th>
+                        <th id="image"></th>
                         <th>USER</th>
                         <th>LOCATION</th>
                         <th>EMAIL</th>
@@ -53,11 +54,14 @@ const Management = () => {
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td><img src={Image} alt="user.png" /> Alfreds Futterkiste</td>
+                        <td id="image">
+                            <img src={Image} alt="user.png" />
+                        </td>
+                        <td >Alfreds Futterkiste</td>
                         <td>Germany</td>
                         <td>alfredsfutterkiste@gmail.com</td>
                         <td>Group Here</td>
-                        <td><b style={{background: '#808080'}}>Inactive</b></td>
+                        <td><b style={{ background: '#808080' }}>Inactive</b></td>
                         <td>
                             <button><FiToggleLeft color='#808080' /></button>
                             <button><FiEdit color='#808080' /></button>
@@ -66,11 +70,14 @@ const Management = () => {
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td><img src={Image} alt="user.png" /> Alfreds Futterkiste</td>
+                        <td id="image">
+                            <img src={Image} alt="user.png" />
+                        </td>
+                        <td >Alfreds Futterkiste</td>
                         <td>Germany</td>
                         <td>alfredsfutterkiste@gmail.com</td>
                         <td>Group Here</td>
-                        <td><b style={{background: '#25ab9f'}}>Active</b></td>
+                        <td><b style={{ background: '#25ab9f' }}>Active</b></td>
                         <td>
                             <button><FiToggleLeft color='#808080' /></button>
                             <button><FiEdit color='#808080' /></button>

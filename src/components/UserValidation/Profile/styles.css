@@ -56,3 +56,27 @@
 .actions button + button {
     margin-left: 1rem;
 }
+
+@media(max-width: 700px){
+    .actions button {
+        height: 4rem;
+        width: 45%;
+    }
+
+    .description b{
+        display: flex;
+        flex-wrap: wrap;
+
+        padding: .5rem 1rem;
+    
+    }
+
+    .user-validation img {
+        width: 30%;
+    }
+
+    .user-validation {
+        margin: 0 1rem;
+    }
+
+}

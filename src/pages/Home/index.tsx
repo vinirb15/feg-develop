@@ -11,7 +11,6 @@ import ZendeskManager from '../../components/Home/Zendesk';
 import Knowledge from '../../components/Home/Knowledge';
 import CreateTicket from '../../components/Home/CreateTicket';
 import CompanyAnnoun from '../../components/Home/CompanyAnnoun';
-import SearchBox from '../../components/SearchBox';
 
 import SideBar from '../../components/SideBar';
 

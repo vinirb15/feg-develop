@@ -1,4 +1,4 @@
-.requests-container{
+.requests-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -45,7 +45,6 @@
     margin: 0.7rem 2rem;
 }
 
-
 .content h3 {
     display: flex;
     justify-content: center;
@@ -64,3 +63,21 @@
 .content ul {
     list-style: none;
 }
+
+@media(max-width: 1070px) {
+    .content h3 {
+        height: 3rem;
+        width: 50%;
+        margin: 2rem 0;
+        font-size: 1.5rem;
+    }
+    .content h1 {
+        font-size: 1.5rem;
+    }
+    .requests-container .content button {
+        height: 2.8rem;
+        width: 40%;
+    }
+}
+
+@media(max-width: 700px) {}

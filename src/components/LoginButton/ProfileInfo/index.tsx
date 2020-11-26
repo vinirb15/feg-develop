@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiMail, FiFile } from 'react-icons/fi';
 
 import './styles.css';
@@ -6,6 +6,39 @@ import './styles.css';
 import Monograma from '../../../assets/Monograma.png';
 
 const ProfileInfo = () => {
+
+    const [update, setUpdate] = useState(false);
+    
+    function fileSelect(props: any) {
+        console.log(props)
+    }
+
+    const updateOn = (
+        <>
+            <hr />
+            <div className="update-options">
+                <h4>Name</h4>
+                <input type="text" name="nameInput" />
+
+                <h4>Picture</h4>
+                <input 
+                type="file" 
+                accept="image/*" 
+                onChange={fileSelect}/>
+
+                <button>Save</button>
+
+            </div>
+        </>
+    )
+
+    function updateBtn() {
+        if (update === false)
+            setUpdate(true)
+        else {
+            setUpdate(false)
+        }
+    }
 
     return (
         <div className="profile-box">
@@ -32,10 +65,14 @@ const ProfileInfo = () => {
                     <h3>My Profile</h3>
                     <div className="update-profile">
                         <h4>Account settings and more</h4>
-                        <button>update</button>
+                        <button onClick={updateBtn}>update</button>
                     </div>
                 </div>
             </div>
+            {
+                (update ? updateOn : <></>)
+            }
+
         </div>
 
     )

@@ -4,6 +4,7 @@
     flex-wrap: wrap;
     margin-right: 7%;
     margin-left: 9%;
+
 }
 
 .management-top {
@@ -55,7 +56,7 @@
 
 .top-right button {
     height: 2.6rem;
-    width: 13%;
+    width: 50%;
     border-radius: 8px;
     border: 0px;
     background: #25ab9f;
@@ -90,6 +91,11 @@
     width: 100%;
     margin-top: 1rem;
 }
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
 
 .users td, .users th {
     width: 10%;
@@ -198,6 +204,31 @@
     }
 }
 
+
+@media 
+only screen and (max-width: 760px) {
+
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+    }
+    
+    th {
+        display: none;
+    }
+
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		border-bottom: 1px solid #eee; 
+        position: relative;
+        width: 100%!important;
+        margin: 0;
+	}
+	
+}
+
+
 @media (max-width: 700px) {
     .management-content {
         margin-right: 2%;
@@ -207,5 +238,27 @@
         display: grid;
         grid-template-columns: 50% 50%;
         justify-content: space-between;
+    }
+
+    .top-left input[type=text] {
+        width: 15rem;
+        margin: 1rem 0;
+    }
+
+    .top-left input[type=text]:focus {
+        width: 18rem;
+    }
+
+    .users-management div select, button {
+        margin-right: 0;
+        margin-left: 2rem;
+
+    }
+
+    .top-left h1 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
     }
 }

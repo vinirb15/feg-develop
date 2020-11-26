@@ -14,7 +14,6 @@ import CompanyAnnoun from '../../components/Home/CompanyAnnoun';
 
 import SideBar from '../../components/SideBar';
 
-//925
 const HomePage: React.FC = () => {
 
     return (

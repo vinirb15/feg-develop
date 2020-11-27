@@ -23,8 +23,8 @@ const Routes: React.FC = () => {
   if (token && token?.exp) {
     return <PrivateRoutes />
   }
-  return <PrivateRoutes />
-  // return <SignRoutes />
+
+  return <SignRoutes />
 }
 
 export default Routes

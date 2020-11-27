@@ -4,6 +4,8 @@ import * as ROUTES from './routerList'
 import UserValidation from '../../pages/UserValidation';
 
 const SignRoutes: React.FC = () => {
+    window.location.href = 'https://account.systemfeg.com/login'
+
     return (
         <BrowserRouter>
             <Switch>

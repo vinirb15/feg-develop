@@ -31,6 +31,10 @@
   margin-right: 50px;
 }
 
+.closebtn{
+  color: #7F43F5!important;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;

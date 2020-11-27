@@ -118,15 +118,15 @@
     margin-top: 1rem;
 }
 
-.update-options input[type=text], input[type=file] {
+.update-options input[type=text], .profile-typefile {
     align-items: center;
-    width: 80%;
+    width: 80%!important;
     height: 2.5rem;
     box-sizing: border-box;
-    border: 1px solid #7F43F5;
+    border: 1px solid #7F43F5!important;
     border-radius: 10px;
     font-size: 16px;
-    background-color: transparent;
+    background-color: transparent!important;
     background-position: 10px 10px;
     background-repeat: no-repeat;
     padding: 5px 20px 12px 40px;
@@ -151,7 +151,6 @@
     .about {
         margin-left: 0;
     }
-    .my-profile h4 {}
     .my-profile button {
         margin: 0!important;
         margin-left: 1rem!important;

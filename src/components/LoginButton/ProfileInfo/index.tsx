@@ -18,10 +18,14 @@ const ProfileInfo = () => {
             <hr />
             <div className="update-options">
                 <h4>Name</h4>
-                <input type="text" name="nameInput" />
+                <input 
+                type="text" 
+                name="nameInput" 
+                />
 
                 <h4>Picture</h4>
                 <input 
+                className="profile-typefile"
                 type="file" 
                 accept="image/*" 
                 onChange={fileSelect}/>

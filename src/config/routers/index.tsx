@@ -20,6 +20,7 @@ const Routes: React.FC = () => {
 
       if (jwt.length || jwt?.exp < currentTime) {
         setToken(null)
+        window.location.href = 'https://account.systemfeg.com/login'
       } else {
         setToken(jwt)
       }

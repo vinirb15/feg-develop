@@ -22,6 +22,8 @@ const Routes: React.FC = () => {
   
   if (token && token?.exp) {
     return <PrivateRoutes />
+  } else {
+    window.location.href = 'https://account.systemfeg.com/login'
   }
 
   return <SignRoutes />

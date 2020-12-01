@@ -21,10 +21,11 @@ const ProfileInfo = () => {
         <>
             <hr />
             <div className="update-options">
-                <h4>Name</h4>
+                <h4></h4>
                 <input
                     type="text"
                     name="nameInput"
+                    placeholder='New Name'
                 />
 
                 <h4>Picture</h4>
@@ -51,6 +52,7 @@ const ProfileInfo = () => {
 
     function handleLogout() {
         localStorage.clear();
+        alert('Disconnected User')
         history.push('/');
     }
 
@@ -76,9 +78,9 @@ const ProfileInfo = () => {
                     color: '#1eb6b0'
                 }} size={45} />
                 <div className="container">
-                    <h3>My Profile</h3>
+                    <h3>Lisa Price</h3>
                     <div className="update-profile">
-                        <h4>Account settings and more</h4>
+                        <h4>Update your settings</h4>
                         <button onClick={updateBtn}>update</button>
                     </div>
                 </div>

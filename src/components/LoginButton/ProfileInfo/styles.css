@@ -129,7 +129,11 @@
     background-color: transparent!important;
     background-position: 10px 10px;
     background-repeat: no-repeat;
-    padding: 5px 20px 12px 40px;
+    padding: 0 1rem;
+}
+
+.profile-typefile {
+    padding: 5px 0px 0px 5px;
 }
 
 .update-options button {

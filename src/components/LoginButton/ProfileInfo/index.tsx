@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FiMail, FiFile } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
+
 
 import './styles.css';
 
@@ -8,7 +10,9 @@ import Monograma from '../../../assets/Monograma.png';
 const ProfileInfo = () => {
 
     const [update, setUpdate] = useState(false);
-    
+
+    const history = useHistory()
+
     function fileSelect(props: any) {
         console.log(props)
     }
@@ -18,17 +22,17 @@ const ProfileInfo = () => {
             <hr />
             <div className="update-options">
                 <h4>Name</h4>
-                <input 
-                type="text" 
-                name="nameInput" 
+                <input
+                    type="text"
+                    name="nameInput"
                 />
 
                 <h4>Picture</h4>
-                <input 
-                className="profile-typefile"
-                type="file" 
-                accept="image/*" 
-                onChange={fileSelect}/>
+                <input
+                    className="profile-typefile"
+                    type="file"
+                    accept="image/*"
+                    onChange={fileSelect} />
 
                 <button>Save</button>
 
@@ -44,6 +48,12 @@ const ProfileInfo = () => {
         }
     }
 
+
+    function handleLogout() {
+        localStorage.clear();
+        history.push('/');
+    }
+
     return (
         <div className="profile-box">
             <img src={Monograma} alt="FEG LOGO" />
@@ -53,7 +63,7 @@ const ProfileInfo = () => {
                     <FiMail color="#478fc8" size={20} />
                     <p>lisa.price@fegllc.com</p>
                 </div>
-                <button>Sign Out</button>
+                <button onClick={handleLogout}>Sign Out</button>
             </div>
 
             <hr />

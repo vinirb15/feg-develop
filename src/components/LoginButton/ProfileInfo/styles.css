@@ -131,7 +131,12 @@
     background-repeat: no-repeat;
     padding: 5px 20px 12px 40px;
 }
+
 .update-options button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
     width: 40%;
     border-radius: 10px!important;
     border: 0px;
@@ -142,7 +147,7 @@
     font-weight: bold;
     transition: 0.2s;
     margin: 0.7rem 0;
-} 
+}
 
 @media(max-width: 700px) {
     .profile-box {
@@ -157,5 +162,12 @@
         padding: 0rem!important;
         background: #fddde2!important;
         color: #f24960!important;
+    }
+    .update-options button {
+        display: flex!important;
+        justify-content: center!important;
+        align-items: center!important;
+        height: 3rem;
+        padding: 0;
     }
 }

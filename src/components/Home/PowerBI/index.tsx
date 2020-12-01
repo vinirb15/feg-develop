@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import PowerBI from '../../../assets/PowerBI.png';
+import Loader from '../../Loader';
 
 import './styles.css';
 
@@ -8,15 +9,12 @@ const Content = () => {
 
   const [loaded, setLoaded] = useState(true);
 
-  const loader = (<div className="lds-dual-ring"></div>)
-
-
   return (
     <div className="box-content images">
       <a href="https://app.powerbi.com/?noSignUpCheck=1">
         <img src={PowerBI} onLoad={() => setLoaded(false)} alt="PowerBI" />
         {
-          (loaded ? loader : <></>)
+          (loaded ? <Loader /> : <></>)
         }
         <h2>
               Log In to

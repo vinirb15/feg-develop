@@ -15,7 +15,7 @@ const Management = () => {
             lastName: "",
             location_name: "",
             email: "",
-            profile: "",
+            group_name: "",
             isActive: false
         }
     ]);
@@ -26,7 +26,6 @@ const Management = () => {
 
     async function handleLoad() {
         const response: any = await axios.get(`http://127.0.0.1:4200/api/v1/accounts`)
-        console.log(response.data);
         setUsers(response.data)
     }
 
@@ -99,7 +98,7 @@ const Management = () => {
                             <td><p className="label-mobile">USER:</p> {user.firstName} {user.lastName}</td>
                             <td><p className="label-mobile">LOCATION:</p> {user.location_name}</td>
                             <td><p className="label-mobile">EMAIL:</p> {user.email}</td>
-                            <td><p className="label-mobile">GROUP:</p> {user.profile}</td>
+                            <td><p className="label-mobile">GROUP:</p> {user.group_name}</td>
                             <td><p className="label-mobile">STATUS:</p> <b style={{ background: user.isActive ? "#25ab9f" : "#808080" }}>{user.isActive ? 'ACTIVED' : 'INATIVED'}</b></td>
                             <td>
                                 <button><FiToggleLeft color='#808080' /></button>
@@ -138,7 +137,7 @@ const Management = () => {
                                             <h2>Group:</h2>
                                             <input
                                                 type="text"
-                                                placeholder={user.location_name}
+                                                placeholder={user.group_name}
                                             // value={user.EMAIL}
                                             // onChange={e => setName(e.target.value)}
                                             />

@@ -205,77 +205,7 @@ td button:hover {
     opacity: .5;
 }
 
-@media (max-width: 800px) {
-    #image {
-        display: none;
-    }
-    .management-content {
-        margin-right: 2%;
-        margin-left: 5%;
-    }
-}
-
-@media only screen and (max-width: 760px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-    th {
-        display: none;
-    }
-    .label-mobile {
-        display: block;
-        font-weight: bold;
-        margin-bottom: .5rem;
-    }
-    tr {
-        border: 1px solid #ccc;
-    }
-    td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        width: 100%!important;
-        margin: 0;
-    }
-}
-
-@media (max-width: 700px) {
-    .management-content {
-        margin-right: 2%;
-        margin-left: 2%;
-    }
-    .management-top {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        justify-content: space-between;
-    }
-    .top-left input[type=text] {
-        width: 15rem;
-        margin: 1rem 0;
-    }
-    .top-left input[type=text]:focus {
-        width: 18rem;
-    }
-    .users-management div select, button {
-        margin-right: 0;
-        margin-left: 2rem;
-    }
-    .top-left h1 {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-    }
-}
-
-@media (max-width: 550px) {
-    .list-header {
-        margin: 0;
-    }
-    .export {
-        margin-top: 1rem;
-    }
-}
+/*Modal*/
 
 .modal {
     display: none;
@@ -383,4 +313,79 @@ td button:hover {
     padding: 4px 16px;
     background-color: #7F43F5;
     color: white;
+}
+
+@media (max-width: 800px) {
+    #image {
+        display: none;
+    }
+    .management-content {
+        margin-right: 2%;
+        margin-left: 5%;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    th {
+        display: none;
+    }
+    .label-mobile {
+        display: block;
+        font-weight: bold;
+        margin-bottom: .5rem;
+    }
+    tr {
+        border: 1px solid #ccc;
+    }
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        width: 100%!important;
+        margin: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .management-content {
+        margin-right: 2%;
+        margin-left: 2%;
+    }
+    .management-top {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        justify-content: space-between;
+    }
+    .top-left input[type=text] {
+        width: 15rem;
+        margin: 1rem 0;
+    }
+    .top-left input[type=text]:focus {
+        width: 18rem;
+    }
+    .users-management div select, button {
+        margin-right: 0;
+        margin-left: 2rem;
+    }
+    .top-left h1 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 550px) {
+    .list-header {
+        margin: 0;
+    }
+    .export {
+        margin-top: 1rem;
+    }
+    .modal-content {
+        width: 90%;
+    }
 }

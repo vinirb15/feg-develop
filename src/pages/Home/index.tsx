@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './styles.css';
+
+import axios from 'axios';
 
 import { Grid } from '@material-ui/core'
 
@@ -15,6 +17,25 @@ import CompanyAnnoun from '../../components/Home/CompanyAnnoun';
 import SideBar from '../../components/SideBar';
 
 const HomePage: React.FC = () => {
+
+
+    useEffect(() => {
+        handleLogin()
+    }, [])
+
+    async function handleLogin() {
+        const id = localStorage.getItem('id')
+
+        try {
+            const response: any = await axios.get(`http://127.0.0.1:4200/api/v1/accounts/${id}`);
+            console.log(response.data[0]);
+            localStorage.setItem('firstName', response.data[0].firstName);
+            localStorage.setItem('lastName', response.data[0].lastName);
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <>

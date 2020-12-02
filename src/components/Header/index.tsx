@@ -10,6 +10,9 @@ import LoginButton from '../LoginButton';
 
 const Header = () => {
 
+   const firstName = localStorage.getItem('firstName')
+   const lastName = localStorage.getItem('lastName')
+
     const history = useHistory();
 
     function handlePage() {
@@ -20,7 +23,7 @@ const Header = () => {
 
     return (
         <header>
-            <h2>Welcome<b>, Lisa Price</b></h2>
+            <h2>Welcome<b>, {firstName} {lastName}</b></h2>
 
 
             <div  className="icons">

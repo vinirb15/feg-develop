@@ -45,6 +45,10 @@
     margin: 0.7rem 2rem;
 }
 
+.requests-container .content button:hover {
+    opacity: .5;
+}
+
 .content h3 {
     display: flex;
     justify-content: center;

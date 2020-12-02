@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FiFilePlus, FiEdit, FiTrash, FiToggleLeft } from 'react-icons/fi';
-import { Modal } from '@material-ui/core'
+import { FiEdit, FiTrash, FiToggleLeft } from 'react-icons/fi';
 
 import Image from '../../assets/Monograma.png';
 
@@ -42,17 +41,16 @@ const Management = () => {
             <div className="management-top">
 
                 <div className="top-left">
-                    <h1>Users</h1>
-                    <h2> 480 total</h2>
+                    <h1>Users<b> 480 total</b></h1>
                     <input type="text" placeholder="Search..." />
                 </div>
 
-                <div className="top-right">
+                {/* <div className="top-right">
                     <button>Add User</button>
                     <button>
                         <FiFilePlus size={25} />
                     </button>
-                </div>
+                </div> */}
             </div>
 
 
@@ -63,11 +61,11 @@ const Management = () => {
                     <div className="export">
                         <select name="">
                             <option value="">Export</option>
-                            <option value="">Option</option>
-                            <option value="">Option</option>
-                            <option value="">Option</option>
+                            <option value="">CSV</option>
+                            <option value="">Excel</option>
+                            <option value="">Print</option>
                         </select>
-                        <button>New Record</button>
+                        {/* <button>New Record</button> */}
                     </div>
                 </div>
 

@@ -129,7 +129,7 @@ const NewAnnouncement: React.FC = () => {
                     type="file"
                     accept="image/*"
                     onChange={fileSelect} />
-                <h4>Annoucement</h4>
+                <h4>Announcement</h4>
                 <textarea
                 // value={Announcement}
                 // onChange={e => setAnnouncement(e.target.value)}

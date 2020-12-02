@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import jwt_decode from "jwt-decode"
+import { useLocation } from "react-router-dom"
 
 import SignRoutes from './signRoutes'
 import PrivateRoutes from './privateRoutes'
 
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+}
+
 const Routes: React.FC = () => {
   const [token, setToken] = useState<any>(null)
+  const query = useQuery()
 
-  useEffect(() => { 
-    if (sessionStorage.getItem('@App:token')?.length) {
-      const jwt: any = jwt_decode(sessionStorage.getItem('@App:token') || '')
+
+  useEffect(() => {
+    if (query.get('id')?.length) {
+      const jwt: any = (query.get('id') || '')
       const currentTime = Date.now() / 1000
 
       if (jwt.length || jwt?.exp < currentTime) {
         setToken(null)
       } else {
         setToken(jwt)
+        localStorage.setItem('token', jwt)
       }
     }
   }, [])

@@ -39,12 +39,10 @@
     background-color: #efefef;
 }
 
-.top-left h2 {
-    display: flex;
-    align-items: center;
+.top-left h1 b {
     color: gray;
-    font-weight: 400;
-    margin-left: .5em;
+    font-size: 1.5rem;
+    margin-left: .3em;
 }
 
 .top-right {
@@ -300,10 +298,8 @@ td button:hover {
     margin: auto;
     padding: 0;
     width: 80%;
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: .5s
 }
 
 .modal-content form {
@@ -347,24 +343,11 @@ td button:hover {
     margin: 0.7rem 0;
 }
 
-@-webkit-keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0
-    }
-    to {
-        top: 0;
-        opacity: 1
-    }
-}
-
 @keyframes animatetop {
     from {
-        top: -300px;
         opacity: 0
     }
     to {
-        top: 0;
         opacity: 1
     }
 }

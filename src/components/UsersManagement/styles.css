@@ -297,7 +297,7 @@ td button:hover {
     background-color: #fefefe;
     margin: auto;
     padding: 0;
-    width: 80%;
+    width: 50%;
     animation-name: animatetop;
     animation-duration: .5s
 }
@@ -335,12 +335,26 @@ td button:hover {
     border-radius: 10px!important;
     border: 0px;
     padding: 1rem!important;
-    background: #00a651!important;
+    background: #00a651;
     color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
     transition: 0.2s;
     margin: 0.7rem 0;
+}
+
+.modal-confirmation form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.deletebtn {
+    background: red!important;
 }
 
 @keyframes animatetop {

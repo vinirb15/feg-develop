@@ -26,10 +26,12 @@ const Management = () => {
     ]);
 
     const [modal, setModal] = useState(false)
+    const [confirmation, setConfirmation] = useState(false)
 
     function handleDeleteUser(event: string) {
         try {
             setUsers(users.filter(user => user.ID !== event));
+            setConfirmation(false)
         } catch (error) {
             alert('Error')
         }
@@ -95,7 +97,7 @@ const Management = () => {
                                 <td>
                                     <button><FiToggleLeft color='#808080' /></button>
                                     <button onClick={() => setModal(true)} ><FiEdit color='#808080' /></button>
-                                    <button><FiTrash onClick={() => handleDeleteUser(user.ID)} color='#808080' /></button>
+                                    <button><FiTrash onClick={() => setConfirmation(true)} color='#808080' /></button>
                                 </td>
                                 <div id="myModal" style={{ display: modal ? "block" : "none" }} className="modal">
                                     <div className="modal-content">
@@ -139,6 +141,26 @@ const Management = () => {
                                         </div>
                                     </div>
                                 </div>
+
+
+
+                                <div id="myModal" style={{ display: confirmation ? "block" : "none" }} className="modal">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <span onClick={() => setConfirmation(false)} className="close">&times;</span>
+                                            <h2>Are you sure you want to continue?</h2>
+                                        </div>
+                                        <div className="modal-confirmation">
+                                            <form onSubmit={() => handleDeleteUser}>
+                                                <button type="button" onClick={() => setConfirmation(false)} className="cancelbtn">Cancel</button>
+                                                <button type="button" onClick={() => handleDeleteUser(user.ID)} className="deletebtn">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </tr>
                         ))
                     }

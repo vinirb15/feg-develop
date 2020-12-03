@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { FiMail, FiFile } from 'react-icons/fi';
-import { useHistory } from 'react-router-dom';
-
 
 import './styles.css';
 
@@ -15,8 +13,6 @@ const ProfileInfo = () => {
     const firstName = localStorage.getItem('firstName')
     const lastName = localStorage.getItem('lastName')
     const email = localStorage.getItem('email')
-
-    const history = useHistory()
 
     function fileSelect(props: any) {
         console.log(props)
@@ -65,7 +61,7 @@ const ProfileInfo = () => {
     function handleLogout() {
         localStorage.clear();
         alert('Disconnected User')
-        history.push('/');
+        window.location.href = "https://account.systemfeg.com"
     }
 
     return (

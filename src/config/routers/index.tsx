@@ -40,7 +40,7 @@ const Routes: React.FC = () => {
 
 
 
-  if (token && token?.exp) {
+  if (token) {
     return <PrivateRoutes />
   }
 

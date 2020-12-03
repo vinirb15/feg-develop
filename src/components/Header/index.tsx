@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiEdit, FiBarChart } from 'react-icons/fi';
 
@@ -10,8 +10,10 @@ import LoginButton from '../LoginButton';
 
 const Header = () => {
 
-   const firstName = localStorage.getItem('firstName')
-   const lastName = localStorage.getItem('lastName')
+    const [loaded, setLoaded] = useState<boolean>();
+
+    const firstName = localStorage.getItem('firstName')
+    const lastName = localStorage.getItem('lastName')
 
     const history = useHistory();
 
@@ -21,12 +23,21 @@ const Header = () => {
         history.push('/');
     }
 
+    function handleChange() {
+        if (firstName === undefined || lastName === undefined) {
+            setLoaded(true)
+        }
+    }
+
+
     return (
-        <header>
-            <h2>Welcome<b>, {firstName} {lastName}</b></h2>
+        <header onLoad={handleChange}>
+            {
+                loaded ? <h2>Welcome</h2> : <h2>Welcome<b> {firstName} {lastName}</b></h2>
+            }
 
 
-            <div  className="icons">
+            <div className="icons">
                 <SearchBox />
 
                 <button onClick={handlePage} type="button">
@@ -37,7 +48,7 @@ const Header = () => {
                     <FiBarChart size={25} color="#7F43F5" />
                 </button>
 
-                <LoginButton color="#7F43F5" width='20%'/>
+                <LoginButton color="#7F43F5" width='20%' />
 
             </div>
         </header>

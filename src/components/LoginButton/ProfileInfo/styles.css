@@ -11,21 +11,21 @@
     box-sizing: border-box;
 }
 
-.about {
+.profile-box .about {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     margin-left: .5rem;
 }
 
-.about h2 {
+.profile-box .about h2 {
     font-size: 2rem;
     color: #7F43F5;
     font-weight: 900;
     margin: 0;
 }
 
-.about .container {
+.profile-box .about .container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -33,13 +33,13 @@
     margin-top: 1rem;
 }
 
-.about p {
+.profile-box .about p {
     color: #808080;
     font-size: 1.3rem;
     margin-left: .5rem;
 }
 
-.about button {
+.profile-box .about button {
     height: 2.6rem;
     width: 55%;
     border-radius: 4px;
@@ -52,7 +52,7 @@
     margin: 0.7rem 0;
 }
 
-.about button:hover {
+.profile-box .about button:hover {
     opacity: 0.7;
 }
 

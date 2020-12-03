@@ -5,7 +5,7 @@ import axios from 'axios';
 import Image from '../../assets/Monograma.png';
 
 import './styles.css';
-
+import Loader from '../../components/Loader';
 
 const Management = () => {
     const [users, setUsers] = useState([
@@ -20,6 +20,12 @@ const Management = () => {
         }
     ]);
 
+    const [loading, setLoading] = useState<boolean>(true)
+
+    while (users === undefined) {
+        setLoading(true)
+    }
+
     useEffect(() => {
         handleLoad()
     }, [])
@@ -27,6 +33,7 @@ const Management = () => {
     async function handleLoad() {
         const response: any = await axios.get(`https://api-systemfegllc.herokuapp.com/api/v1/accounts`)
         setUsers(response.data)
+        setLoading(false)
     }
 
 
@@ -44,7 +51,7 @@ const Management = () => {
         }
     }
 
-    return (
+    const table = (
         <div className="management-content">
 
             <div className="management-top">
@@ -169,6 +176,11 @@ const Management = () => {
 
         </div>
     );
+
+    return (
+        loading ? <Loader /> : table
+    )
+
 }
 
 export default Management;

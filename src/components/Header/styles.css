@@ -23,12 +23,12 @@ header b {
     font-weight: bold;
 }
 
-.icons {
+header .icons {
     display: flex;
     justify-content: center;
 }
 
-.icons button {
+header .icons button {
     height: 27px;
     width: 25px;
     border-radius: 4px;
@@ -39,7 +39,7 @@ header b {
     cursor: pointer;
 }
 
-.icons button:hover {
+header .icons button:hover {
     border-color: #999;
 }
 

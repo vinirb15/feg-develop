@@ -12,7 +12,7 @@ const useQuery = () => {
 const Routes: React.FC = () => {
   const [token, setToken] = useState<any>(null)
   const query = useQuery()
-  const match: any = useRouteMatch('/:id');
+  const match: any = useRouteMatch('/home/:id');
 
   useEffect(() => {
     handleLogin()
@@ -45,7 +45,7 @@ const Routes: React.FC = () => {
     return <PrivateRoutes />
   }
 
-  return <PrivateRoutes />
+  return <SignRoutes />
 }
 
 export default Routes

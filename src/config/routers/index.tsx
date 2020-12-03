@@ -28,8 +28,6 @@ const Routes: React.FC = () => {
         localStorage.setItem('firstName', response.data[0].firstName);
         localStorage.setItem('lastName', response.data[0].lastName);
         localStorage.setItem('email', response.data[0].email)
-
-        console.log("alo")
       }
       )
 

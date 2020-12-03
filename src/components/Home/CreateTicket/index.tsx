@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import CreateTicket from '../../../assets/CreateTicket.png';
+import Loader from '../../Loader';
 
 import '../PowerBI/styles.css';
 
 const Content = () => {
+  const [loaded, setLoaded] = useState(true);
 
   return (
     <div className="box-content images">
       <a href="https://fegllc.zendesk.com/hc/en-us/requests/new">
-        <img src={CreateTicket} alt="Create Ticket" />
+        <img src={CreateTicket} onLoad={() => setLoaded(false)} alt="Create Ticket" />
+        {
+          (loaded ? <Loader /> : <></>)
+        }
         <h2>
           FEG Ticket
           </h2>

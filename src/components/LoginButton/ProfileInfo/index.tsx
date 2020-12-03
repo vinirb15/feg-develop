@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FiMail, FiFile } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
+
 
 import './styles.css';
 
@@ -8,9 +10,21 @@ import Monograma from '../../../assets/Monograma.png';
 const ProfileInfo = () => {
 
     const [update, setUpdate] = useState(false);
-    
+    const [name, setName] = useState('')
+
+    const firstName = localStorage.getItem('firstName')
+    const lastName = localStorage.getItem('lastName')
+    const email = localStorage.getItem('email')
+
+    const history = useHistory()
+
     function fileSelect(props: any) {
         console.log(props)
+    }
+
+    function submited() {
+        localStorage.clear();
+        localStorage.setItem('firstName', name);
     }
 
     const updateOn = (
@@ -18,15 +32,22 @@ const ProfileInfo = () => {
             <hr />
             <div className="update-options">
                 <h4>Name</h4>
-                <input type="text" name="nameInput" />
+                <input
+                    type="text"
+                    name="nameInput"
+                    placeholder='New Name'
+                    onChange={e => setName(e.target.value)}
+                />
 
                 <h4>Picture</h4>
-                <input 
-                type="file" 
-                accept="image/*" 
-                onChange={fileSelect}/>
+                <input
+                    className="profile-typefile"
+                    type="file"
+                    accept="image/*"
+                    onChange={fileSelect}
+                />
 
-                <button>Save</button>
+                <button onClick={submited}>Save</button>
 
             </div>
         </>
@@ -40,16 +61,23 @@ const ProfileInfo = () => {
         }
     }
 
+
+    function handleLogout() {
+        localStorage.clear();
+        alert('Disconnected User')
+        history.push('/');
+    }
+
     return (
         <div className="profile-box">
             <img src={Monograma} alt="FEG LOGO" />
             <div className="about">
-                <h2>Lisa Price</h2>
+                <h2>{firstName} {lastName}</h2>
                 <div className="container">
                     <FiMail color="#478fc8" size={20} />
-                    <p>lisa.price@fegllc.com</p>
+                    <p>{email}</p>
                 </div>
-                <button>Sign Out</button>
+                <button onClick={handleLogout}>Sign Out</button>
             </div>
 
             <hr />
@@ -62,9 +90,9 @@ const ProfileInfo = () => {
                     color: '#1eb6b0'
                 }} size={45} />
                 <div className="container">
-                    <h3>My Profile</h3>
+                    <h3>{firstName} {lastName}</h3>
                     <div className="update-profile">
-                        <h4>Account settings and more</h4>
+                        <h4>Update your settings</h4>
                         <button onClick={updateBtn}>update</button>
                     </div>
                 </div>

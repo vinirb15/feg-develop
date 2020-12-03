@@ -33,7 +33,7 @@ const Register = () => {
     return (
         <div className="requests-container">
 
-            <div className="content">
+            <div className="thiscontent">
                 <h3>FEG Employees</h3>
                 <ul>
                     <li>

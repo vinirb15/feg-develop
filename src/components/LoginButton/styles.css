@@ -16,7 +16,7 @@
 }
 
 .sidenav h1 {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   margin-left: 2rem;
   margin-bottom: 3rem;
   margin-top: 1rem;
@@ -29,6 +29,10 @@
   right: -30px;
   font-size: 36px;
   margin-right: 50px;
+}
+
+.closebtn{
+  color: #7F43F5!important;
 }
 
 @media screen and (max-height: 450px) {

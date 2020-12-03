@@ -118,20 +118,29 @@
     margin-top: 1rem;
 }
 
-.update-options input[type=text], input[type=file] {
+.update-options input[type=text], .profile-typefile {
     align-items: center;
-    width: 80%;
+    width: 80%!important;
     height: 2.5rem;
     box-sizing: border-box;
-    border: 1px solid #7F43F5;
+    border: 1px solid #7F43F5!important;
     border-radius: 10px;
     font-size: 16px;
-    background-color: transparent;
+    background-color: transparent!important;
     background-position: 10px 10px;
     background-repeat: no-repeat;
-    padding: 5px 20px 12px 40px;
+    padding: 0 1rem;
 }
+
+.profile-typefile {
+    padding: 5px 0px 0px 5px;
+}
+
 .update-options button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
     width: 40%;
     border-radius: 10px!important;
     border: 0px;
@@ -142,7 +151,7 @@
     font-weight: bold;
     transition: 0.2s;
     margin: 0.7rem 0;
-} 
+}
 
 @media(max-width: 700px) {
     .profile-box {
@@ -151,12 +160,18 @@
     .about {
         margin-left: 0;
     }
-    .my-profile h4 {}
     .my-profile button {
         margin: 0!important;
         margin-left: 1rem!important;
         padding: 0rem!important;
         background: #fddde2!important;
         color: #f24960!important;
+    }
+    .update-options button {
+        display: flex!important;
+        justify-content: center!important;
+        align-items: center!important;
+        height: 3rem;
+        padding: 0;
     }
 }

@@ -32,7 +32,7 @@
     margin: 0.7rem 0;
 }
 
-.requests-container .content button {
+.requests-container .thiscontent button {
     height: 2.6rem;
     width: 10%;
     border-radius: 20px;
@@ -45,7 +45,11 @@
     margin: 0.7rem 2rem;
 }
 
-.content h3 {
+.requests-container .thiscontent button:hover {
+    opacity: .5;
+}
+
+.requests-container .thiscontent h3 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,21 +64,21 @@
     font-weight: bold;
 }
 
-.content ul {
+.requests-container .thiscontent ul {
     list-style: none;
 }
 
 @media(max-width: 1070px) {
-    .content h3 {
+    .requests-container .thiscontent h3 {
         height: 3rem;
         width: 50%;
         margin: 2rem 0;
         font-size: 1.5rem;
     }
-    .content h1 {
+    .requests-container .thiscontent h1 {
         font-size: 1.5rem;
     }
-    .requests-container .content button {
+    .requests-container .thiscontent button {
         height: 2.8rem;
         width: 40%;
     }

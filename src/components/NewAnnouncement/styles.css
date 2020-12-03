@@ -1,8 +1,12 @@
 .new-announcement {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     margin-left: 7%;
     margin-right: 4%;
+    width: 100%;
+    height: 100%;
+    background: white;
 }
 
 .new-announcement h1 {
@@ -12,9 +16,82 @@
 
 .create-announcement {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    background: white;
+    margin-left: 2rem;
+}
+
+.utils {
+    margin-left: 2rem;
+}
+
+.new-announcement .utils input[type=text], .typefile {
+    align-items: center;
+    width: 50%;
+    height: 2.5rem;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #efefef;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 5px 20px 12px 40px;
+}
+
+.new-announcement .utils input[type=file] {
+    width: 20%;
+}
+
+.new-announcement .utils textarea {
+    align-items: center;
+    width: 50%;
+    min-height: 20rem;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #efefef;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 5px 20px 12px 40px;
+}
+
+.new-announcement .utils h4 {
+    margin: 1rem 0;
+}
+
+.new-announcement button {
+    width: 15%;
+    border-radius: 10px!important;
+    border: 0px;
+    padding: 1rem!important;
+    background: #7F43F5!important;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.2s;
+    margin: 0.7rem 0;
+    margin-left: 2rem;
+}
+
+@media(max-width: 700px) {
+    .new-announcement {
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 1rem;
+    }
+    .create-announcement {
+    width: 90%;
+    }
+    .new-announcement .utils input[type=file] {
+        width: 30%;
+    }
+    .new-announcement button {
+        margin: 0;
+        width: 80%;
+    }
 }

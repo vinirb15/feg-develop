@@ -19,7 +19,7 @@
     margin: 0rem 1.5rem 1.5rem 0;
 }
 
-.content {
+.local-announcements .content {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -27,7 +27,7 @@
     justify-content: center;
 }
 
-.content h2 {
+.local-announcements .content h2 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -41,7 +41,7 @@
     max-width: 80%;
 }
 
-.content a {
+.local-announcements .content a {
     text-decoration: none;
 }
 

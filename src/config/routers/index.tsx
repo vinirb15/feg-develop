@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom"
+import axios from 'axios';
 
 import SignRoutes from './signRoutes'
 import PrivateRoutes from './privateRoutes'
@@ -14,19 +15,33 @@ const Routes: React.FC = () => {
 
 
   useEffect(() => {
-    if (query.get('id')?.length) {
-      const jwt: any = (query.get('id') || '')
-      const currentTime = Date.now() / 1000
-
-      if (jwt.length || jwt?.exp < currentTime) {
-        setToken(null)
-      } else {
-        setToken(jwt)
-        localStorage.setItem('token', jwt)
-      }
-    }
+    handleLogin()
   }, [])
-  
+
+  async function handleLogin() {
+    try {
+      const jwt: any = (query.get('id') || '')
+      setToken(jwt)
+      await axios.get(`http://127.0.0.1:4200/api/v1/accounts/?${jwt}`).then(response => {
+        localStorage.setItem('id', jwt)
+        console.log(response.data[0]);
+        localStorage.setItem('firstName', response.data[0].firstName);
+        localStorage.setItem('lastName', response.data[0].lastName);
+        localStorage.setItem('email', response.data[0].email)
+
+        console.log("alo")
+      }
+      )
+
+
+    } catch (error) {
+      console.log(error)
+      console.log("alskdalkdajk")
+    }
+  }
+
+
+
   if (token && token?.exp) {
     return <PrivateRoutes />
   }

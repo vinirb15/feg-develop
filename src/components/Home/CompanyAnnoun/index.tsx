@@ -1,11 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import './styles.css';
 
 import Announcement from '../../../assets/Announcements/ScreenShot1.png'
 
 const Content = () => {
+
+const history = useHistory();
+
+function handleRedirect(e: any){
+    e.preventDefault()
+    history.push('/announcements')
+}
 
     return (
         <div className="company">
@@ -19,7 +26,7 @@ const Content = () => {
             It's imperative that we as a whole are watching our spending by being overly cautious when ordering
             and utilizing any items you have in house.
                 </h2>
-            <button>See more...</button>
+            <button onClick={handleRedirect}>See more...</button>
             </div>
         </div>
     );

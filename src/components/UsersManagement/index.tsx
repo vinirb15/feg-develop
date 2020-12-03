@@ -25,7 +25,7 @@ const Management = () => {
     }, [])
 
     async function handleLoad() {
-        const response: any = await axios.get(`http://127.0.0.1:4200/api/v1/accounts`)
+        const response: any = await axios.get(`https://api-systemfegllc.herokuapp.com/api/v1/accounts`)
         setUsers(response.data)
     }
 
@@ -36,7 +36,7 @@ const Management = () => {
 
     async function handleDeleteUser(id: string) {
         try {
-            await axios.delete(`http://127.0.0.1:4200/api/v1/accounts/${id}`)
+            await axios.delete(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`)
             setUsers(users.filter(user => user.id !== id));
             setConfirmation(false)
         } catch (error) {

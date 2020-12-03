@@ -24,11 +24,8 @@ const Header = () => {
     }
 
     function handleChange() {
-        if (firstName === undefined || lastName === undefined) {
+        while ((firstName === undefined) || (lastName === undefined)) {
             setLoaded(true)
-        }
-        else if(firstName !== undefined && lastName !== undefined){
-            setLoaded(false)
         }
     }
 

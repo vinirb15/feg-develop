@@ -109,7 +109,7 @@ const Management = () => {
                             <td><p className="label-mobile">STATUS:</p> <b style={{ background: user.isActive ? "#25ab9f" : "#808080" }}>{user.isActive ? 'ACTIVED' : 'INATIVED'}</b></td>
                             <td>
                                 <button><FiToggleLeft color='#808080' /></button>
-                                <button onClick={() => setModal(true)} ><FiEdit color='#808080' /></button>
+                                <button onClick={() => {setModal(true); setModalDate(user)}} ><FiEdit color='#808080' /></button>
                                 <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(user.id) }} color='#808080' /></button>
                             </td>
                             <div id="myModal" style={{ display: modal ? "block" : "none" }} className="modal">
@@ -123,28 +123,28 @@ const Management = () => {
                                             <h2>Name:</h2>
                                             <input
                                                 type="text"
-                                                placeholder={user.firstName + user.lastName}
+                                                placeholder={modalDate? modalDate.firstName : ""}
                                             // value={user.EMAIL}
                                             // onChange={e => setName(e.target.value)}
                                             />
                                             <h2>Location:</h2>
                                             <input
                                                 type="text"
-                                                placeholder={user.location_name}
+                                                placeholder={modalDate? modalDate.location_name : ""}
                                             // value={user.EMAIL}
                                             // onChange={e => setName(e.target.value)}
                                             />
                                             <h2>Email:</h2>
                                             <input
                                                 type="email"
-                                                placeholder={user.email}
+                                                placeholder={modalDate? modalDate.email : ""}
                                             // value={user.EMAIL}
                                             // onChange={e => setEmail(e.target.value)}
                                             />
                                             <h2>Group:</h2>
                                             <input
                                                 type="text"
-                                                placeholder={user.group_name}
+                                                placeholder={modalDate? modalDate.group_name : ""}
                                             // value={user.EMAIL}
                                             // onChange={e => setName(e.target.value)}
                                             />

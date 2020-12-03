@@ -136,12 +136,12 @@
     padding: 5px 0px 0px 5px;
 }
 
-.update-options button {
+.profile-box .update-options button {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 2rem;
-    width: 40%;
+    width: 40%!important;
     border-radius: 10px!important;
     border: 0px;
     padding: 1rem!important;

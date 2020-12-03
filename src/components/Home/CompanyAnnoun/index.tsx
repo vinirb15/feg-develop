@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import './styles.css';
 
 import Announcement from '../../../assets/Announcements/ScreenShot1.png'
+import Loader from '../../Loader';
 
 const Content = () => {
 
-const history = useHistory();
+    const [loaded, setLoaded] = useState<boolean>(true);
 
-function handleRedirect(e: any){
-    e.preventDefault()
-    history.push('/announcements')
-}
+
+    const history = useHistory();
+
+    function handleRedirect(e: any) {
+        e.preventDefault()
+        history.push('/announcements')
+    }
 
     return (
         <div className="company">
@@ -21,12 +25,15 @@ function handleRedirect(e: any){
             </Link>
             <p>11.30.2020 - 3:45PM</p>
             <div className="content">
-            <img src={Announcement} alt="Announcement" />
-            <h2 className="text">Good afternoon everyone, as you all know this year has been a doozy.
-            It's imperative that we as a whole are watching our spending by being overly cautious when ordering
-            and utilizing any items you have in house.
+                <img src={Announcement} onLoad={() => setLoaded(false)} alt="Announcement" />
+                {
+                    (loaded ? <Loader /> : <></>)
+                }
+                <h2 className="text">Good afternoon everyone, as you all know this year has been a doozy.
+                It's imperative that we as a whole are watching our spending by being overly cautious when ordering
+                and utilizing any items you have in house.
                 </h2>
-            <button onClick={handleRedirect}>See more...</button>
+                <button onClick={handleRedirect}>See more...</button>
             </div>
         </div>
     );

@@ -167,6 +167,13 @@
         background: #fddde2!important;
         color: #f24960!important;
     }
+
+    .profile-box .about button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .update-options button {
         display: flex!important;
         justify-content: center!important;

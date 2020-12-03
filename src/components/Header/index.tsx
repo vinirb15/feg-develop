@@ -27,13 +27,16 @@ const Header = () => {
         if (firstName === undefined || lastName === undefined) {
             setLoaded(true)
         }
+        else if(firstName !== undefined && lastName !== undefined){
+            setLoaded(false)
+        }
     }
 
 
     return (
         <header onLoad={handleChange}>
             {
-                loaded ? <h2>Welcome</h2> : <h2>Welcome<b> {firstName} {lastName}</b></h2>
+                loaded ? <h2>Welcome</h2> : (<h2>Welcome<b> {firstName} {lastName}</b></h2>)
             }
 
 

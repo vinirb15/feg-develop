@@ -13,8 +13,8 @@ const PrivateRoutes: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        {/* <Route exact path={ROUTES.NEWHOME} component={Home} /> */}
-        <Route exact path={ROUTES.HOME} component={Home} />
+        <Route exact path={ROUTES.NEWHOME} component={Home} />
+        {/* <Route exact path={ROUTES.HOME} component={Home} /> */}
         <Route exact path={ROUTES.USER} component={UserValidation} />
         <Route path={ROUTES.PROFILE} component={Profile} />
         <Route exact path={ROUTES.ANNOUNCEMENTS} component={Announcements} />

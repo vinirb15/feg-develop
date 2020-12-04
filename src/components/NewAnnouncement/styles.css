@@ -85,7 +85,7 @@
         padding: 1rem;
     }
     .create-announcement {
-    width: 90%;
+        width: 90%;
     }
     .new-announcement .utils input[type=file] {
         width: 30%;
@@ -93,5 +93,14 @@
     .new-announcement button {
         margin: 0;
         width: 80%;
+    }
+    .new-announcement .utils textarea {
+        width: 90%;
+    }
+    .new-announcement .utils input[type=file] {
+        width: 90%;
+    }
+    .new-announcement .utils input[type=text], .typefile {
+        width: 90%;
     }
 }

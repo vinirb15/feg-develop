@@ -24,13 +24,12 @@ const Routes: React.FC = () => {
       setToken(jwt)
       await axios.get(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${jwt}`).then((response: any) => {
         localStorage.setItem('id', jwt)
-        // console.log(response.data);
         localStorage.setItem('firstName', response.data.firstName);
         localStorage.setItem('lastName', response.data.lastName);
         localStorage.setItem('email', response.data.email)
       }
-    )
-    
+      )
+
 
     } catch (error) {
       console.log(error)

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FiMail, FiFile } from 'react-icons/fi';
-
+import axios from 'axios';
 import './styles.css';
 
 import Monograma from '../../../assets/Monograma.png';
@@ -12,15 +12,44 @@ const ProfileInfo = () => {
 
     const firstName = localStorage.getItem('firstName')
     const lastName = localStorage.getItem('lastName')
+    const userID = localStorage.getItem('id')
     const email = localStorage.getItem('email')
 
     function fileSelect(props: any) {
         console.log(props)
     }
 
-    function submited() {
+    function updateBtn() {
+        if (update === false)
+            setUpdate(true)
+        else {
+            setUpdate(false)
+        }
+    }
+
+
+    function handleLogout() {
         localStorage.clear();
-        localStorage.setItem('firstName', name);
+        alert('Disconnected User')
+        window.location.href = "https://account.systemfeg.com"
+    }
+
+    async function handleUpdate(id: string) {
+        if (name === "") {
+            setName(firstName ? firstName : "")
+        }
+
+        else if (name !== "") {
+            const data = {
+                "firstName": name,
+            }
+            try {
+                await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`, data);
+                alert(`Your name will be updated at an upcoming login`);
+            } catch (error) {
+                alert('Error updating user');
+            }
+        }
     }
 
     const updateOn = (
@@ -43,26 +72,11 @@ const ProfileInfo = () => {
                     onChange={fileSelect}
                 />
 
-                <button onClick={submited}>Save</button>
+                <button onClick={() => handleUpdate(userID!)}>Save</button>
 
             </div>
         </>
     )
-
-    function updateBtn() {
-        if (update === false)
-            setUpdate(true)
-        else {
-            setUpdate(false)
-        }
-    }
-
-
-    function handleLogout() {
-        localStorage.clear();
-        alert('Disconnected User')
-        window.location.href = "https://account.systemfeg.com"
-    }
 
     return (
         <div className="profile-box">

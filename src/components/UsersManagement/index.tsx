@@ -14,6 +14,7 @@ const Management = () => {
             firstName: "",
             lastName: "",
             location_name: "",
+            location_id: "",
             email: "",
             group_name: "",
             isActive: false
@@ -21,10 +22,19 @@ const Management = () => {
     ]);
 
     const [loading, setLoading] = useState<boolean>(true)
+    const [modal, setModal] = useState(false)
+    const [confirmation, setConfirmation] = useState(false)
+    const [modalDate, setModalDate] = useState<any>()
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [location, setLocation] = useState('');
+    const [group, setGroup] = useState('');
+    const [total, setTotal] = useState('');
 
-    while (users === undefined) {
-        setLoading(true)
-    }
+
+    // while (users === undefined) {
+    //     setLoading(true)
+    // }
 
     useEffect(() => {
         handleLoad()
@@ -32,14 +42,11 @@ const Management = () => {
 
     async function handleLoad() {
         const response: any = await axios.get(`https://api-systemfegllc.herokuapp.com/api/v1/accounts`)
-        setUsers(response.data)
+        setUsers(response.data.results)
+        console.log(response.data.results)
+        setTotal(response.data.size)
         setLoading(false)
     }
-
-
-    const [modal, setModal] = useState(false)
-    const [confirmation, setConfirmation] = useState(false)
-    const [modalDate, setModalDate] = useState<any>()
 
     async function handleDeleteUser(id: string) {
         try {
@@ -51,14 +58,71 @@ const Management = () => {
         }
     }
 
+    async function handleUpdate(id: string) {
+        if (name === "") {
+            setName(modalDate.firstName)
+        }
+        if (email === "") {
+            setEmail(modalDate.email)
+        }
+        if (location === "") {
+            setLocation(modalDate.location_id)
+        }
+        if (group === "") {
+            setGroup(modalDate.group_name)
+        }
+
+        else if (group !== "" && location !== "" && email !== "" && name !== "") {
+            const data = {
+                "firstName": name,
+                "email": email,
+                "location_id": location,
+                // "group_name": group,
+            }
+            try {
+                await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`, data);
+                alert(`User updated`);
+                setLoading(true)
+                setModal(false)
+                handleLoad()
+            } catch (error) {
+                alert('Error updating user');
+            }
+        }
+    }
+
+    async function handleActived(actived: boolean, id: string) {
+        if (actived === true) {
+            try {
+                await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/blocker`);
+
+                alert(`User blocked`);
+            } catch (error) {
+                alert('Error blocking user');
+            }
+            setLoading(true)
+            handleLoad()
+        } else {
+            try {
+                await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/activer`);
+
+                alert(`User activated`);
+                setLoading(true)
+                handleLoad()
+            } catch (error) {
+                alert('Error activating user');
+            }
+        }
+    }
+
     const table = (
         <div className="management-content">
 
             <div className="management-top">
 
                 <div className="top-left">
-                    <h1>Users<b> 480 total</b></h1>
-                    <input type="text" placeholder="Search..." />
+                    <h1>Users<b> {total} total</b></h1>
+                    {/* <input type="text" placeholder="Search..." /> */}
                 </div>
 
                 {/* <div className="top-right">
@@ -97,80 +161,83 @@ const Management = () => {
                     </tr>
 
 
-                    {users.map(user => (
-                        <tr key={user.id}>
-                            <td id="image">
-                                <img src={Image} alt="user.png" />
-                            </td>
-                            <td><p className="label-mobile">USER:</p> {user.firstName} {user.lastName}</td>
-                            <td><p className="label-mobile">LOCATION:</p> {user.location_name}</td>
-                            <td><p className="label-mobile">EMAIL:</p> {user.email}</td>
-                            <td><p className="label-mobile">GROUP:</p> {user.group_name}</td>
-                            <td><p className="label-mobile">STATUS:</p> <b style={{ background: user.isActive ? "#25ab9f" : "#808080" }}>{user.isActive ? 'ACTIVED' : 'INATIVED'}</b></td>
-                            <td>
-                                <button><FiToggleLeft color='#808080' /></button>
-                                <button onClick={() => {setModal(true); setModalDate(user)}} ><FiEdit color='#808080' /></button>
-                                <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(user.id) }} color='#808080' /></button>
-                            </td>
-                            <div id="myModal" style={{ display: modal ? "block" : "none" }} className="modal">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <span onClick={() => setModal(false)} className="close">&times;</span>
-                                        <h2>Update User</h2>
-                                    </div>
+                    <tbody>
+                        {users.map(user => (
+                            <tr key={user.id}>
+                                <td id="image">
+                                    <img src={Image} alt="user.png" />
+                                </td>
+                                <td><p className="label-mobile">USER:</p> {user.firstName} {user.lastName}</td>
+                                <td><p className="label-mobile">LOCATION:</p> {user.location_name}</td>
+                                <td><p className="label-mobile">EMAIL:</p> {user.email}</td>
+                                <td><p className="label-mobile">GROUP:</p> {user.group_name}</td>
+                                <td><p className="label-mobile">STATUS:</p> <b style={{ background: user.isActive ? "#25ab9f" : "#808080" }}>{user.isActive ? 'ACTIVED' : 'INATIVED'}</b></td>
+                                <td>
+                                    <button><FiToggleLeft onClick={() => handleActived(user.isActive, user.id)} color='#808080' /></button>
+                                    <button onClick={() => { setModal(true); setModalDate(user) }} ><FiEdit color='#808080' /></button>
+                                    <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(user.id) }} color='#808080' /></button>
+                                </td>
+                                <div id="myModal" style={{ display: modal ? "block" : "none" }} className="modal">
                                     <div className="modal-content">
-                                        <form onSubmit={() => handleDeleteUser}>
-                                            <h2>Name:</h2>
-                                            <input
-                                                type="text"
-                                                placeholder={modalDate? modalDate.firstName : ""}
-                                            // value={user.EMAIL}
-                                            // onChange={e => setName(e.target.value)}
-                                            />
-                                            <h2>Location:</h2>
-                                            <input
-                                                type="text"
-                                                placeholder={modalDate? modalDate.location_name : ""}
-                                            // value={user.EMAIL}
-                                            // onChange={e => setName(e.target.value)}
-                                            />
-                                            <h2>Email:</h2>
-                                            <input
-                                                type="email"
-                                                placeholder={modalDate? modalDate.email : ""}
-                                            // value={user.EMAIL}
-                                            // onChange={e => setEmail(e.target.value)}
-                                            />
-                                            <h2>Group:</h2>
-                                            <input
-                                                type="text"
-                                                placeholder={modalDate? modalDate.group_name : ""}
-                                            // value={user.EMAIL}
-                                            // onChange={e => setName(e.target.value)}
-                                            />
+                                        <div className="modal-header">
+                                            <span onClick={() => setModal(false)} className="close">&times;</span>
+                                            <h2>Update User</h2>
+                                        </div>
+                                        <div className="modal-content">
+                                            <form onSubmit={() => handleDeleteUser}>
+                                                <h2>Name:</h2>
+                                                <input
+                                                    type="text"
+                                                    placeholder={modalDate ? modalDate.firstName : ""}
+                                                    onChange={e => setName(e.target.value)}
+                                                />
+                                                <h2>Location:</h2>
+                                                <div className="export">
+                                                    <select onChange={e => setLocation(e.target.value)}>
+                                                        <option value={modalDate ? modalDate.location_id : ""}>{modalDate ? modalDate.location_name : ""}</option>
+                                                        <option value="Location 01">Location 01</option>
+                                                        <option value="Location 02">Location 02</option>
+                                                        <option value="Location 03">Location 03</option>
+                                                    </select>
+                                                </div>
+                                                <h2>Email:</h2>
+                                                <input
+                                                    type="email"
+                                                    placeholder={modalDate ? modalDate.email : ""}
+                                                    onChange={e => setEmail(e.target.value)}
+                                                />
+                                                <h2>Group:</h2>
+                                                <div className="export">
+                                                    <select onChange={e => setGroup(e.target.value)}>
+                                                        <option value={modalDate ? modalDate.group_name : ""}>{modalDate ? modalDate.group_name : ""}</option>
+                                                        <option value="Group 01">Group 01</option>
+                                                        <option value="Group 02">Group 02</option>
+                                                        <option value="Group 03">Group 03</option>
+                                                    </select>
+                                                </div>
 
-                                            <button className="button" type="submit">Update</button>
-                                        </form>
+                                                <button className="button" onClick={() => handleUpdate(modalDate.id)} type="button">Update</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div id="myModal" style={{ display: confirmation ? "block" : "none" }} className="modal">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <span onClick={() => setConfirmation(false)} className="close">&times;</span>
-                                        <h2>Are you sure you want to continue?</h2>
-                                    </div>
-                                    <div className="modal-confirmation">
-                                        <form>
-                                            <button type="button" onClick={() => setConfirmation(false)} className="cancelbtn">Cancel</button>
-                                            <button type="button" onClick={() => handleDeleteUser(modalDate)} className="deletebtn">Delete</button>
-                                        </form>
+                                <div id="myModal" style={{ display: confirmation ? "block" : "none" }} className="modal">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <span onClick={() => setConfirmation(false)} className="close">&times;</span>
+                                            <h2>Are you sure you want to continue?</h2>
+                                        </div>
+                                        <div className="modal-confirmation">
+                                            <form>
+                                                <button type="button" onClick={() => setConfirmation(false)} className="cancelbtn">Cancel</button>
+                                                <button type="button" onClick={() => handleDeleteUser(modalDate)} className="deletebtn">Delete</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </tr>
-                    ))}
+                            </tr>
+                        ))}
+                    </tbody>
                 </table>
             </div>
 

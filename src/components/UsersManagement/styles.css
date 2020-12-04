@@ -256,6 +256,26 @@ td button:hover {
     margin: 1rem 0;
 }
 
+.modal-content form select {
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+    box-sizing: border-box;
+    border: 1px solid #7F43F5!important;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: transparent!important;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 0 1rem;
+    margin: 1rem 0;
+    
+}
+
+.modal-content form .export {
+    width: 100%;
+}
+
 .modal-content button {
     display: flex;
     justify-content: center;

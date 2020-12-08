@@ -11,7 +11,7 @@ const Content = () => {
   return (
     <div className="box-content images">
       <a target="_blank" href="http://system.fegllc.com/">
-        <img src={Displays} onLoad={() => setLoaded(false)} alt="ERP" />
+        <img style={{display: loaded ? "none" : "block"}} src={Displays} onLoad={() => setLoaded(false)} alt="ERP" />
         {
           (loaded ? <Loader /> : <></>)
         }

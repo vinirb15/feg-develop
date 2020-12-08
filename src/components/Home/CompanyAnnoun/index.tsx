@@ -25,7 +25,7 @@ const Content = () => {
             </Link>
             <p>11.30.2020 - 3:45PM</p>
             <div className="content">
-                <img src={Announcement} onLoad={() => setLoaded(false)} alt="Announcement" />
+                <img style={{display: loaded ? "none" : "block"}} src={Announcement} onLoad={() => setLoaded(false)} alt="Announcement" />
                 {
                     (loaded ? <Loader /> : <></>)
                 }

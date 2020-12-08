@@ -13,7 +13,7 @@ const Announcements: React.FC = () => {
         <div className="company-announcements">
             <p>11.30.2020 - 3:45PM</p>
             <div className="content">
-                <img src={CompanyImg} onLoad={() => setLoaded(false)} alt="Announcement" />
+                <img style={{display: loaded ? "none" : "block"}} src={CompanyImg} onLoad={() => setLoaded(false)} alt="Announcement" />
                 {
                     (loaded ? <Loader /> : <></>)
                 }

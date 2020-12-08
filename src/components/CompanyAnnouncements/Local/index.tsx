@@ -13,7 +13,7 @@ const Announcements: React.FC = () => {
         <div className="local-announcements">
             <p>11.20.2020 - 4:25PM</p>
             <div className="content">
-                <img src={LocalImg} onLoad={() => setLoaded(false)} alt="Announcement" />
+                <img style={{display: loaded ? "none" : "block"}} src={LocalImg} onLoad={() => setLoaded(false)} alt="Announcement" />
                 {
                     (loaded ? <Loader /> : <></>)
                 }

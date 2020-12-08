@@ -11,7 +11,7 @@ const Content = () => {
   return (
     <div className="box-content images">
       <a target="_blank" href="https://fegllc.zendesk.com/hc/en-us/requests/new">
-        <img src={CreateTicket} onLoad={() => setLoaded(false)} alt="Create Ticket" />
+        <img style={{display: loaded ? "none" : "block"}} src={CreateTicket} onLoad={() => setLoaded(false)} alt="Create Ticket" />
         {
           (loaded ? <Loader /> : <></>)
         }

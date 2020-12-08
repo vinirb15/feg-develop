@@ -17,6 +17,7 @@ const Announcements: React.FC = () => {
                 {
                     (loaded ? <Loader /> : <></>)
                 }
+                <h1>Good. Clean. Fun!</h1>
                 <h2>Good afternoon everyone, as you all know this year has been a doozy.
                 It's imperative that we as a whole are watching our spending by being overly cautious when ordering
                 and utilizing any items you have in house.

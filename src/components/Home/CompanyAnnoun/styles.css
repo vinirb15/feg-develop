@@ -13,8 +13,15 @@
 
 .company h1 {
     color: #7F43F5;
-    font-size: 1.9rem;
+    font-size: 1.2rem;
     font-weight: bold;
+}
+
+.company .content h1 {
+    color: #7F43F5;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
 }
 
 .company p {
@@ -66,13 +73,12 @@
     width: 40%;
     border-radius: 10px!important;
     border: 0px;
-    padding: 1rem!important;
+    padding: .5rem!important;
     background: #7F43F5;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     transition: 0.2s;
-    margin: 0.7rem 0;
 }
 
 .company .content button:hover {

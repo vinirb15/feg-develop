@@ -1,6 +1,6 @@
 .local-announcements {
     width: 85%;
-    height: 85vh;
+    min-height: 85%;
     background-color: #fff;
     border-radius: 20px;
     padding: 2rem;
@@ -10,6 +10,7 @@
     color: #7F43F5;
     font-size: 1.9rem;
     font-weight: bold;
+    margin: 1rem 0;
 }
 
 .local-announcements p {
@@ -36,8 +37,7 @@
     color: #7F43F5;
     font-size: 1.5rem;
     font-weight: 400;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     max-width: 80%;
 }
 

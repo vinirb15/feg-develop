@@ -10,7 +10,7 @@ const Content = () => {
 
   return (
     <div className="box-content images">
-      <a href="http://system.fegllc.com/">
+      <a target="_blank" href="http://system.fegllc.com/">
         <img src={Displays} onLoad={() => setLoaded(false)} alt="ERP" />
         {
           (loaded ? <Loader /> : <></>)

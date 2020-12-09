@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiEdit, FiBarChart } from 'react-icons/fi';
 
@@ -9,11 +9,17 @@ import LoginButton from '../LoginButton';
 
 
 const Header = () => {
-
     const [loaded, setLoaded] = useState<boolean>();
-
-    const firstName = localStorage.getItem('firstName')
-    const lastName = localStorage.getItem('lastName')
+    const [info, setInfo] = useState<string>();
+    let firstName = ''
+    let lastName = ''
+    useEffect(() => {
+        setTimeout(() => {
+            const firstName = localStorage.getItem('firstName')
+            const lastName = localStorage.getItem('lastName')
+            setInfo(`${firstName} ${lastName}`);
+        }, 400);
+      }, []);
 
     const history = useHistory();
 
@@ -33,7 +39,7 @@ const Header = () => {
     return (
         <header onLoad={handleChange}>
             {
-                loaded ? <h2>Welcome</h2> : (<h2>Welcome<b> {firstName} {lastName}</b></h2>)
+                loaded ? <h2>Welcome</h2> : (<h2>Welcome<b> {info}</b></h2>)
             }
 
 

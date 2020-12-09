@@ -18,7 +18,7 @@ const Header = () => {
             const firstName = localStorage.getItem('firstName')
             const lastName = localStorage.getItem('lastName')
             setInfo(`${firstName} ${lastName}`);
-        }, 400);
+        }, 1000);
       }, []);
 
     const history = useHistory();

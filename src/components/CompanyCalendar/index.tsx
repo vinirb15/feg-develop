@@ -98,14 +98,20 @@ const Calendar: React.FC = () => {
               plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
               customButtons={{
                 myCustomButton: {
-                  text: 'Add event',
+                  text: 'Create New Event',
                   click: function () {
                     alert('create new event')
                   },
                 },
+                myCustomButton2: {
+                  text: 'Export event',
+                  click: function () {
+                    alert('Event exported')
+                  },
+                }
               }}
               headerToolbar={{
-                left: 'prev,next today myCustomButton',
+                left: 'prev,next today myCustomButton myCustomButton2',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
               }}

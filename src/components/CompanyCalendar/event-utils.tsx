@@ -6,28 +6,37 @@ export const INITIAL_EVENTS = {
   eventColor: 'green',
   events: [
     {
-      title: 'Local Event',
+      title: 'Personal Events',
       start: '2020-12-07',
       end: '2020-12-10',
-      color: 'pink',
+      color: '#418DEE',
       extendedProps: {
         department: 'Employees'
       }
     },
     {
       groupId: '999',
-      title: 'Company Event',
+      title: 'Local Events',
       start: '2020-12-09T16:00:00',
-      color: 'gray',
+      color: '#F74F41',
       extendedProps: {
         department: 'Partner'
       }
     },
     {
-      title: 'Company Conference',
-      start: '2020-12-11',
-      end: '2020-12-13',
-      color: 'purple',
+      title: 'Regional Events',
+      start: '2020-12-11' + 'T12:00:00',
+      end: '2020-12-11' + 'T14:00:00',
+      color: '#FFC138',
+      extendedProps: {
+        department: 'Employe'
+      }
+    },
+    {
+      title: 'General Events',
+      start: '2020-12-09',
+      end: '2020-12-11',
+      color: '#007619',
       extendedProps: {
         department: 'Employe'
       }

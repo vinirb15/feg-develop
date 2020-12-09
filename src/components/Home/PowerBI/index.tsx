@@ -11,7 +11,7 @@ const Content = () => {
 
   return (
     <div className="box-content images">
-      <a target="_blank" href="https://app.powerbi.com/?noSignUpCheck=1">
+      <a target="_blank" rel="noopener noreferrer" href="https://app.powerbi.com/?noSignUpCheck=1">
         <img style={{display: loaded ? "none" : "block"}} src={PowerBI} onLoad={() => setLoaded(false)} alt="PowerBI" />
         {
           (loaded ? <Loader /> : <></>)

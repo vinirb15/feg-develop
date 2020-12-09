@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     margin-left: 7%;
     margin-right: 4%;
-    width: 100%;
+    width: 93%;
     height: 100%;
     background: white;
 }
@@ -12,6 +12,8 @@
 .new-announcement h1 {
     font-weight: bold;
     color: #7F43F5;
+    margin-left: 2rem;
+    margin-top: 1rem;
 }
 
 .create-announcement {
@@ -77,12 +79,17 @@
     margin-left: 2rem;
 }
 
+.specific-groups {
+    margin-top: 1rem;
+}
+
 @media(max-width: 700px) {
     .new-announcement {
         align-items: center;
         justify-content: center;
         margin: 0;
         padding: 1rem;
+        width: 100%;
     }
     .create-announcement {
         width: 90%;
@@ -102,5 +109,12 @@
     }
     .new-announcement .utils input[type=text], .typefile {
         width: 90%;
+    }
+    .specific-groups {
+        margin-left: 1rem;
+        margin-top: 0;
+    }
+    .new-announcement h1 {
+        margin: 0;
     }
 }

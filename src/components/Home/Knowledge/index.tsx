@@ -10,7 +10,7 @@ const Content = () => {
   
   return (
 <div className="box-content images">
-          <a target="_blank" href="https://fegllc.zendesk.com/hc/en-us">
+          <a target="_blank" rel="noopener noreferrer" href="https://fegllc.zendesk.com/hc/en-us">
             <img style={{display: loaded ? "none" : "block"}} src={KnowledgeBase} onLoad={() => setLoaded(false)} alt="Knowledge Base" />
             {
           (loaded ? <Loader /> : <></>)

@@ -32,7 +32,7 @@ const NewAnnouncement: React.FC = () => {
     const [checked, setChecked] = useState(false);
 
     const groups = (
-        <div>
+        <div className="specific-groups">
             <FormControlLabel
                 control={
                     <SideCheckbox

@@ -37,3 +37,18 @@
 .sidenav{
   z-index: 2;
 }
+
+@media(max-width: 800px){
+  .demo-app-sidebar{
+    display: none;
+  }
+
+  .calendar-content {
+    display: block;
+  }
+
+  .fc-button {
+    display: flex;
+    
+  }
+}

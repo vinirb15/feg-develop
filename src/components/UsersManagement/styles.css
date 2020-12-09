@@ -269,7 +269,6 @@ td button:hover {
     background-repeat: no-repeat;
     padding: 0 1rem;
     margin: 1rem 0;
-    
 }
 
 .modal-content form .export {
@@ -346,10 +345,10 @@ td button:hover {
 }
 
 @media only screen and (max-width: 760px) {
-    table, thead, tbody, th, td, tr {
+    .users-management table, .users-management thead, .users-management tbody, .users-management th, .users-management td, .users-management tr {
         display: block;
     }
-    th {
+    .users-management th {
         display: none;
     }
     .label-mobile {
@@ -357,10 +356,10 @@ td button:hover {
         font-weight: bold;
         margin-bottom: .5rem;
     }
-    tr {
+    .users-management tr {
         border: 1px solid #ccc;
     }
-    td {
+    .users-management td {
         border: none;
         border-bottom: 1px solid #eee;
         position: relative;

@@ -9,7 +9,7 @@ export const INITIAL_EVENTS = {
       title: 'Local Event',
       start: '2020-12-07',
       end: '2020-12-10',
-      color: 'purple',
+      color: 'pink',
       extendedProps: {
         department: 'Employees'
       }
@@ -18,7 +18,7 @@ export const INITIAL_EVENTS = {
       groupId: '999',
       title: 'Company Event',
       start: '2020-12-09T16:00:00',
-      color: 'purple',
+      color: 'gray',
       extendedProps: {
         department: 'Partner'
       }
@@ -32,15 +32,15 @@ export const INITIAL_EVENTS = {
         department: 'Employe'
       }
     },
-    {
-      title: 'Click for Google',
-      url: 'http://google.com/',
-      color: 'green',
-      start: '2020-12-28',
-      extendedProps: {
-        department: 'Partner'
-      }
-    }
+    // {
+    //   title: 'Click for Google',
+    //   url: 'http://google.com/',
+    //   color: 'green',
+    //   start: '2020-12-28',
+    //   extendedProps: {
+    //     department: 'Partner'
+    //   }
+    // }
   ]
 };
 

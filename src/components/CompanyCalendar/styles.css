@@ -33,3 +33,7 @@
   margin: 1rem;
   background-color: blueviolet;
 }
+
+.sidenav{
+  z-index: 2;
+}

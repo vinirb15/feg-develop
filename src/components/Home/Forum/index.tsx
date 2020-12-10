@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 
-import CreateTicket from '../../../assets/CreateTicket.png';
+import Forum from '../../../assets/Forum.png';
 import Loader from '../../Loader';
 
 import '../PowerBI/styles.css';
 
 const Content = () => {
+
   const [loaded, setLoaded] = useState(true);
 
   return (
     <div className="box-content images">
-      <a target="_blank" rel="noopener noreferrer" href="https://fegllc.zendesk.com/hc/en-us/requests/new">
-        <img style={{ display: loaded ? "none" : "block" }} src={CreateTicket} onLoad={() => setLoaded(false)} alt="Create Ticket" />
+      <a target="_blank" rel="noopener noreferrer" href="https://fegllc.zendesk.com/hc/en-us/community/topics">
+        <img style={{ display: loaded ? "none" : "block" }} src={Forum} onLoad={() => setLoaded(false)} alt="PowerBI" />
         {
           (loaded ? <Loader /> : <></>)
         }
         <h2>
-          Log In to
+          Log In to FEG
           </h2>
         <h1>
-          Create Your Ticket
+          Forum
           </h1>
       </a>
     </div>

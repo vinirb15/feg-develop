@@ -39,7 +39,7 @@ const Header = () => {
     return (
         <header onLoad={handleChange}>
             {
-                loaded ? <h2>Welcome</h2> : (<h2>Welcome<b> {info}</b></h2>)
+                loaded ? <h2>Welcome</h2> : (<h2>Welcome, <b> {info}</b></h2>)
             }
 
 

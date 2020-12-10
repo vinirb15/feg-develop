@@ -41,7 +41,7 @@
 .company .content h2 {
     color: #7F43F5;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .company .content a {
@@ -85,7 +85,7 @@
     opacity: .5;
 }
 
-@media(max-width: 380px){
+@media(max-width: 380px) {
     .company .content button {
         font-size: 1rem;
     }

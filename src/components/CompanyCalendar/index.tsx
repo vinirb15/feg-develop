@@ -111,9 +111,9 @@ const Calendar: React.FC = () => {
                 }
               }}
               headerToolbar={{
-                left: 'prev,next today myCustomButton myCustomButton2',
+                left: 'prev,next myCustomButton myCustomButton2',
                 center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek,today'
               }}
               initialView='dayGridMonth'
               editable={true}

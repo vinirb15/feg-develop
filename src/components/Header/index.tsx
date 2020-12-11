@@ -8,7 +8,7 @@ import SearchBox from '../SearchBox';
 import LoginButton from '../LoginButton';
 
 
-const Header = () => {
+const Header = (props: any | 0) => {
     const [loaded, setLoaded] = useState<boolean>();
     const [info, setInfo] = useState<string>();
     let firstName = ''
@@ -18,7 +18,7 @@ const Header = () => {
             const firstName = localStorage.getItem('firstName')
             const lastName = localStorage.getItem('lastName')
             setInfo(`${firstName} ${lastName}`);
-        }, 1000);
+        }, props.timeout);
       }, []);
 
     const history = useHistory();

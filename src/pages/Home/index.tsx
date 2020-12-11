@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
                 <div className="search">
                     <input type="text" name="search" placeholder="Search.." />
                 </div>
-                <Header />
+                <Header timeout="1000"/>
 
                 <div className="HomeContent">
                     <Grid container spacing={3}>

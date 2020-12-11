@@ -39,7 +39,7 @@ const Register = () => {
     }, []);
 
     async function loadRequests() {
-        await axios.get('https://api-systemfegllc.herokuapp.com/api/v1accounts?status=INACTIVE&group=profile').then(response => {
+        await axios.get('https://api-systemfegllc.herokuapp.com/api/v1/accounts?status=INACTIVE&group=profile').then(response => {
             setRequests(response.data.results);
             setLoaded(true)
         })

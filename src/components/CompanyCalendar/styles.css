@@ -34,21 +34,47 @@
   background-color: blueviolet;
 }
 
-.sidenav{
+.sidenav {
   z-index: 2;
 }
 
-@media(max-width: 800px){
-  .demo-app-sidebar{
+@media(max-width: 800px) {
+  .demo-app-sidebar {
     display: none;
   }
-
   .calendar-content {
     display: block;
   }
-
+  .fc-header-toolbar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center!important;
+    justify-content: center!important;
+  }
+  .fc-toolbar-chunk {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
   .fc-button {
     display: flex;
-    
+    margin: 0.1rem!important;
+  }
+  .calendar-app {
+    width: 100%;
+    margin: 0;
+  }
+  .demo-app-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 .2rem;
+  }
+  .fc-view-harness {
+    width: 100%;
   }
 }

@@ -17,7 +17,7 @@ const PrivateRoutes: React.FC = () => {
         <Route exact path={ROUTES.NEWHOME} component={Home} />
         {/* <Route exact path={ROUTES.HOME} component={Home} /> */}
         <Route exact path={ROUTES.USER} component={UserValidation} />
-        <Route path={ROUTES.PROFILE} component={Profile} />
+        <Route exact path={ROUTES.PROFILE} component={Profile} />
         <Route exact path={ROUTES.ANNOUNCEMENTS} component={Announcements} />
         <Route path={ROUTES.MANAGEMENT} component={Management} />
         <Route path={ROUTES.CALENDAR} component={Calendar} />

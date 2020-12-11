@@ -8,7 +8,11 @@ import Monograma from '../../../assets/Monograma.png';
 const ProfileInfo = () => {
 
     const [update, setUpdate] = useState(false);
+    const [updateFirstName, setUpdateFirstName] = useState(false);
+    const [updateLastName, setUpdateLastName] = useState(false);
+    const [updatePicture, setPicture] = useState(false);
     const [name, setName] = useState('')
+    const [nameLast, setNameLast] = useState('')
 
     const firstName = localStorage.getItem('firstName')
     const lastName = localStorage.getItem('lastName')
@@ -27,6 +31,29 @@ const ProfileInfo = () => {
         }
     }
 
+    function showFirstName() {
+        if (updateFirstName === false)
+            setUpdateFirstName(true)
+        else {
+            setUpdateFirstName(false)
+        }
+    }
+
+    function showLastName() {
+        if (updateLastName === false)
+            setUpdateLastName(true)
+        else {
+            setUpdateLastName(false)
+        }
+    }
+
+    function showPicture() {
+        if (updatePicture === false)
+            setPicture(true)
+        else {
+            setPicture(false)
+        }
+    }
 
     function handleLogout() {
         localStorage.clear();
@@ -39,9 +66,14 @@ const ProfileInfo = () => {
             setName(firstName ? firstName : "")
         }
 
-        else if (name !== "") {
+        else if (nameLast === "") {
+            setName(lastName ? lastName : "")
+        }
+
+        else if (name !== "" && nameLast !== "") {
             const data = {
                 "firstName": name,
+                "lastName": nameLast
             }
             try {
                 await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`, data);
@@ -52,27 +84,74 @@ const ProfileInfo = () => {
         }
     }
 
+    const changeFirstName = (
+        <>
+            {/* <h4>Name</h4> */}
+            <input
+                type="text"
+                name="nameInput"
+                placeholder='New First Name'
+                onChange={e => setName(e.target.value)}
+            />
+        </>
+    )
+
+    const changeLastName = (
+        <>
+            {/* <h4>Name</h4> */}
+            <input
+                type="text"
+                name="nameInput"
+                placeholder='New Last Name'
+                onChange={e => setNameLast(e.target.value)}
+            />
+        </>
+    )
+
+    const changePicture = (
+        <>
+            {/* <h4>Name</h4> */}
+            <input
+                className="profile-typefile"
+                type="file"
+                accept="image/*"
+                onChange={fileSelect}
+            />
+        </>
+    )
+
     const updateOn = (
         <>
             <hr />
             <div className="update-options">
-                <h4>Name</h4>
-                <input
-                    type="text"
-                    name="nameInput"
-                    placeholder='New Name'
-                    onChange={e => setName(e.target.value)}
-                />
+                <h4>First Name</h4>
+                <div className="options">
+                    <p>{firstName}</p>
+                    <button className="button" onClick={showFirstName}>edit</button>
+                    {
+                        (updateFirstName ? changeFirstName : <></>)
+                    }
+                </div>
+
+                <h4>Last Name</h4>
+                <div className="options">
+                    <p>{lastName}</p>
+                    <button className="button" onClick={showLastName}>edit</button>
+                    {
+                        (updateLastName ? changeLastName : <></>)
+                    }
+                </div>
 
                 <h4>Picture</h4>
-                <input
-                    className="profile-typefile"
-                    type="file"
-                    accept="image/*"
-                    onChange={fileSelect}
-                />
+                <div className="options">
+                <img src={Monograma} alt="FEG LOGO" />
+                    <button className="button" onClick={showPicture}>edit</button>
+                    {
+                        (updatePicture ? changePicture : <></>)
+                    }
+                </div>
 
-                <button onClick={() => handleUpdate(userID!)}>Save</button>
+                <button className="save" onClick={() => handleUpdate(userID!)}>Save</button>
 
             </div>
         </>
@@ -103,7 +182,7 @@ const ProfileInfo = () => {
                     <h3>{firstName} {lastName}</h3>
                     <div className="update-profile">
                         <h4>Update your settings</h4>
-                        <button onClick={updateBtn}>update</button>
+                        <button className="button" onClick={updateBtn}>edit</button>
                     </div>
                 </div>
             </div>

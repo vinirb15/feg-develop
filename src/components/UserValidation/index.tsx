@@ -1,74 +1,97 @@
-import React, { 
-    // useState, 
-    useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi'
+import Loader from '../Loader'
 
-// import axios from 'axios';
+import axios from 'axios';
 
 import './styles.css';
 
 const Register = () => {
-    // const [requests, setRequests] = useState();
+    const [loaded, setLoaded] = useState<boolean>(false)
+    const [requests, setRequests] = useState(
+        {
+            Employee: [{
+                id: "",
+                firstName: "",
+                lastName: "",
+                location_name: "",
+                location_id: "",
+                email: "",
+                group_name: "",
+            }],
+            Partner: [{
+                id: "",
+                firstName: "",
+                lastName: "",
+                location_name: "",
+                location_id: "",
+                email: "",
+                group_name: "",
+            }]
+        }
+    );
 
     const history = useHistory();
 
     useEffect(() => {
-        // loadRequests()
+        loadRequests()
     }, []);
 
-    // async function loadRequests() {
-    //     await axios.get('/user').then(response => {
-    //         setRequests(response.data);
-    //         console.log(requests)
-    //     })
-    // }
+    async function loadRequests() {
+        await axios.get('http://localhost:4200/api/v1/accounts?status=INACTIVE&group=profile').then(response => {
+            setRequests(response.data.results);
+            setLoaded(true)
+        })
+    }
 
-    function handleValidate() {
-        localStorage.clear();
-
-        history.push(`/user/profile/`);
+    function handleValidate(id: string) {
+        history.push(`/user/${id}`);
     }
 
     return (
-        <div className="requests-container">
 
-            <div className="thiscontent">
-                <h3>FEG Employees</h3>
-                <ul>
-                    <li>
-                        <h1><FiUser /> michaeljordan@fegllc.com<button onClick={handleValidate}>Validate user</button></h1>
-                        <h1><FiUser /> michaeljordan@fegllc.com<button onClick={handleValidate}>Validate user</button></h1>
-                    </li>
+        (
+            loaded ?
+                <div className="requests-container">
 
-                </ul>
+                    <div className="thiscontent">
 
-                <h3>FEG Partners</h3>
-                <ul>
-                    <li>
-                        <h1><FiUser /> joe@company.com<button onClick={handleValidate}>Validate user</button></h1>
-                        <h1><FiUser /> joe@company.com<button onClick={handleValidate}>Validate user</button></h1>
-                    </li>
-                </ul>
-            </div>
+                        <h3>FEG Employees</h3>
+                        {
+                            requests.Employee ?
+                                <ul>
+                                    {requests.Employee.map(request => (
+                                        <li key={request.id}>
+                                            <h1><FiUser /> {request.email}<button onClick={() => handleValidate(request.id)}>Validate user</button></h1>
+                                        </li>
+                                    ))}
+                                </ul>
+                                :
+                                <h1>0 Employee to confirm</h1>
+                        }
 
-            {/* <ul>
-                {requests.map(request => (
-                    <li key={request.employees.id}>
-                        <h1>{request.employees.email}<button onClick={handleValidate}></button></h1>
-                    </li>
-                ))}
-            </ul>
-            <ul>
-                {requests.map(request => (
-                    <li key={request.partners.id}>
-                        <h1>{request.partners.email}<button onClick={handleValidate}></button></h1>
-                    </li>
-                ))}
-            </ul> */}
+                        <h3>FEG Partners</h3>
+                        {
+                            requests.Partner ?
+                                <ul>
+                                    {requests.Partner.map(request => (
+                                        <li key={request.id}>
+                                            <h1><FiUser /> {request.email}<button onClick={() => handleValidate(request.id)}>Validate user</button></h1>
+                                        </li>
+                                    ))}
+                                </ul>
+                                :
+                                <h1>0 Partner to confirm</h1>
+                        }
 
+                    </div>
 
-        </div>
+                </div>
+                :
+                <Loader />
+        )
+
     );
 }
 

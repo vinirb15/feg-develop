@@ -56,6 +56,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     width: 100%;
   }
   .fc-button {
@@ -66,8 +68,13 @@
     width: 100%;
     margin: 0;
   }
-
-  .fc-view-harness{
+  .demo-app-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 .2rem;
+  }
+  .fc-view-harness {
     width: 100%;
   }
 }

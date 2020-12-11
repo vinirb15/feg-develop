@@ -36,7 +36,7 @@ const Profile: React.FC = () => {
 
     async function loadUsersValidate() {
         try {
-            await axios.get(`https://api-systemfegllc.herokuapp.com/api/v1accounts/${id}`).then(response => {
+            await axios.get(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`).then(response => {
                 setRequests(response.data);
                 setLoaded(true)
             })
@@ -49,7 +49,7 @@ const Profile: React.FC = () => {
 
     async function activeUser() {
         try {
-            await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1accounts/${id}/activer`)
+            await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/activer`)
             alert("User actived")
             history.push(`/user`)
         } catch (error) {
@@ -60,7 +60,7 @@ const Profile: React.FC = () => {
 
     async function blockUser() {
         try {
-            await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1accounts/${id}/blocker`)
+            await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/blocker`)
             alert("User blocked")
             history.push(`/user`)
         } catch (error) {

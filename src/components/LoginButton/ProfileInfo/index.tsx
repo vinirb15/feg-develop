@@ -70,7 +70,7 @@ const ProfileInfo = () => {
             setName(lastName ? lastName : "")
         }
 
-        else if (name !== "") {
+        else if (name !== "" && nameLast !== "") {
             const data = {
                 "firstName": name,
                 "lastName": nameLast

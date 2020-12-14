@@ -45,15 +45,7 @@ const Header = (props: any | 0) => {
 
             <div className="icons">
                 <SearchBox />
-
-                <button onClick={handlePage} type="button">
-                    <FiEdit size={25} color="#7F43F5" />
-                </button>
-
-                <button onClick={handlePage} type="button">
-                    <FiBarChart size={25} color="#7F43F5" />
-                </button>
-
+                
                 <LoginButton color="#7F43F5" width='20%' />
 
             </div>

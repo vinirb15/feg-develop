@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FiUser } from 'react-icons/fi'
 import Loader from '../Loader'
 
 import axios from 'axios';
@@ -63,7 +62,7 @@ const Register = () => {
                                 <ul>
                                     {requests.Employee.map(request => (
                                         <li key={request.id}>
-                                            <h1><FiUser /> {request.email}<button onClick={() => handleValidate(request.id)}>Validate user</button></h1>
+                                            <h1>{request.email}<button onClick={() => handleValidate(request.id)}>Validate user</button></h1>
                                         </li>
                                     ))}
                                 </ul>
@@ -77,7 +76,7 @@ const Register = () => {
                                 <ul>
                                     {requests.Partner.map(request => (
                                         <li key={request.id}>
-                                            <h1><FiUser /> {request.email}<button onClick={() => handleValidate(request.id)}>Validate user</button></h1>
+                                            <h1>{request.email}<button onClick={() => handleValidate(request.id)}>Validate user</button></h1>
                                         </li>
                                     ))}
                                 </ul>

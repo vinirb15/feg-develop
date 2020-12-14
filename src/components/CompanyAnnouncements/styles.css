@@ -1,17 +1,18 @@
 .announcements {
-    display: grid;
-    grid-template-columns: 30% auto;
+    display: flex;
+    flex-direction: column;
     margin-left: 6%;
+    justify-content: center;
+    align-items: center;
 }
 
 .announcements-sidebar {
     display: flex;
     flex-direction: column;
-    margin-right: 5%;
+    margin-bottom: 2rem;
 }
 
 .announcements-sidebar button {
-    text-align: right;
     font-weight: bold;
     font-size: 2rem;
     background-color: transparent;
@@ -20,6 +21,18 @@
 
 .announcements-sidebar button + button {
     margin-top: 1rem;
+}
+
+.announcements-content {
+    width: 100%;
+}
+
+.announcements-content h1 {
+    color: #7F43F5;
+}
+
+.announcements-content a {
+    text-decoration: none;
 }
 
 @media(max-width: 800px) {
@@ -50,4 +63,13 @@
     .announcements {
         margin: 0 2rem;
     }
+
+    .announcements-sidebar {
+    margin-bottom: 0;
+    }
+
+    .announcements-sidebar button {
+    margin: 0 1rem;
+    }
+
 }

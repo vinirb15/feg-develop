@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import './styles.css';
 
-import CompanyImg from '../../../assets/Announcements/ScreenShot1.png'
-import Loader from '../../Loader';
+import CompanyImg from '../../../../assets/Announcements/ScreenShot1.png'
+import Loader from '../../../Loader';
 
 const Announcements: React.FC = () => {
 

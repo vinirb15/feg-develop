@@ -1,5 +1,5 @@
 .company-announcements {
-    width: 85%;
+    width: 98%;
     min-height: 85%;
     background-color: #fff;
     border-radius: 20px;
@@ -46,7 +46,7 @@
 }
 
 .company-announcements .content img {
-    max-width: 60%;
+    max-width: 30%;
     height: auto;
     border-radius: 20px;
     /* object-fit: cover; */

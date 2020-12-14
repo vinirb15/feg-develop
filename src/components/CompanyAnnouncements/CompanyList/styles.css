@@ -1,26 +1,26 @@
-.local-announcements {
-    width: 85%;
+.company-announcements {
+    width: 98%;
     min-height: 85%;
     background-color: #fff;
     border-radius: 20px;
     padding: 2rem;
 }
 
-.local-announcements .content h1 {
+.company-announcements .content h1 {
     color: #7F43F5;
     font-size: 1.9rem;
     font-weight: bold;
     margin: 1rem 0;
 }
 
-.local-announcements p {
+.company-announcements p {
     color: #808080;
     font-size: 1rem;
     margin-left: 1.5rem;
     margin: 0rem 1.5rem 1.5rem 0;
 }
 
-.local-announcements .content {
+.company-announcements .content {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -28,7 +28,7 @@
     justify-content: center;
 }
 
-.local-announcements .content h2 {
+.company-announcements .content h2 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -41,29 +41,29 @@
     max-width: 80%;
 }
 
-.local-announcements .content a {
+.company-announcements .content a {
     text-decoration: none;
 }
 
-.local-announcements .content img {
-    max-width: 80%;
+.company-announcements .content img {
+    max-width: 30%;
     height: auto;
     border-radius: 20px;
     /* object-fit: cover; */
 }
 
 @media(max-width: 800px) {
-    .local-announcements {
+    .company-announcements {
         width: 100%;
         height: 85vh;
     }
 }
 
 @media(max-width: 500px) {
-    .local-announcements .content img {
+    .company-announcements .content img {
         max-width: 100%;
     }
-    .local-announcements .content h2 {
+    .company-announcements .content h2 {
         margin-top: 1rem;
         max-width: 100%;
     }

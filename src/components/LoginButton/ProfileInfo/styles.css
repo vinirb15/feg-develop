@@ -187,9 +187,9 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
-    width: 100%;
+    justify-content: space-between;
+    width: 90%;
     /* margin: .5rem 0; */
 }
 
@@ -197,6 +197,11 @@
     color: #808080;
     font-weight: bold;
     font-size: 1.5rem;
+}
+
+.update-options h4 {
+    width: 100%;
+    margin-left: 2.3rem;
 }
 
 .update-options .options input {

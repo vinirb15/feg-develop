@@ -9,20 +9,20 @@
     box-sizing: border-box;
 }
 
-.description{
+.description {
     margin-top: 2em;
     align-items: center;
 }
 
-.description h2{
+.description h2 {
     font-weight: normal;
 }
 
-.description h2 + h2{
+.description h2+h2 {
     margin-top: 3rem;
 }
 
-.description b{
+.description b {
     text-align: left;
     background-color: #ffffff;
     padding: .7rem 1rem;
@@ -53,30 +53,35 @@
     opacity: .6;
 }
 
-.actions button + button {
+.actions button+button {
     margin-left: 1rem;
 }
 
-@media(max-width: 700px){
+.description .MuiFormControl-root {
+    width: 50%;
+    margin-top: 1rem;
+}
+
+.description .MuiInputLabel-formControl {
+    color: black;
+    font-weight: bold;
+    font-size: larger;
+}
+
+@media(max-width: 700px) {
     .actions button {
         height: 4rem;
         width: 45%;
     }
-
-    .description b{
+    .description b {
         display: flex;
         flex-wrap: wrap;
-
         padding: .5rem 1rem;
-    
     }
-
     .user-validation img {
         width: 30%;
     }
-
     .user-validation {
         margin: 0 1rem;
     }
-
 }

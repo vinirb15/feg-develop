@@ -17,7 +17,7 @@ import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
 import { green, grey } from '@material-ui/core/colors';
 
-import axios from 'axios';
+// import axios from 'axios';
 
 import './styles.css';
 
@@ -27,17 +27,11 @@ const Calendar: React.FC = () => {
   const [show, setShow] = useState(false)
   const [modal, setModal] = useState<boolean>(false)
   const [title, setTitle] = useState<string>()
-  const [type, setType] = useState<string>()
+  const [type, setType] = useState<string>('')
+  const [group, setGroup] = useState<string>('')
   const [startTime, setStartTime] = useState<string>()
   const [endTime, setEndTime] = useState<string>()
   const [location, setLocation] = useState<string>()
-  const [boxChecked, setChecked] = useState({
-    checkedA: true,
-    checkedB: true,
-    checkedF: true,
-    checkedG: true,
-  });
-
 
   function handleDateSelect(selectInfo: any) {
     let title = prompt('Please enter a new title for your event')
@@ -127,7 +121,7 @@ const Calendar: React.FC = () => {
         }
       }
       try {
-        // await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/calendar`, data);
+        // await axios.put(`http://3.130.116.57:4200/api/v1/calendar`, data);
         alert(`Event Created`);
         setModal(false)
       } catch (error) {
@@ -136,8 +130,14 @@ const Calendar: React.FC = () => {
     }
   }
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChangeType = (event: React.ChangeEvent<{ value: unknown }>) => {
     setType(event.target.value as string)
+    console.log(event.target.value as string)
+  };
+
+  const handleChangeGroup = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setGroup(event.target.value as string)
+    console.log(event.target.value as string)
   };
 
   const GreenCheckbox = withStyles({
@@ -155,40 +155,86 @@ const Calendar: React.FC = () => {
       <div className="modal-body">
         <div className="modal-header">
           <span onClick={() => setModal(false)} className="close">&times;</span>
-          <h2>Update User</h2>
+          <h2>New Event</h2>
         </div>
         <div className="modal-box">
           <form>
-            <TextField id="standard-basic" label="Event Title"
+            <TextField id="standard-basic" label="Add Title"
               placeholder=""
               onChange={e => setTitle(e.target.value)}
             />
 
             <FormControl>
-              <InputLabel id="demo-simple-select-label">Event Type</InputLabel>
+              <InputLabel id="demo-simple-select-label">Type</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
                 value={type}
-                onChange={handleChange}
+                onChange={handleChangeType}
               >
-                <MenuItem value={"Meeting"}>Meeting</MenuItem>
-                <MenuItem value={"Conference Call"}>Conference Call</MenuItem>
-                <MenuItem value={"Project Delivery"}>Project Delivery</MenuItem>
-                <MenuItem value={"Reporting"}>Reporting</MenuItem>
-                <MenuItem value={"Travel and Vacation"}>Travel and Vacation</MenuItem>
-                <MenuItem value={"Location Opening"}>Location Opening</MenuItem>
+                <MenuItem value={"01"}>Meeting</MenuItem>
+                <MenuItem value={"02"}>Conference Call</MenuItem>
+                <MenuItem value={"03"}>Project Delivery</MenuItem>
+                <MenuItem value={"04"}>Reporting</MenuItem>
+                <MenuItem value={"05"}>Travel and Vacation</MenuItem>
+                <MenuItem value={"06"}>Location Opening</MenuItem>
 
+              </Select>
+            </FormControl>
+
+            <div className="groupsSection">
+              <button className="button" style={{ background: "#418dee" }} type="button">Personal Event</button>
+              <button className="button" style={{ background: "#f74f41" }} type="button">Local Event</button>
+              <button className="button" style={{ background: "#ffc138" }} type="button">Group Event</button>
+              <button className="button" style={{ background: "#007619" }} type="button">General Event</button>
+            </div>
+
+            <FormControl>
+              <InputLabel id="demo-simple-select-label">Select Group</InputLabel>
+              <Select
+                value={group}
+                onChange={handleChangeGroup}
+              >
+                <MenuItem value={1}>General Manager</MenuItem>
+                <MenuItem value={2}>Technical </MenuItem>
+                <MenuItem value={3}>Merchandise Office</MenuItem>
+                <MenuItem value={4}>Supervisor</MenuItem>
+                <MenuItem value={5}>Assistant GMs</MenuItem>
+                <MenuItem value={6}>Regional Director/VP</MenuItem>
+                <MenuItem value={7}>SVP</MenuItem>
+                <MenuItem value={8}>Graphics Office</MenuItem>
+                <MenuItem value={9}>Merchandise Manager</MenuItem>
+                <MenuItem value={10}>Equipment Office</MenuItem>
+                <MenuItem value={11}>Read Only (Partners)</MenuItem>
+                <MenuItem value={12}>Office </MenuItem>
+                <MenuItem value={13}>Great Wolf Lodge</MenuItem>
+                <MenuItem value={14}>Sacoa/Embed/CenterEdge</MenuItem>
+                <MenuItem value={15}>Super Admin</MenuItem>
               </Select>
             </FormControl>
 
             <br />
 
+            <TextField id="standard-basic"
+              label="Event Address or Meeting Link"
+              placeholder=""
+              onChange={e => setTitle(e.target.value)}
+            />
+
+            <br />
+
             <TextField
-              id="datetime-local"
+              id="standard-multiline-static"
+              label="Description"
+              multiline
+              rowsMax={4}
+            />
+
+            <br />
+
+            <TextField
+              id="datetime-start"
               label="Start time"
               type="datetime-local"
-              defaultValue="2017-05-24T10:30"
+              defaultValue="2020-01-01T10:30"
               onChange={e => setStartTime(e.target.value)}
               InputLabelProps={{
                 shrink: true,
@@ -198,59 +244,15 @@ const Calendar: React.FC = () => {
             <br />
 
             <TextField
-              id="datetime-local"
+              id="datetime-end"
               label="End time"
               type="datetime-local"
-              defaultValue="2017-05-24T10:30"
+              defaultValue="2020-01-01T10:30"
               onChange={e => setEndTime(e.target.value)}
               InputLabelProps={{
                 shrink: true,
               }}
             />
-
-            <div className="checkbox">
-              <FormControlLabel
-                control={
-                  <GreenCheckbox
-                    // checked={state.checkedG}
-                    // onChange={handleChange}
-                    name="checkedG"
-                  />}
-                label="Personal"
-              />
-
-              <FormControlLabel
-                control={
-                  <GreenCheckbox
-                    // checked={state.checkedG}
-                    // onChange={handleChange}
-                    name="checkedG"
-                  />}
-                label="Local"
-              />
-
-              <FormControlLabel
-                control={
-                  <GreenCheckbox
-                    // checked={state.checkedG}
-                    // onChange={handleChange}
-                    name="checkedG"
-                  />}
-                label="Group"
-              />
-
-              <FormControlLabel
-              // style={{display: "none"}}
-                control={
-                  <GreenCheckbox
-                    // checked={state.checkedG}
-                    // onChange={handleChange}
-                    name="checkedG"
-                  />}
-                label="General"
-              />
-            </div>
-
             <button className="button" onClick={() => handleUpdate()} type="button">Create Event</button>
 
           </form>
@@ -295,7 +297,7 @@ const Calendar: React.FC = () => {
               headerToolbar={{
                 left: 'prev,next myCustomButton myCustomButton2',
                 center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek,today'
+                right: 'listMonth,timeGridDay,timeGridWeek,dayGridMonth,today'
               }}
               initialView='dayGridMonth'
               editable={true}
@@ -304,9 +306,9 @@ const Calendar: React.FC = () => {
               dayMaxEvents={true}
               weekends={true}
               initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-              // select={handleDateSelect}
+              select={handleDateSelect}
               eventContent={renderEventContent} // custom render function
-              // eventClick={handleEventClick}
+              eventClick={handleEventClick}
               eventsSet={handleEvents} // called after events are initialized/added/changed/removed
             /* you can update a remote database when these fire:
             eventAdd={function(){}}

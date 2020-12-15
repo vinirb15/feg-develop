@@ -80,7 +80,15 @@
 }
 
 .specific-groups {
-    margin-top: 1rem;
+    width: 22%;
+}
+
+.specific-groups .MuiFormControl-root {
+    width: 40%;
+}
+
+.MuiFormControlLabel-root {
+    margin-top: 16px;
 }
 
 @media(max-width: 700px) {

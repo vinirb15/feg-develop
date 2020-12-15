@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import './styles.css';
 
-import LocalImg from '../../../assets/Announcements/ScreenShot2.png'
-import Loader from '../../Loader';
+import LocalImg from '../../../../assets/Announcements/ScreenShot2.png'
+import Loader from '../../../Loader';
 
 const Announcements: React.FC = () => {
 

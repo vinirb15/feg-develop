@@ -5,12 +5,38 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { INITIAL_EVENTS, createEventId } from './event-utils';
+import TextField from '@material-ui/core/TextField';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
+import { withStyles } from '@material-ui/core/styles';
+import { green, grey } from '@material-ui/core/colors';
+
+import axios from 'axios';
 
 import './styles.css';
+
 
 const Calendar: React.FC = () => {
   const [currentEvents, setCurrentEvents] = useState([])
   const [show, setShow] = useState(false)
+  const [modal, setModal] = useState<boolean>(false)
+  const [title, setTitle] = useState<string>()
+  const [type, setType] = useState<string>()
+  const [startTime, setStartTime] = useState<string>()
+  const [endTime, setEndTime] = useState<string>()
+  const [location, setLocation] = useState<string>()
+  const [boxChecked, setChecked] = useState({
+    checkedA: true,
+    checkedB: true,
+    checkedF: true,
+    checkedG: true,
+  });
 
 
   function handleDateSelect(selectInfo: any) {
@@ -77,8 +103,164 @@ const Calendar: React.FC = () => {
     )
   }
 
+
+
+  async function handleUpdate() {
+    if (location === "") {
+      alert("invalid location")
+    }
+    if (title === "") {
+      alert("invalid title")
+    }
+
+
+    else if (title !== "" && location !== "") {
+      const data =
+      {
+        title: title,
+        location: location,
+        start: '2020-12-11' + 'T12:00:00',
+        end: '2020-12-11' + 'T14:00:00',
+        color: '#FFC138',
+        extendedProps: {
+          department: 'Employe'
+        }
+      }
+      try {
+        // await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/calendar`, data);
+        alert(`Event Created`);
+        setModal(false)
+      } catch (error) {
+        alert('Error updating user');
+      }
+    }
+  }
+
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setType(event.target.value as string)
+  };
+
+  const GreenCheckbox = withStyles({
+    root: {
+      color: grey[400],
+      '&$checked': {
+        color: green[600],
+      },
+    },
+    checked: {},
+  })((props: CheckboxProps) => <Checkbox color="primary" {...props} />);
+
+  const modalBox = (
+    <div id="myModal" className="modal" style={{ display: modal ? "block" : "none" }}>
+      <div className="modal-body">
+        <div className="modal-header">
+          <span onClick={() => setModal(false)} className="close">&times;</span>
+          <h2>Update User</h2>
+        </div>
+        <div className="modal-box">
+          <form>
+            <TextField id="standard-basic" label="Event Title"
+              placeholder=""
+              onChange={e => setTitle(e.target.value)}
+            />
+
+            <FormControl>
+              <InputLabel id="demo-simple-select-label">Event Type</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={type}
+                onChange={handleChange}
+              >
+                <MenuItem value={"Meeting"}>Meeting</MenuItem>
+                <MenuItem value={"Conference Call"}>Conference Call</MenuItem>
+                <MenuItem value={"Project Delivery"}>Project Delivery</MenuItem>
+                <MenuItem value={"Reporting"}>Reporting</MenuItem>
+                <MenuItem value={"Travel and Vacation"}>Travel and Vacation</MenuItem>
+                <MenuItem value={"Location Opening"}>Location Opening</MenuItem>
+
+              </Select>
+            </FormControl>
+
+            <br />
+
+            <TextField
+              id="datetime-local"
+              label="Start time"
+              type="datetime-local"
+              defaultValue="2017-05-24T10:30"
+              onChange={e => setStartTime(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+
+            <br />
+
+            <TextField
+              id="datetime-local"
+              label="End time"
+              type="datetime-local"
+              defaultValue="2017-05-24T10:30"
+              onChange={e => setEndTime(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+
+            <div className="checkbox">
+              <FormControlLabel
+                control={
+                  <GreenCheckbox
+                    // checked={state.checkedG}
+                    // onChange={handleChange}
+                    name="checkedG"
+                  />}
+                label="Personal"
+              />
+
+              <FormControlLabel
+                control={
+                  <GreenCheckbox
+                    // checked={state.checkedG}
+                    // onChange={handleChange}
+                    name="checkedG"
+                  />}
+                label="Local"
+              />
+
+              <FormControlLabel
+                control={
+                  <GreenCheckbox
+                    // checked={state.checkedG}
+                    // onChange={handleChange}
+                    name="checkedG"
+                  />}
+                label="Group"
+              />
+
+              <FormControlLabel
+              // style={{display: "none"}}
+                control={
+                  <GreenCheckbox
+                    // checked={state.checkedG}
+                    // onChange={handleChange}
+                    name="checkedG"
+                  />}
+                label="General"
+              />
+            </div>
+
+            <button className="button" onClick={() => handleUpdate()} type="button">Create Event</button>
+
+          </form>
+        </div>
+      </div>
+    </div>)
+
   return (
     <div className="calendar-app">
+      {modalBox}
       <div className="calendar-content">
 
         <div className='demo-app-sidebar'>
@@ -100,7 +282,7 @@ const Calendar: React.FC = () => {
                 myCustomButton: {
                   text: 'Create New Event',
                   click: function () {
-                    alert('create new event')
+                    setModal(true)
                   },
                 },
                 myCustomButton2: {
@@ -122,9 +304,9 @@ const Calendar: React.FC = () => {
               dayMaxEvents={true}
               weekends={true}
               initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-              select={handleDateSelect}
+              // select={handleDateSelect}
               eventContent={renderEventContent} // custom render function
-              eventClick={handleEventClick}
+              // eventClick={handleEventClick}
               eventsSet={handleEvents} // called after events are initialized/added/changed/removed
             /* you can update a remote database when these fire:
             eventAdd={function(){}}

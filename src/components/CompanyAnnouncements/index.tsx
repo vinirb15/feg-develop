@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import './styles.css';
 
-import Company from './Company';
-import Local from './Local';
+import Company from './CompanyList';
+import Local from './LocalList';
 
 
 const Announcements: React.FC = () => {

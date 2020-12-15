@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Calendar from '../../../assets/Calendar.png';
 import Loader from '../../Loader';
@@ -9,8 +9,6 @@ import './styles.css';
 const Content = () => {
 
   const [loaded, setLoaded] = useState(true);
-
-  const history = useHistory();
 
   return (
     <div className="box-calendar">

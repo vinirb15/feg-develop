@@ -205,10 +205,10 @@ td button:hover {
 
 /*Modal*/
 
-.modal {
+.users-management .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     padding-top: 100px;
     left: 0;
     top: 0;
@@ -219,9 +219,17 @@ td button:hover {
     background-color: #0000001a;
 }
 
-.modal-content {
+.users-management .modal-header {
+    padding: 4px 16px;
+    background-color: #7F43F5;
+    color: white;
+    border-radius: 20px 20px 0 0;
+}
+
+.users-management .modal-content {
     position: relative;
     background-color: #fefefe;
+    border-radius: 20px;
     margin: auto;
     padding: 0;
     width: 50%;
@@ -229,7 +237,7 @@ td button:hover {
     animation-duration: .5s
 }
 
-.modal-content form {
+.users-management .modal-content form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,7 +246,7 @@ td button:hover {
     border: 0;
 }
 
-.modal-content form input {
+.users-management .modal-content form input {
     align-items: center;
     width: 100%;
     height: 2.5rem;
@@ -253,7 +261,7 @@ td button:hover {
     margin: 1rem 0;
 }
 
-.modal-content form select {
+.users-management .modal-content form select {
     align-items: center;
     width: 100%;
     height: 2.5rem;
@@ -268,11 +276,11 @@ td button:hover {
     margin: 1rem 0;
 }
 
-.modal-content form .export {
+.users-management .modal-content form .export {
     width: 100%;
 }
 
-.modal-content button {
+.users-management .modal-content button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -289,7 +297,7 @@ td button:hover {
     margin: 0.7rem 0;
 }
 
-.modal-confirmation form {
+.users-management .modal-confirmation form {
     display: flex;
     justify-content: space-around;
     align-items: center;

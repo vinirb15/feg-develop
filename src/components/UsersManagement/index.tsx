@@ -17,7 +17,7 @@ const Management = () => {
             location_id: "",
             email: "",
             group_name: "",
-            isActive: false
+            status: "ACTIVED"
         }
     ]);
 
@@ -50,8 +50,9 @@ const Management = () => {
 
     async function handleDeleteUser(id: string) {
         try {
-            await axios.delete(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`)
-            setUsers(users.filter(user => user.id !== id));
+            await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/blocker`);
+            // await axios.delete(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`)
+            // setUsers(users.filter(user => user.id !== id));
             setConfirmation(false)
         } catch (error) {
             alert('Error')
@@ -91,8 +92,8 @@ const Management = () => {
         }
     }
 
-    async function handleActived(actived: boolean, id: string) {
-        if (actived === true) {
+    async function handleActived(actived: string, id: string) {
+        if (actived === 'ACTIVED') {
             try {
                 await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/blocker`);
 
@@ -171,9 +172,9 @@ const Management = () => {
                                 <td><p className="label-mobile">LOCATION:</p> {user.location_name}</td>
                                 <td><p className="label-mobile">EMAIL:</p> {user.email}</td>
                                 <td><p className="label-mobile">GROUP:</p> {user.group_name}</td>
-                                <td><p className="label-mobile">STATUS:</p> <b style={{ background: user.isActive ? "#25ab9f" : "#808080" }}>{user.isActive ? 'ACTIVED' : 'INATIVED'}</b></td>
+                                <td><p className="label-mobile">STATUS:</p> <b style={{ background: user.status = "ACTIVED" ? "#25ab9f" : "#808080" }}>{user.status = "ACTIVED" ? 'ACTIVED' : 'INATIVED'}</b></td>
                                 <td>
-                                    <button><FiToggleLeft onClick={() => handleActived(user.isActive, user.id)} color='#808080' /></button>
+                                    <button><FiToggleLeft onClick={() => handleActived(user.status, user.id)} color='#808080' /></button>
                                     <button onClick={() => { setModal(true); setModalDate(user) }} ><FiEdit color='#808080' /></button>
                                     <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(user.id) }} color='#808080' /></button>
                                 </td>

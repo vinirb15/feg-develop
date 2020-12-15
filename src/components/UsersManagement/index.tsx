@@ -57,8 +57,8 @@ const Management = () => {
 
     async function handleDeleteUser(id: string) {
         try {
-            await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/blocker`);
-            // await axios.delete(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`)
+            await axios.put(`http://3.130.116.57:4200/api/v1/accounts/${id}/blocker`);
+            // await axios.delete(`http://3.130.116.57:4200/api/v1/accounts/${id}`)
             // setUsers(users.filter(user => user.id !== id));
             setConfirmation(false)
         } catch (error) {
@@ -88,7 +88,7 @@ const Management = () => {
                 // "group_name": group,
             }
             try {
-                await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`, data);
+                await axios.put(`http://3.130.116.57:4200/api/v1/accounts/${id}`, data);
                 alert(`User updated`);
                 setLoading(true)
                 setModal(false)
@@ -102,7 +102,7 @@ const Management = () => {
     async function handleActived(actived: any, id: string) {
         if (actived === true) {
             try {
-                await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/blocker`);
+                await axios.put(`http://3.130.116.57:4200/api/v1/accounts/${id}/blocker`);
 
                 alert(`User blocked`);
             } catch (error) {
@@ -112,7 +112,7 @@ const Management = () => {
             handleLoad()
         } else {
             try {
-                await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/activer`);
+                await axios.put(`http://3.130.116.57:4200/api/v1/accounts/${id}/activer`);
 
                 alert(`User activated`);
                 setLoading(true)

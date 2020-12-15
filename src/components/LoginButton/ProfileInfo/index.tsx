@@ -76,7 +76,7 @@ const ProfileInfo = () => {
                 "lastName": nameLast
             }
             try {
-                await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`, data);
+                await axios.put(`http://3.130.116.57:4200/api/v1/accounts/${id}`, data);
                 alert(`Your name will be updated at an upcoming login`);
             } catch (error) {
                 alert('Error updating user');

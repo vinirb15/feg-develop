@@ -4,11 +4,17 @@ import Monograma from '../../../assets/Monograma.png'
 import axios from 'axios';
 import Loader from '../../Loader';
 
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 import './styles.css';
 
 const Profile: React.FC = () => {
 
     const [loaded, setLoaded] = useState<boolean>(false)
+    const [group, setGroup] = useState<string>('')
     const [requests, setRequests] = useState(
         {
             company_name: "",
@@ -21,6 +27,7 @@ const Profile: React.FC = () => {
             isActive: "",
             lastName: "",
             location_id: "",
+            phone_number: "",
             password: "",
             profile_id: "",
             status: "",
@@ -36,8 +43,9 @@ const Profile: React.FC = () => {
 
     async function loadUsersValidate() {
         try {
-            await axios.get(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`).then(response => {
+            await axios.get(`http://3.130.116.57:4200/api/v1/accounts/${id}`).then(response => {
                 setRequests(response.data);
+                console.log(response.data);
                 setLoaded(true)
             })
         } catch (error) {
@@ -49,7 +57,7 @@ const Profile: React.FC = () => {
 
     async function activeUser() {
         try {
-            await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/activer`)
+            await axios.put(`http://3.130.116.57:4200/api/v1/accounts/${id}/activer`)
             alert("User actived")
             history.push(`/user`)
         } catch (error) {
@@ -60,7 +68,7 @@ const Profile: React.FC = () => {
 
     async function blockUser() {
         try {
-            await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/blocker`)
+            await axios.put(`http://3.130.116.57:4200/api/v1/accounts/${id}/blocker`)
             alert("User blocked")
             history.push(`/user`)
         } catch (error) {
@@ -70,6 +78,9 @@ const Profile: React.FC = () => {
 
     const history = useHistory();
 
+    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        setGroup(event.target.value as string)
+    };
 
     return (
         (loaded ?
@@ -82,9 +93,33 @@ const Profile: React.FC = () => {
                         <h2>Last Name <b>{requests.lastName}</b></h2>
                         <h2>Email <b>{requests.email}</b></h2>
                         <h2>Personal Address <b>{requests.email}</b></h2>
-                        <h2>Phone Number <b>{requests.email}</b></h2>
+                        <h2>Phone Number <b>{requests.phone_number}</b></h2>
                         <h2>Main Location <b>{requests.email}</b></h2>
-                        <h2>Position <b>{requests.email}</b></h2>
+                        <FormControl>
+                            <InputLabel id="demo-simple-select-label">User Group</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={group}
+                                onChange={handleChange}
+                            >
+                                <MenuItem value={1}>General Manager</MenuItem>
+                                <MenuItem value={2}>Technical </MenuItem>
+                                <MenuItem value={3}>Merchandise Office</MenuItem>
+                                <MenuItem value={4}>Supervisor</MenuItem>
+                                <MenuItem value={5}>Assistant GMs</MenuItem>
+                                <MenuItem value={6}>Regional Director/VP</MenuItem>
+                                <MenuItem value={7}>SVP</MenuItem>
+                                <MenuItem value={8}>Graphics Office</MenuItem>
+                                <MenuItem value={9}>Merchandise Manager</MenuItem>
+                                <MenuItem value={10}>Equipment Office</MenuItem>
+                                <MenuItem value={11}>Read Only (Partners)</MenuItem>
+                                <MenuItem value={12}>Office </MenuItem>
+                                <MenuItem value={13}>Great Wolf Lodge</MenuItem>
+                                <MenuItem value={14}>Sacoa/Embed/CenterEdge</MenuItem>
+                                <MenuItem value={15}>Super Admin</MenuItem>
+                            </Select>
+                        </FormControl>
                     </div>
 
                     <div className="actions">

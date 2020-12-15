@@ -13,7 +13,7 @@ const Routes: React.FC = () => {
   const [token, setToken] = useState<any>(null)
   const query = useQuery()
   const match: any = useRouteMatch('/home/:id');
-
+  
   useEffect(() => {
     handleLogin()
   }, [])
@@ -22,7 +22,7 @@ const Routes: React.FC = () => {
     try {
       const jwt: any = (match?.params?.id || '')
       setToken(jwt)
-      await axios.get(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${jwt}`).then((response: any) => {
+      await axios.get(`http://3.130.116.57:4200/api/v1/accounts/${jwt}`).then((response: any) => {
         localStorage.setItem('id', jwt)
         localStorage.setItem('firstName', response.data.firstName);
         localStorage.setItem('lastName', response.data.lastName);

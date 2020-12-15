@@ -27,7 +27,7 @@ const Announcements: React.FC = () => {
     // }, []);
 
     // async function loadRequests() {
-    //     await axios.get('https://api-systemfegllc.herokuapp.com/api/v1/accounts?status=INACTIVE&group=profile').then(response => {
+    //     await axios.get('http://3.130.116.57:4200/api/v1/accounts?status=INACTIVE&group=profile').then(response => {
     //         setAnnouncements(response.data.results);
     //         setLoaded(true)
     //     })

@@ -2,42 +2,47 @@
     display: flex;
     flex-direction: column;
     margin-left: 6%;
+    margin-top: 2rem;
 }
 
 .user-validation img {
-    width: 15%;
+    width: 10%;
     box-sizing: border-box;
 }
 
-.description {
+.user-validation .description {
     margin-top: 2em;
     align-items: center;
 }
 
-.description h2 {
+.user-validation .description h2 {
+    font-weight: bold;
+}
+
+.user-validation .description h2+h2 {
+    margin-top: 2rem;
+}
+
+.user-validation .description b {
+    text-align: left;
+    border-radius: 10px;
+    justify-content: left;
     font-weight: normal;
 }
 
-.description h2+h2 {
-    margin-top: 3rem;
+.user-validation .description p {
+    margin-top: .5rem;
+    color: #b6b6ba;
 }
 
-.description b {
-    text-align: left;
-    background-color: #ffffff;
-    padding: .7rem 1rem;
-    border-radius: 10px;
-    justify-content: left;
-}
-
-.actions {
+.user-validation .actions {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 3rem;
 }
 
-.actions button {
+.user-validation .actions button {
     height: 3rem;
     width: 15%;
     border-radius: 20px;
@@ -49,36 +54,36 @@
     margin: 0.7rem 0;
 }
 
-.actions button:hover {
+.user-validation .actions button:hover {
     opacity: .6;
 }
 
-.actions button+button {
+.user-validation .actions button+button {
     margin-left: 1rem;
 }
 
-.description .MuiFormControl-root {
+.user-validation .description .MuiFormControl-root {
     width: 50%;
     margin-top: 1rem;
 }
 
-.description .MuiInputLabel-formControl {
+.user-validation .description .MuiInputLabel-formControl {
     color: black;
     font-weight: bold;
-    font-size: larger;
+    font-size: 1.4rem;
 }
 
 @media(max-width: 700px) {
-    .actions button {
+    .user-validation .actions button {
         height: 4rem;
         width: 45%;
     }
-    .description b {
+    .user-validation .description b {
         display: flex;
         flex-wrap: wrap;
         padding: .5rem 1rem;
     }
-    .user-validation img {
+    .user-validation .user-validation img {
         width: 30%;
     }
     .user-validation {

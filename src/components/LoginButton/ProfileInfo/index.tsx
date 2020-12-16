@@ -63,11 +63,11 @@ const ProfileInfo = () => {
 
     async function handleUpdate(id: string) {
         if (name === "") {
-            setName(firstName ? firstName : "")
+            setName(firstName!)
         }
 
         else if (nameLast === "") {
-            setName(lastName ? lastName : "")
+            setNameLast(lastName!)
         }
 
         else if (name !== "" && nameLast !== "") {

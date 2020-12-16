@@ -17,6 +17,16 @@ const Profile: React.FC = () => {
     const [group, setGroup] = useState<string>('')
     const [requests, setRequests] = useState(
         {
+            addresses: {
+                city: "",
+                createdAt: "",
+                full: "",
+                id: "",
+                number: "",
+                owner_id: "",
+                state: "",
+                street: "",
+            },
             company_name: "",
             createdAt: "",
             email: "",
@@ -44,8 +54,8 @@ const Profile: React.FC = () => {
     async function loadUsersValidate() {
         try {
             await axios.get(`/api/v1/accounts/${id}`).then(response => {
-                setRequests(response.data);
-                console.log(response.data);
+                setRequests(response.data.results);
+                console.log(response.data.results);
                 setLoaded(true)
             })
         } catch (error) {
@@ -89,14 +99,14 @@ const Profile: React.FC = () => {
                     <img src={Monograma} alt="FEG LOGO" />
 
                     <div className="description">
-                        <h2>First Name <b>{requests.firstName}</b></h2>
-                        <h2>Last Name <b>{requests.lastName}</b></h2>
-                        <h2>Email <b>{requests.email}</b></h2>
-                        <h2>Personal Address <b>{requests.email}</b></h2>
-                        <h2>Phone Number <b>{requests.phone_number}</b></h2>
-                        <h2>Main Location <b>{requests.email}</b></h2>
+                        <h2>Name: <b>{requests.firstName}</b></h2>
+                        <h2>Last Name: <b>{requests.lastName}</b></h2>
+                        <h2>Email: <b>{requests.email}</b></h2>
+                        <h2>Personal Address: <b>{requests.addresses.full}</b></h2>
+                        <h2>Phone Number: <b>{requests.phone_number}</b></h2>
+                        <h2>Main Location: <b>{requests.company_name}</b></h2>
                         <FormControl>
-                            <InputLabel id="demo-simple-select-label">User Group</InputLabel>
+                            <InputLabel id="demo-simple-select-label">User Group:</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
@@ -120,6 +130,7 @@ const Profile: React.FC = () => {
                                 <MenuItem value={15}>Super Admin</MenuItem>
                             </Select>
                         </FormControl>
+                        <p>Select which group the user will belong within the system.</p>
                     </div>
 
                     <div className="actions">

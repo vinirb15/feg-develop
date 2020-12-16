@@ -24,9 +24,9 @@ const Routes: React.FC = () => {
       setToken(jwt)
       await axios.get(`/api/v1/accounts/${jwt}`).then((response: any) => {
         localStorage.setItem('id', jwt)
-        localStorage.setItem('firstName', response.data.firstName);
-        localStorage.setItem('lastName', response.data.lastName);
-        localStorage.setItem('email', response.data.email)
+        localStorage.setItem('firstName', response.data.results.firstName);
+        localStorage.setItem('lastName', response.data.results.lastName);
+        localStorage.setItem('email', response.data.results.email)
       }
       )
 

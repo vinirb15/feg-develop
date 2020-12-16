@@ -59,7 +59,7 @@ const Management = () => {
         try {
             await axios.put(`/api/v1/accounts/${id}/blocker`);
             // await axios.delete(`/api/v1/accounts/${id}`)
-            // setUsers(users.filter(user => user.id !== id));
+            setUsers(users.filter(user => user.id !== id));
             setConfirmation(false)
         } catch (error) {
             alert('Error')
@@ -102,11 +102,11 @@ const Management = () => {
     async function handleActived(actived: any, id: string) {
         if (actived === true) {
             try {
-                await axios.put(`/api/v1/accounts/${id}/blocker`);
+                await axios.put(`/api/v1/accounts/${id}/inactivate`);
 
-                alert(`User blocked`);
+                alert(`User inactivated`);
             } catch (error) {
-                alert('Error blocking user');
+                alert('Error inactivating user');
             }
             setLoading(true)
             handleLoad()

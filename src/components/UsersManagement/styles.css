@@ -297,6 +297,10 @@ td button:hover {
     margin: 0.7rem 0;
 }
 
+.users-management .modal-content button:hover {
+    opacity: .5
+}
+
 .users-management .modal-confirmation form {
     display: flex;
     justify-content: space-around;

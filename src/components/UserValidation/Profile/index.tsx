@@ -37,6 +37,7 @@ const Profile: React.FC = () => {
             isActive: "",
             lastName: "",
             location_id: "",
+            location_name: "",
             phone_number: "",
             password: "",
             profile_id: "",
@@ -66,8 +67,12 @@ const Profile: React.FC = () => {
     const userID = localStorage.getItem('id')
 
     async function activeUser() {
+        const data = {
+            group_id: group,
+            status: "ACTIVE",
+        }
         try {
-            await axios.put(`/api/v1/accounts/${id}/activer`)
+            await axios.put(`/api/v1/accounts/${id}`, data)
             alert("User actived")
             history.push(`/user`)
         } catch (error) {
@@ -104,7 +109,7 @@ const Profile: React.FC = () => {
                         <h2>Email: <b>{requests.email}</b></h2>
                         <h2>Personal Address: <b>{requests.addresses.full}</b></h2>
                         <h2>Phone Number: <b>{requests.phone_number}</b></h2>
-                        <h2>Main Location: <b>{requests.company_name}</b></h2>
+                        <h2>Main Location: <b>{requests.location_name}</b></h2>
                         <FormControl>
                             <InputLabel id="demo-simple-select-label">User Group:</InputLabel>
                             <Select
@@ -113,21 +118,21 @@ const Profile: React.FC = () => {
                                 value={group}
                                 onChange={handleChange}
                             >
-                                <MenuItem value={1}>General Manager</MenuItem>
-                                <MenuItem value={2}>Technical </MenuItem>
-                                <MenuItem value={3}>Merchandise Office</MenuItem>
-                                <MenuItem value={4}>Supervisor</MenuItem>
-                                <MenuItem value={5}>Assistant GMs</MenuItem>
-                                <MenuItem value={6}>Regional Director/VP</MenuItem>
-                                <MenuItem value={7}>SVP</MenuItem>
-                                <MenuItem value={8}>Graphics Office</MenuItem>
-                                <MenuItem value={9}>Merchandise Manager</MenuItem>
-                                <MenuItem value={10}>Equipment Office</MenuItem>
-                                <MenuItem value={11}>Read Only (Partners)</MenuItem>
-                                <MenuItem value={12}>Office </MenuItem>
-                                <MenuItem value={13}>Great Wolf Lodge</MenuItem>
-                                <MenuItem value={14}>Sacoa/Embed/CenterEdge</MenuItem>
-                                <MenuItem value={15}>Super Admin</MenuItem>
+                                <MenuItem value={"fb006748-92f7-4756-8e55-a53764741e99"}>General Manager</MenuItem>
+                                <MenuItem value={"6efcdeb0-0292-4a5f-bc5a-64078b5b9c49"}>Technical </MenuItem>
+                                <MenuItem value={"008e07d7-ffa0-4461-8685-aed3c917deb3"}>Merchandise Office</MenuItem>
+                                <MenuItem value={"c7229861-fef2-487a-b77f-8d86913078b3"}>Supervisor</MenuItem>
+                                <MenuItem value={"cef0ac62-0cda-42cf-9472-a80a64f806dc"}>Assistant GMs</MenuItem>
+                                <MenuItem value={"408ac245-fc8f-48e7-b5e8-f5ff5adca51f"}>Regional Director/VP</MenuItem>
+                                <MenuItem value={"333d091e-5179-4470-b229-dfe97009d6c8"}>SVP</MenuItem>
+                                <MenuItem value={"5c48e49d-4a8a-47ed-8e7f-bac2a4672036"}>Graphics Office</MenuItem>
+                                <MenuItem value={"66817e9a-e53c-413a-b5a1-0985afdc95c0"}>Merchandise Manager</MenuItem>
+                                <MenuItem value={"46a9135d-7617-495a-a477-b98d2685970d"}>Equipment Office</MenuItem>
+                                <MenuItem value={"f455720f-b1d2-4fe9-9010-170c837535f3"}>Read Only (Partners)</MenuItem>
+                                <MenuItem value={"60c9e68c-c351-414a-9021-441fe07bb5c4"}>Office </MenuItem>
+                                <MenuItem value={"270c8457-837d-4a79-af4c-1005948b0e2e"}>Great Wolf Lodge</MenuItem>
+                                <MenuItem value={"bbbfbf18-0ab7-4533-b63a-cdf41e91b201"}>Sacoa/Embed/CenterEdge</MenuItem>
+                                <MenuItem value={"128e5e58-3c0a-4e63-9be1-d0b6fc2f871e"}>Super Admin</MenuItem>
                             </Select>
                         </FormControl>
                         <p>Select which group the user will belong within the system.</p>

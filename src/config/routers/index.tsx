@@ -5,15 +5,10 @@ import axios from '../../services/axios';
 import SignRoutes from './signRoutes'
 import PrivateRoutes from './privateRoutes'
 
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-}
-
 const Routes: React.FC = () => {
   const [token, setToken] = useState<any>(null)
-  const query = useQuery()
   const match: any = useRouteMatch('/home/:id');
-  
+
   useEffect(() => {
     handleLogin()
   }, [])
@@ -24,8 +19,9 @@ const Routes: React.FC = () => {
       setToken(jwt)
       await axios.get(`/api/v1/accounts/${jwt}`).then((response: any) => {
         localStorage.setItem('id', jwt)
-        localStorage.setItem('firstName', response.data.results.firstName);
-        localStorage.setItem('lastName', response.data.results.lastName);
+        console.log(response)
+        localStorage.setItem('firstName', response.data.results.firstName)
+        localStorage.setItem('lastName', response.data.results.lastName)
         localStorage.setItem('email', response.data.results.email)
       }
       )

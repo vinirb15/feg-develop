@@ -61,6 +61,7 @@ const Management = () => {
             // await axios.delete(`/api/v1/accounts/${id}`)
             setUsers(users.filter(user => user.id !== id));
             setConfirmation(false)
+            alert('User deleted')
         } catch (error) {
             alert('Error')
         }

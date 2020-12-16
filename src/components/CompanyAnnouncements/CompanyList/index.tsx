@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../../services/axios';
 
 import './styles.css';
 
@@ -27,7 +27,7 @@ const Announcements: React.FC = () => {
     // }, []);
 
     // async function loadRequests() {
-    //     await axios.get('https://api-systemfegllc.herokuapp.com/api/v1/accounts?status=INACTIVE&group=profile').then(response => {
+    //     await axios.get('/api/v1/accounts?status=INACTIVE&group=profile').then(response => {
     //         setAnnouncements(response.data.results);
     //         setLoaded(true)
     //     })

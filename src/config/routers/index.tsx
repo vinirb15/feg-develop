@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useRouteMatch } from "react-router-dom"
-import axios from 'axios';
+import axios from '../../services/axios';
 
 import SignRoutes from './signRoutes'
 import PrivateRoutes from './privateRoutes'
@@ -22,7 +22,7 @@ const Routes: React.FC = () => {
     try {
       const jwt: any = (match?.params?.id || '')
       setToken(jwt)
-      await axios.get(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${jwt}`).then((response: any) => {
+      await axios.get(`/api/v1/accounts/${jwt}`).then((response: any) => {
         localStorage.setItem('id', jwt)
         localStorage.setItem('firstName', response.data.firstName);
         localStorage.setItem('lastName', response.data.lastName);

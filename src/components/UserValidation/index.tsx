@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Loader from '../Loader'
 
-import axios from 'axios';
+import axios from '../../services/axios';
 
 import './styles.css';
 
@@ -38,7 +38,7 @@ const Register = () => {
     }, []);
 
     async function loadRequests() {
-        await axios.get('https://api-systemfegllc.herokuapp.com/api/v1/accounts?status=INACTIVE&group=profile').then(response => {
+        await axios.get('/api/v1/accounts?status=INACTIVE&group=profile').then(response => {
             setRequests(response.data.results);
             setLoaded(true)
         })

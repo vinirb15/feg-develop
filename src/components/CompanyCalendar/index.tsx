@@ -121,7 +121,7 @@ const Calendar: React.FC = () => {
         }
       }
       try {
-        // await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/calendar`, data);
+        // await axios.put(`/api/v1/calendar`, data);
         alert(`Event Created`);
         setModal(false)
       } catch (error) {

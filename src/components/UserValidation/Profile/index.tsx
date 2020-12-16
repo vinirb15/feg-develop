@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import Monograma from '../../../assets/Monograma.png'
-import axios from 'axios';
+import axios from '../../../services/axios';
 import Loader from '../../Loader';
 
 import InputLabel from '@material-ui/core/InputLabel';
@@ -43,7 +43,7 @@ const Profile: React.FC = () => {
 
     async function loadUsersValidate() {
         try {
-            await axios.get(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`).then(response => {
+            await axios.get(`/api/v1/accounts/${id}`).then(response => {
                 setRequests(response.data);
                 console.log(response.data);
                 setLoaded(true)
@@ -57,7 +57,7 @@ const Profile: React.FC = () => {
 
     async function activeUser() {
         try {
-            await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/activer`)
+            await axios.put(`/api/v1/accounts/${id}/activer`)
             alert("User actived")
             history.push(`/user`)
         } catch (error) {
@@ -68,7 +68,7 @@ const Profile: React.FC = () => {
 
     async function blockUser() {
         try {
-            await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}/blocker`)
+            await axios.put(`/api/v1/accounts/${id}/blocker`)
             alert("User blocked")
             history.push(`/user`)
         } catch (error) {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FiMail, FiFile } from 'react-icons/fi';
-import axios from 'axios';
+import axios from '../../../services/axios';
 import './styles.css';
 
 import Monograma from '../../../assets/Monograma.png';
@@ -76,7 +76,7 @@ const ProfileInfo = () => {
                 "lastName": nameLast
             }
             try {
-                await axios.put(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/${id}`, data);
+                await axios.put(`/api/v1/accounts/${id}`, data);
                 alert(`Your name will be updated at an upcoming login`);
             } catch (error) {
                 alert('Error updating user');

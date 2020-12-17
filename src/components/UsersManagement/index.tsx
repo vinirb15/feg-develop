@@ -31,6 +31,7 @@ const Management = () => {
     const [loading, setLoading] = useState<boolean>(true)
     const [modal, setModal] = useState(false)
     const [confirmation, setConfirmation] = useState(false)
+    const [switchConfirmation, setSwitchConfirmation] = useState(false)
     const [modalDate, setModalDate] = useState<any>()
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -184,9 +185,10 @@ const Management = () => {
                                 <td><p className="label-mobile">GROUP:</p> {user.group_name}</td>
                                 <td><p className="label-mobile">STATUS:</p> <b style={{ background: parser(user.status) ? "#25ab9f" : "#808080" }}>{parser(user.status) ? 'ACTIVATED' : 'DISABLED'}</b></td>
                                 <td>
-                                    <button><FiToggleLeft onClick={() => handleActived(parser(user.status), user.id)} color='#808080' /></button>
+                                    {/* <button><FiToggleLeft onClick={() => handleActived(parser(user.status), user.id)} color='#808080' /></button> */}
+                                    <button><FiToggleLeft onClick={() => { setSwitchConfirmation(true); setModalDate(user) }} color='#808080' /></button>
                                     <button onClick={() => { setModal(true); setModalDate(user) }} ><FiEdit color='#808080' /></button>
-                                    <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(user.id) }} color='#808080' /></button>
+                                    <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(user.id); console.log(user) }} color='#808080' /></button>
                                 </td>
                             </tr>
                         ))}
@@ -240,12 +242,26 @@ const Management = () => {
                     <div className="modal-content">
                         <div className="modal-header">
                             <span onClick={() => setConfirmation(false)} className="close">&times;</span>
-                            <h2>Are you sure you want to continue?</h2>
+                            <h2>The user will be blocked from the system and his information will be deleted. Do you want to proceed?</h2>
                         </div>
                         <div className="modal-confirmation">
                             <form>
-                                <button type="button" onClick={() => setConfirmation(false)} className="cancelbtn">Cancel</button>
-                                <button type="button" onClick={() => handleDeleteUser(modalDate)} className="deletebtn">Delete</button>
+                                <button type="button" onClick={() => setConfirmation(false)} className="cancelbtn">No</button>
+                                <button type="button" onClick={() => handleDeleteUser(modalDate)} className="deletebtn">Yes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="myModal" style={{ display: switchConfirmation ? "block" : "none" }} className="modal">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <span onClick={() => setSwitchConfirmation(false)} className="close">&times;</span>
+                            <h2>Are you sure you want to activate/disable the user?</h2>
+                        </div>
+                        <div className="modal-confirmation">
+                            <form>
+                                <button type="button" onClick={() => { setSwitchConfirmation(false); console.log(modalDate) }} className="cancelbtn">No</button>
+                                <button type="button" onClick={() => { handleActived(parser(modalDate.status), modalDate.id); setSwitchConfirmation(false) }} className="deletebtn">Yes</button>
                             </form>
                         </div>
                     </div>

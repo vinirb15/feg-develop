@@ -182,7 +182,7 @@ const Management = () => {
                                 <td><p className="label-mobile">LOCATION:</p> {user.location_name}</td>
                                 <td><p className="label-mobile">EMAIL:</p> {user.email}</td>
                                 <td><p className="label-mobile">GROUP:</p> {user.group_name}</td>
-                                <td><p className="label-mobile">STATUS:</p> <b style={{ background: parser(user.status) ? "#25ab9f" : "#808080" }}>{parser(user.status) ? 'ACTIVED' : 'INATIVED'}</b></td>
+                                <td><p className="label-mobile">STATUS:</p> <b style={{ background: parser(user.status) ? "#25ab9f" : "#808080" }}>{parser(user.status) ? 'ACTIVATED' : 'DISABLED'}</b></td>
                                 <td>
                                     <button><FiToggleLeft onClick={() => handleActived(parser(user.status), user.id)} color='#808080' /></button>
                                     <button onClick={() => { setModal(true); setModalDate(user) }} ><FiEdit color='#808080' /></button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiHome, FiList, FiUserCheck, FiUsers, FiPlusSquare, FiCalendar } from 'react-icons/fi';
+import { FiHome, FiUserCheck, FiUsers, FiPlusSquare, FiCalendar, FiBookOpen } from 'react-icons/fi';
 
 import './styles.css';
 
@@ -13,7 +13,7 @@ const SideBar = (props: any) => {
             <img src={Monograma} alt="FEG LOGO" />
             <Link to={`/home/${localStorage.getItem('id')}`} className={props.home} title="Home"><FiHome size={20} /></Link>
             <Link to="/user" className={props.validate} title="Users Validations"><FiUserCheck size={20} /></Link>
-            <Link to="/announcements" className={props.announcements} title="Company Announcements"><FiList size={20} /></Link>
+            <Link to="/announcements" className={props.announcements} title="Company Announcements"><FiBookOpen size={20} /></Link>
             <Link to="/management" className={props.users} title="Users Management"><FiUsers size={20} /></Link>
             <Link to="/announcements/new" className={props.newAnnouncement} title="New Announcement"><FiPlusSquare size={20} /></Link>
             <Link to="/calendar" className={props.calendar} title="Company Calendar"><FiCalendar size={20} /></Link>

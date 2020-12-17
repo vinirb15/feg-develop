@@ -13,12 +13,14 @@ const Announcements: React.FC = () => {
         {
             id: "0",
             title: "Good afternoon everyone",
-            date: "11.20.2020 - 4:25PM"
+            date: "11.20.2020 - 4:25PM",
+            author: "Marlon Jordan"
         },
         {
             id: "1",
             title: "Good afternoon everyone",
-            date: "11.20.2020 - 4:25PM"
+            date: "11.20.2020 - 4:25PM",
+            author: "Zidani Lisca"
         }
     ]);
 
@@ -43,9 +45,10 @@ const Announcements: React.FC = () => {
             loaded ? <Loader /> :
                 <div className="company-announcements">
                     {announcements.map(request => (
-                        <Link to={`/announcements/${request.id}`}>
+                        <Link to={`/announcements/company/${request.id}`}>
                             <h1>{request.title}</h1>
                             <p>{request.date}</p>
+                            <p>author: {request.author}</p>
                         </Link>
                     ))}
                 </div>

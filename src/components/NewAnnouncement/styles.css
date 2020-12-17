@@ -79,6 +79,11 @@
     margin-left: 2rem;
 }
 
+.new-announcement button:hover {
+    cursor: pointer;
+    opacity: .5;
+}
+
 .specific-groups {
     width: 22%;
 }

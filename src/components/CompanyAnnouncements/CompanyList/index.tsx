@@ -10,7 +10,7 @@ const Announcements: React.FC = () => {
 
     const [loaded, setLoaded] = useState<boolean>(true);
     const [announcements, setAnnouncements] = useState([
-          {
+        {
             id: "",
             owner_id: "",
             location_id: "",
@@ -22,20 +22,20 @@ const Announcements: React.FC = () => {
             location_name: "",
             firstName: "",
             lastName: ""
-          }
+        }
     ]);
 
-     useEffect(() => {
-         loadRequests()
-     }, []);
-     
-     async function loadRequests() {
-         await axios.get('api/v1/announcements').then(response => {
-             setAnnouncements(response.data.results);
-             setLoaded(false)
-         })
-     }
-    
+    useEffect(() => {
+        loadRequests()
+    }, []);
+
+    async function loadRequests() {
+        await axios.get('api/v1/announcements').then(response => {
+            setAnnouncements(response.data.results);
+            setLoaded(false)
+        })
+    }
+
     return (
         (
             loaded ? <Loader /> :
@@ -43,7 +43,7 @@ const Announcements: React.FC = () => {
                     {announcements.map(request => (
                         <Link to={`/announcements/company/${request.id}`}>
                             <h1>{request.subject}</h1>
-                            <p>{request.createdAt}</p>
+                            <p>{request.createdAt.split('').splice(0, 10).join('')} {request.createdAt.split('').splice(11, 5).join('')}</p>
                             <p>author: {request.firstName} {request.lastName}</p>
                         </Link>
                     ))}

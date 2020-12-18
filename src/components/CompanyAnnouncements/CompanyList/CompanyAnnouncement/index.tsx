@@ -33,7 +33,7 @@ const Announcements: React.FC = () => {
 
     useEffect(() => {
         loadUsersValidate()
-    }, []);
+    });
 
     const match: any = useRouteMatch('/announcements/company/:id');
     const id: any = (match?.params?.id || '')
@@ -51,7 +51,7 @@ const Announcements: React.FC = () => {
 
     return (
         <div className="company-announcement">
-            <p>{announcements.createdAt}</p>
+            <p>{announcements.createdAt.split('').splice(0, 10).join('')} {announcements.createdAt.split('').splice(11, 5).join('')}</p>
             <div className="content">
                 <img style={{ display: loaded ? "none" : "block" }} src={announcements.url_image} onLoad={() => setLoaded(false)} alt="Announcement" />
                 {

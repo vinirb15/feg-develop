@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useRouteMatch } from "react-router-dom"
+import { useRouteMatch } from "react-router-dom"
 import axios from '../../services/axios';
 
 import SignRoutes from './signRoutes'
@@ -11,7 +11,7 @@ const Routes: React.FC = () => {
 
   useEffect(() => {
     handleLogin()
-  }, [])
+  })
 
   async function handleLogin() {
     try {

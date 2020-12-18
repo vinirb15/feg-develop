@@ -31,7 +31,7 @@ const NewAnnouncement: React.FC = () => {
     const [group, setGroup] = useState('')
     const [location, setLocation] = useState('')
     const [imageFile, setImageFile] = useState({})
-    const [state, setState] = useState({})
+    // const [state, setState] = useState({})
     const [description, setDescription] = useState<string>()
     const [subject, setSubject] = useState<string>()
 
@@ -76,14 +76,14 @@ const NewAnnouncement: React.FC = () => {
         }
     }
 
-    const _handleReaderLoaded = (readerEvt: any) => {
-        let binaryString = readerEvt.target.result
-        setState(
-            {
-                base64TextString: btoa(binaryString)
-            }
-        )
-    }
+    // const _handleReaderLoaded = (readerEvt: any) => {
+    //     let binaryString = readerEvt.target.result
+    //     setState(
+    //         {
+    //             base64TextString: btoa(binaryString)
+    //         }
+    //     )
+    // }
 
     const handleSelectGroup = (event: React.ChangeEvent<{ value: unknown }>) => {
         setGroup(event.target.value as string)
@@ -286,8 +286,10 @@ const NewAnnouncement: React.FC = () => {
                 <input
                     className="typefile"
                     type="file"
-                    accept="image/*"
-                    onChange={event => fileSelect(event.target.files) } />
+                    accept=".jpg,.png"
+                    onChange={event => fileSelect(event.target.files) } 
+                    />
+                    <p style={{color: "#808080"}}>images less than 4 mb only</p>
                 <h4>Announcement</h4>
                 <textarea
                     value={description}

@@ -43,7 +43,7 @@ const Announcements: React.FC = () => {
                     {announcements.map(request => (
                         <Link to={`/announcements/local/${request.id}`}>
                             <h1>{request.subject}</h1>
-                            <p>{request.createdAt}</p>
+                            <p>{request.createdAt.split('').splice(0, 10).join('')} {request.createdAt.split('').splice(11, 5).join('')}</p>
                             <p>author: {request.firstName} {request.lastName}</p>
                         </Link>
                     ))}

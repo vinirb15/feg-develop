@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { FiEdit, FiBarChart } from 'react-icons/fi';
 
 import './styles.css'
 
@@ -14,20 +12,16 @@ const Header = (props: any | 0) => {
     let firstName = ''
     let lastName = ''
     useEffect(() => {
-        setTimeout(() => {
-            const firstName = localStorage.getItem('firstName')
-            const lastName = localStorage.getItem('lastName')
-            setInfo(`${firstName} ${lastName}`);
-        }, props.timeout);
-      }, []);
+        onLoaded()
+      });
 
-    const history = useHistory();
-
-    function handlePage() {
-        localStorage.clear();
-
-        history.push('/');
-    }
+function onLoaded() {
+    setTimeout(() => {
+        const firstName = localStorage.getItem('firstName')
+        const lastName = localStorage.getItem('lastName')
+        setInfo(`${firstName} ${lastName}`);
+    }, props.timeout);
+}
 
     function handleChange() {
         while ((firstName === undefined) || (lastName === undefined)) {

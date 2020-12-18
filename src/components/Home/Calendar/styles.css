@@ -58,6 +58,7 @@
 .box-calendar a button:hover {
     background: #fff;
     color: #7f43f5;
+    cursor: pointer;
 }
 
 @media (max-width: 660px) {

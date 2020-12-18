@@ -25,8 +25,8 @@ export const INITIAL_EVENTS = {
     },
     {
       title: 'Group Events',
-      start: '2020-12-11' + 'T12:00:00',
-      end: '2020-12-11' + 'T14:00:00',
+      start: '2020-12-11 T12:00:00',
+      end: '2020-12-11 T14:00:00',
       color: '#FFC138',
       extendedProps: {
         department: 'Employe'

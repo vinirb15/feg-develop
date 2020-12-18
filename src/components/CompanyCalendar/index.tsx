@@ -28,7 +28,7 @@ const Calendar: React.FC = () => {
   const [group, setGroup] = useState<string>('')
   const [startTime, setStartTime] = useState<string>()
   const [endTime, setEndTime] = useState<string>()
-  const [location, setLocation] = useState<string>()
+  // const [location, setLocation] = useState<string>()
 
   function handleDateSelect(selectInfo: any) {
     let title = prompt('Please enter a new title for your event')
@@ -97,21 +97,23 @@ const Calendar: React.FC = () => {
 
 
   async function handleUpdate() {
-    if (location === "") {
-      alert("invalid location")
-    }
+    // if (location === "") {
+    //   alert("invalid location")
+    // }
     if (title === "") {
       alert("invalid title")
     }
 
 
-    else if (title !== "" && location !== "") {
+    else if (title !== "" 
+    // && location !== ""
+    ) {
       const data =
       {
         title: title,
-        location: location,
-        start: '2020-12-11' + 'T12:00:00',
-        end: '2020-12-11' + 'T14:00:00',
+        // location: location,
+        start: startTime,
+        end: endTime,
         color: '#FFC138',
         extendedProps: {
           department: 'Employe'
@@ -120,6 +122,7 @@ const Calendar: React.FC = () => {
       try {
         // await axios.put(`/api/v1/calendar`, data);
         alert(`Event Created`);
+        console.log(data)
         setModal(false)
       } catch (error) {
         alert('Error updating user');
@@ -137,7 +140,7 @@ const Calendar: React.FC = () => {
     console.log(event.target.value as string)
   };
 
-  const GreenCheckbox = withStyles({
+  withStyles({
     root: {
       color: grey[400],
       '&$checked': {

@@ -30,7 +30,7 @@ const Profile: React.FC = () => {
 
     useEffect(() => {
         loadUsersValidate()
-    }, []);
+    });
 
     const match: any = useRouteMatch('/user/:id');
     const id: any = (match?.params?.id || '')

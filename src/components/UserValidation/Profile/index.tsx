@@ -18,30 +18,13 @@ const Profile: React.FC = () => {
     const [requests, setRequests] = useState(
         {
             addresses: {
-                city: "",
-                createdAt: "",
                 full: "",
-                id: "",
-                number: "",
-                owner_id: "",
-                state: "",
-                street: "",
             },
-            company_name: "",
-            createdAt: "",
             email: "",
             firstName: "",
-            group_id: '',
-            id: "",
-            ip: "",
-            isActive: "",
             lastName: "",
-            location_id: "",
             location_name: "",
             phone_number: "",
-            password: "",
-            profile_id: "",
-            status: "",
         }
     );
 

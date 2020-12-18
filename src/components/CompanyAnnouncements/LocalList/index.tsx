@@ -8,47 +8,43 @@ import Loader from '../../Loader';
 
 const Announcements: React.FC = () => {
 
-    const [loaded, setLoaded] = useState<boolean>(false);
+    const [loaded, setLoaded] = useState<boolean>(true);
     const [announcements, setAnnouncements] = useState([
         {
-            id: "0",
-            title: "Good afternoon everyone",
-            date: "11.20.2020 - 4:25PM",
-            author: "Marlon Jordan"
-        },
-        {
-            id: "1",
-            title: "Good afternoon everyone",
-            date: "11.20.2020 - 4:25PM",
-            author: "Marlon Jordan"
+            id: "",
+            owner_id: "",
+            location_id: "",
+            subject: "",
+            info: "",
+            url_image: "",
+            createdAt: "",
+            updatedAt: "",
+            location_name: "",
+            firstName: "",
+            lastName: ""
         }
     ]);
 
-    // useEffect(() => {
-    //     loadRequests()
-    // }, []);
+    useEffect(() => {
+        loadRequests()
+    }, []);
 
-    // async function loadRequests() {
-    //     await axios.get('/api/v1/accounts?status=INACTIVE&group=profile').then(response => {
-    //         setAnnouncements(response.data.results);
-    //         setLoaded(true)
-    //     })
-    // }
-    // {requests.Employee.map(request => (
-    //     <li key={request.id}>
-    //         <h1><FiUser /> {request.email}<button onClick={() => handleValidate(request.id)}>Validate user</button></h1>
-    //     </li>
-    // ))}
-    
+    async function loadRequests() {
+        await axios.get('api/v1/announcements').then(response => {
+            setAnnouncements(response.data.results);
+            setLoaded(false)
+        })
+    }
+
     return (
         (
             loaded ? <Loader /> :
                 <div className="local-announcements">
                     {announcements.map(request => (
                         <Link to={`/announcements/local/${request.id}`}>
-                            <h1>{request.title}</h1>
-                            <p>{request.date}</p>
-                            <p>author: {request.author}</p>
+                            <h1>{request.subject}</h1>
+                            <p>{request.createdAt}</p>
+                            <p>author: {request.firstName} {request.lastName}</p>
                         </Link>
                     ))}
                 </div>

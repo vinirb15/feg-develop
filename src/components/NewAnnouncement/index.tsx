@@ -27,6 +27,7 @@ const NewAnnouncement: React.FC = () => {
 
     const [checked, setChecked] = useState(false);
     const [locationChecked, setLocationChecked] = useState(false);
+    const [optEveryone, setOptEveryone] = useState(false);
     const [group, setGroup] = useState('')
     const [location, setLocation] = useState('')
     const [imageFile, setImageFile] = useState({})
@@ -49,6 +50,14 @@ const NewAnnouncement: React.FC = () => {
             setLocationChecked(true)
         } else if (locationChecked === true) {
             setLocationChecked(false)
+        }
+    }
+
+    function handleEveryone() {
+        if (optEveryone === false) {
+            setOptEveryone(true)
+        } else if (optEveryone === true) {
+            setOptEveryone(false)
         }
     }
 
@@ -90,7 +99,7 @@ const NewAnnouncement: React.FC = () => {
         const data = {
             // group: group,
             owner_id: id,
-            location_id: location || 'd70bbfdb-829f-4800-a17a-e6d872cfb280',
+            location_id: location,
             image: imageFile,
             subject: subject,
             info: description,
@@ -231,8 +240,10 @@ const NewAnnouncement: React.FC = () => {
                     control={
                         <GreenCheckbox
                             name="checkedG"
+                            onChange={handleEveryone}
                         />}
                     label="Everyone"
+                    disabled={checked||locationChecked ? true : false}
                 />
                 <FormControlLabel
                     control={
@@ -243,7 +254,7 @@ const NewAnnouncement: React.FC = () => {
                     label="Specific Group"
                     style={{ display: checked ? "none" : "block" }}
                     checked={checked ? true : false}
-
+                    disabled={optEveryone ? true : false}
                 />
                 {
                     (checked ? groups : <></>)
@@ -257,6 +268,7 @@ const NewAnnouncement: React.FC = () => {
                     label="Specific Location"
                     style={{ display: locationChecked ? "none" : "block" }}
                     checked={locationChecked ? true : false}
+                    disabled={optEveryone ? true : false}
                 />
                 {
                     (locationChecked ? locations : <></>)

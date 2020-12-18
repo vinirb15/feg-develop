@@ -103,6 +103,14 @@
   font-weight: bold;
   transition: 0.2s;
   margin: 0.7rem 0;
+  cursor: pointer;
+}
+
+.calendar-app .modal-body button:hover {
+  opacity: .5;
+}
+.calendar-app .modal-body .groupsSection button {
+  width: 21%;
 }
 
 .calendar-app .modal-confirmation form {
@@ -119,6 +127,9 @@
 .calendar-app .groupsSection {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
   gap: 1rem;
 }
 
@@ -168,5 +179,17 @@
   }
   .fc-view-harness {
     width: 100%;
+  }
+  .calendar-app .modal .modal-body {
+    width: 90%;
+  }
+  .calendar-app .modal .modal-body .modal-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .calendar-app .modal-body button {
+    font-size: .8rem;
   }
 }

@@ -54,7 +54,6 @@ const Calendar: React.FC = () => {
     }
   }
 
-
   function handleEvents(events: any) {
     console.log(events)
     setCurrentEvents(events)
@@ -68,7 +67,6 @@ const Calendar: React.FC = () => {
       </>
     )
   }
-
 
   function changeState(boolean: any) {
     if (boolean === true) {
@@ -94,8 +92,6 @@ const Calendar: React.FC = () => {
     )
   }
 
-
-
   async function handleUpdate() {
     // if (location === "") {
     //   alert("invalid location")
@@ -103,7 +99,6 @@ const Calendar: React.FC = () => {
     if (title === "") {
       alert("invalid title")
     }
-
 
     else if (title !== "" 
     // && location !== ""

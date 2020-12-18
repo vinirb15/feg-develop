@@ -130,4 +130,7 @@
     .new-announcement h1 {
         margin: 0;
     }
+    .specific-groups{
+        width: 100%;
+    }
 }

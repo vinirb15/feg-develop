@@ -29,7 +29,8 @@ const NewAnnouncement: React.FC = () => {
     const [locationChecked, setLocationChecked] = useState(false);
     const [group, setGroup] = useState('')
     const [location, setLocation] = useState('')
-    const [imageFile, setImageFile] = useState()
+    const [imageFile, setImageFile] = useState({})
+    const [state, setState] = useState({})
     const [description, setDescription] = useState<string>()
     const [subject, setSubject] = useState<string>()
 
@@ -52,8 +53,27 @@ const NewAnnouncement: React.FC = () => {
     }
 
     function fileSelect(props: any) {
-        console.log(props)
-        setImageFile(props)
+        console.log('imageset', props[0])
+        const reader = new FileReader()
+        reader.readAsDataURL(props[0])
+
+        reader.onload = (e: any) => {
+            console.log('imageset',  props[0].type)
+
+            setImageFile({
+                selectedFile: e?.target?.result,
+                type: props[0].type
+            })
+        }
+    }
+
+    const _handleReaderLoaded = (readerEvt: any) => {
+        let binaryString = readerEvt.target.result
+        setState(
+            {
+                base64TextString: btoa(binaryString)
+            }
+        )
     }
 
     const handleSelectGroup = (event: React.ChangeEvent<{ value: unknown }>) => {
@@ -70,8 +90,8 @@ const NewAnnouncement: React.FC = () => {
         const data = {
             // group: group,
             owner_id: id,
-            location_id: location,
-            // image: imageFile,
+            location_id: location || 'd70bbfdb-829f-4800-a17a-e6d872cfb280',
+            image: imageFile,
             subject: subject,
             info: description,
         }
@@ -255,7 +275,7 @@ const NewAnnouncement: React.FC = () => {
                     className="typefile"
                     type="file"
                     accept="image/*"
-                    onChange={fileSelect} />
+                    onChange={event => fileSelect(event.target.files) } />
                 <h4>Announcement</h4>
                 <textarea
                     value={description}

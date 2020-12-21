@@ -39,11 +39,6 @@ const Management = () => {
     const [group, setGroup] = useState('');
     const [total, setTotal] = useState('');
 
-
-    // while (users === undefined) {
-    //     setLoading(true)
-    // }
-
     useEffect(() => {
         handleLoad()
     }, [])

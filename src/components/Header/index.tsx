@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import './styles.css'
 
-import SearchBox from '../SearchBox';
 import LoginButton from '../LoginButton';
 
 
@@ -39,10 +38,7 @@ function onLoaded() {
 
 
             <div className="icons">
-                <SearchBox />
-                
                 <LoginButton color="#7F43F5" width='20%' />
-
             </div>
         </header>
     )

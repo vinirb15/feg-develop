@@ -120,12 +120,11 @@ const NewAnnouncement: React.FC = () => {
             <Select
                 isMulti
                 name="colors"
-                options={locationsData}
+                options={groupsData}
                 className="basic-multi-select"
                 classNamePrefix="select"
                 onChange={handleSelectGroup}
             />
-
         </div>
     )
 
@@ -144,7 +143,7 @@ const NewAnnouncement: React.FC = () => {
             <Select
                 isMulti
                 name="colors"
-                options={groupsData}
+                options={locationsData}
                 className="basic-multi-select"
                 classNamePrefix="select"
                 onChange={handleSelectLocation}

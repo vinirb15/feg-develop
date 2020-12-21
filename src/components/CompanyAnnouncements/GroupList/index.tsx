@@ -62,7 +62,7 @@ const Announcements: React.FC = () => {
                                 <Link to={`/announcements/company/${request.id}`}>
                                     <h1>{request.subject}</h1>
                                 </Link>
-                                <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(request.id); console.log(request) }} color='#808080' size={20} /></button>
+                                <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(request.id); console.log(request) }} color='#808080' size={20}/></button>
                             </div>
                             <p>{request.createdAt.split('').splice(0, 10).join('')} {request.createdAt.split('').splice(11, 5).join('')}</p>
                             <p>author: <b>{request.firstName} {request.lastName}</b></p>

@@ -312,7 +312,7 @@ td button:hover {
 }
 
 .deletebtn {
-    background: red!important;
+    background: gray!important;
 }
 
 @keyframes animatetop {

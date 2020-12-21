@@ -8,23 +8,34 @@
 
 .announcements-sidebar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .announcements-sidebar button {
-    font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background-color: transparent;
     border: 0;
+    background: #7F43F5;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: .7s;
 }
 
-.announcements-sidebar button + button {
-    margin-top: 1rem;
+.announcements-sidebar button:hover {
+    opacity: .8;
+    color: #2d2d2d;
+}
+
+.announcements-sidebar button+button {
+    margin-left: 1rem;
 }
 
 .announcements-content {
     width: 100%;
+    height: 100%;
 }
 
 .announcements-content h1 {
@@ -42,20 +53,24 @@
         justify-content: center;
         align-items: center;
         margin-left: 6%;
-
     }
     .announcements-sidebar {
         margin-right: 0;
+        justify-content: center;
     }
-
+    .announcements-sidebar button {
+        margin: .2rem 0;
+    }
     .announcements-content {
         width: 100%;
         margin-right: 2%;
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
-
     .announcements-sidebar button {
         text-align: center;
+    }
+    .announcements-sidebar button+button {
+        margin-left: 0;
     }
 }
 
@@ -63,13 +78,10 @@
     .announcements {
         margin: 0 2rem;
     }
-
     .announcements-sidebar {
-    margin-bottom: 0;
+        margin-bottom: 0;
     }
-
     .announcements-sidebar button {
-    margin: 0 1rem;
+        margin: .2rem 0;
     }
-
 }

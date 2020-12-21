@@ -2,7 +2,7 @@ import React from 'react';
 
 import SideBar from '../../components/SideBar';
 import Header from '../../components/Header';
-import Announcement from '../../components/CompanyAnnouncements/CompanyList/CompanyAnnouncement';
+import Announcement from '../../components/CompanyAnnouncements/GeneralList/GeneralAnnouncement';
 
 
 const Announcements: React.FC = () => {

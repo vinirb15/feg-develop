@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from '../../../services/axios';
 import { FiTrash } from 'react-icons/fi';
 
-import '../GeneralList/styles.css';
+import './styles.css';
 
 import Loader from '../../Loader';
 
@@ -62,7 +62,7 @@ const Announcements: React.FC = () => {
                                 <Link to={`/announcements/company/${request.id}`}>
                                     <h1>{request.subject}</h1>
                                 </Link>
-                                <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(request.id); console.log(request) }} color='#808080' size={20} /></button>
+                                <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(request.id); console.log(request) }} color='#808080' size={20}/></button>
                             </div>
                             <p>{request.createdAt.split('').splice(0, 10).join('')} {request.createdAt.split('').splice(11, 5).join('')}</p>
                             <p>author: <b>{request.firstName} {request.lastName}</b></p>
@@ -73,15 +73,17 @@ const Announcements: React.FC = () => {
                             <div className="modal-header">
                                 <span onClick={() => setConfirmation(false)} className="close">&times;</span>
                                 <h2>Are you sure you would like to remove this announcement?
+                                <br />
                                 The announcement will be deleted for all users and it cannot be recovered.
+                                <br />
                                 The automatic emails generated at the time of the
                                 announcement creation will still exist.
                                 </h2>
                             </div>
                             <div className="modal-confirmation">
                                 <form>
-                                    <button type="button" onClick={() => setConfirmation(false)} className="cancelbtn">No</button>
                                     <button type="button" onClick={() => handleDeleteUser(modalDate)} className="deletebtn">Yes</button>
+                                    <button type="button" onClick={() => setConfirmation(false)} className="cancelbtn">No</button>
                                 </form>
                             </div>
                         </div>

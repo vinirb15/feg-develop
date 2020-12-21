@@ -2,49 +2,80 @@ import React, { useState } from 'react';
 
 import './styles.css';
 
-import Company from './CompanyList';
+import Company from './GeneralList';
 import Local from './LocalList';
+import Group from './GroupList';
 
 
 const Announcements: React.FC = () => {
 
-    const [btn, setBtn] = useState([
+    const [btn, setBtn] = useState(
         {
-            content: true,
-            btnCompany: '#7F43F5',
+            content: 1,
+            btnCompany: '#fff',
             btnLocal: '',
+            btnGroup: ''
         },
-    ]);
+    );
 
     function companyContent() {
-        setBtn([
+        setBtn(
             {
-                content: true,
-                btnCompany: '#7F43F5',
+                content: 1,
+                btnCompany: '#fff',
                 btnLocal: '',
+                btnGroup: ''
+
             }
-        ]);
+        );
     }
 
     function localContent() {
-        setBtn([
+        setBtn(
             {
-                content: false,
+                content: 2,
                 btnCompany: '',
-                btnLocal: '#7F43F5',
+                btnLocal: '#fff',
+                btnGroup: ''
+
             }
-        ]);
+        );
+    }
+
+    function groupContent() {
+        setBtn(
+            {
+                content: 3,
+                btnCompany: '',
+                btnLocal: '',
+                btnGroup: '#fff'
+
+            }
+        );
+    }
+
+    function changeContent() {
+        if (btn.content === 1) {
+            return <Company />
+        }
+        if (btn.content === 2) {
+            return <Local />
+        }
+        if (btn.content === 3) {
+            return <Group />
+        }
     }
 
     return (
         <div className="announcements">
             <div className="announcements-sidebar">
-                <button style={{ color: btn[0].btnCompany }} onClick={companyContent}>Company Announcements</button>
-                <button style={{ color: btn[0].btnLocal }} onClick={localContent}>Local Announcements</button>
+                <button style={{ color: btn.btnCompany }} onClick={companyContent}>General Announcements</button>
+                <button style={{ color: btn.btnLocal }} onClick={localContent}>Local Announcements</button>
+                <button style={{ color: btn.btnGroup }} onClick={groupContent}>Group Announcements</button>
             </div>
             <div className="announcements-content">
                 {
-                    (btn[0].content ? <Company /> : <Local />)
+                    changeContent()
                 }
             </div>
         </div>

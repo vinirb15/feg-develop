@@ -11,7 +11,8 @@ const Routes: React.FC = () => {
 
   useEffect(() => {
     handleLogin()
-  })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   async function handleLogin() {
     try {

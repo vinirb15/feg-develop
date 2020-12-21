@@ -33,7 +33,8 @@ const Announcements: React.FC = () => {
 
     useEffect(() => {
         loadUsersValidate()
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const match: any = useRouteMatch('/announcements/company/:id');
     const id: any = (match?.params?.id || '')

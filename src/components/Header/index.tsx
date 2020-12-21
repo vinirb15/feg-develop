@@ -13,7 +13,8 @@ const Header = (props: any | 0) => {
     let lastName = ''
     useEffect(() => {
         onLoaded()
-      });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []);
 
 function onLoaded() {
     setTimeout(() => {

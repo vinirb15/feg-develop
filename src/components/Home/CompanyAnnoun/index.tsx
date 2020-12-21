@@ -12,26 +12,17 @@ const Content = () => {
     const [announcements, setAnnouncements] = useState(
         {
             id: "",
-            owner_id: "",
-            location_id: "",
             subject: "",
             info: "",
             url_image: "",
             createdAt: "",
-            created_by: {
-                id: "",
-                location_id: "",
-                profile_id: "",
-                firstName: "",
-                lastName: "",
-                createdAt: "",
-            }
         }
     );
 
     useEffect(() => {
         loadUsersValidate()
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     async function loadUsersValidate() {
         try {

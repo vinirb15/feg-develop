@@ -111,7 +111,10 @@
     border: 0;
 }
 
-
+.company-announcements .modal-confirmation form button {
+    width: 45%;
+    height: 50%;
+    }
 
 @media(max-width: 800px) {
     .company-announcements {

@@ -82,8 +82,8 @@ const Announcements: React.FC = () => {
                             </div>
                             <div className="modal-confirmation">
                                 <form>
-                                    <button type="button" onClick={() => handleDeleteUser(modalDate)} className="deletebtn">Yes</button>
                                     <button type="button" onClick={() => setConfirmation(false)} className="cancelbtn">No</button>
+                                    <button type="button" onClick={() => handleDeleteUser(modalDate)} className="deletebtn">Yes</button>
                                 </form>
                             </div>
                         </div>

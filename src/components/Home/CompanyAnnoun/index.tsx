@@ -31,7 +31,8 @@ const Content = () => {
                 setLoaded(true)
             })
         } catch (error) {
-            history.push(`/announcements`)
+            // history.push(`/announcements`)
+            alert(error)
         }
     }
 

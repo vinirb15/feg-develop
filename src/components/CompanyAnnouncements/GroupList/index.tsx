@@ -46,7 +46,7 @@ const Announcements: React.FC = () => {
             // await axios.delete(`/api/v1/accounts/${id}`)
             setAnnouncements(announcements.filter(e => e.id !== id));
             setConfirmation(false)
-            alert('User deleted')
+            alert('Announcement deleted')
         } catch (error) {
             alert('Error')
         }

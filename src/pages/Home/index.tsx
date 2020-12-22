@@ -21,15 +21,24 @@ const HomePage: React.FC = () => {
     const [results, setResults] = useState("");
     const options = [
         "powerbi",
+        "bipower",
         "erp",
         "feg",
+        "old",
+        "fegerp",
         "zendeskmanager",
-        "knowledge",
+        "managerzendesk",
+        "knowledgebase",
+        "baseknowledge",
         "createticket",
+        "ticketcreate",
         "calendar",
         "forum",
+        "fegbook",
         "paylocity",
-        "companyannoun",
+        "locity",
+        "company",
+        "announcement",
     ]
 
     const fullPage = (
@@ -74,71 +83,92 @@ const HomePage: React.FC = () => {
 
 
     function searchIn() {
-        if (results === "") {
+        if (results === "" || options.find(tree => tree.startsWith(results)) === "feg") {
             return fullPage
         }
-        if (options.find(tree => tree.startsWith(results)) === "powerbi") {
+        if (options.find(tree => tree.startsWith(results)) === "powerbi" || options.find(tree => tree.startsWith(results)) === "bipower") {
             return (
-                <div style={{ width: "50%" }}>
+                <Grid item lg={4} md={6} xs={12}>
                     <Power />
-                </div>
+                </Grid>
             )
         }
-        if (options.find(tree => tree.startsWith(results)) === "erp") {
+        if (options.find(tree => tree.startsWith(results)) === "erp" || options.find(tree => tree.startsWith(results)) === "fegerp" || options.find(tree => tree.startsWith(results)) === "old") {
             return (
-                <div style={{ width: "50%" }}>
+                <Grid item lg={4} md={6} xs={12}>
                     <Display />
-                </div>
+                </Grid>
             )
         }
-        if (options.find(tree => tree.startsWith(results)) === "zendeskmanager") {
+        if (options.find(tree => tree.startsWith(results)) === "zendeskmanager" || options.find(tree => tree.startsWith(results)) === "managerzendesk") {
             return (
-                <div style={{ width: "50%" }}>
+                <Grid item lg={4} md={6} xs={12}>
                     <ZendeskManager />
-                </div>
+                </Grid>
+
             )
         }
-        if (options.find(tree => tree.startsWith(results)) === "knowledge") {
+        if (options.find(tree => tree.startsWith(results)) === "knowledgebase" || options.find(tree => tree.startsWith(results)) === "baseknowledge") {
             return (
-                <div style={{ width: "50%" }}>
+                <Grid item lg={4} md={6} xs={12}>
                     <Knowledge />
-                </div>
+                </Grid>
             )
         }
-        if (options.find(tree => tree.startsWith(results)) === "createticket") {
+        if (options.find(tree => tree.startsWith(results)) === "createticket" || options.find(tree => tree.startsWith(results)) === "ticketcreate") {
             return (
-                <div style={{ width: "50%" }}>
+                <Grid item lg={4} md={6} xs={12}>
                     <CreateTicket />
-                </div>
+                </Grid>
             )
         }
         if (options.find(tree => tree.startsWith(results)) === "calendar") {
             return (
-                <div style={{ width: "50%" }}>
+                <Grid item lg={8} md={6} xs={12}>
                     <Calendar />
-                </div>
+                </Grid>
             )
         }
-        if (options.find(tree => tree.startsWith(results)) === "forum") {
+        if (options.find(tree => tree.startsWith(results)) === "forum" || options.find(tree => tree.startsWith(results)) === "fegbook") {
             return (
-                <div style={{ width: "50%" }}>
+                <Grid item lg={4} md={6} xs={12}>
                     <Forum />
-                </div>
+                </Grid>
             )
         }
-        if (options.find(tree => tree.startsWith(results)) === "paylocity") {
+        if (options.find(tree => tree.startsWith(results)) === "paylocity" || options.find(tree => tree.startsWith(results)) === "locity") {
             return (
-                <div style={{ width: "50%" }}>
+                <Grid item lg={4} md={6} xs={12}>
                     <Paylocity />
-                </div>
+                </Grid>
             )
         }
-        if (options.find(tree => tree.startsWith(results)) === "companyannoun") {
+        if (options.find(tree => tree.startsWith(results)) === "announcement") {
             return (
-                <div style={{ width: "50%" }}>
+                <Grid item lg={4} md={6} xs={12}>
                     <CompanyAnnoun />
-                </div>
+                </Grid>
             )
+        }
+        if (options.find(tree => tree.startsWith(results)) === "company") {
+            return (<div style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <Grid item lg={4} md={6} xs={12}>
+                    <CompanyAnnoun />
+                </Grid>
+
+                <Grid item lg={4} md={6} xs={12}>
+                    <Calendar />
+                </Grid>
+            </div>
+            )
+        }
+        if (options.find(tree => tree.startsWith(results)) !== "") {
+            return fullPage
         }
     }
 

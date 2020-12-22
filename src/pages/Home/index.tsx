@@ -39,6 +39,7 @@ const HomePage: React.FC = () => {
         "locity",
         "company",
         "announcement",
+        "company calendar",
     ]
 
     const fullPage = (
@@ -122,7 +123,7 @@ const HomePage: React.FC = () => {
                 </Grid>
             )
         }
-        if (options.find(tree => tree.startsWith(results)) === "calendar") {
+        if (options.find(tree => tree.startsWith(results)) === "calendar" || options.find(tree => tree.startsWith(results)) === "company calendar") {
             return (
                 <Grid item lg={8} md={6} xs={12}>
                     <Calendar />
@@ -155,7 +156,9 @@ const HomePage: React.FC = () => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                justifyContent: "center"
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: "1rem",
             }}>
                 <Grid item lg={4} md={6} xs={12}>
                     <CompanyAnnoun />

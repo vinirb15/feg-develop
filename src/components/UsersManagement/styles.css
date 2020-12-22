@@ -195,6 +195,11 @@ table {
     border-radius: 5px;
 }
 
+/* 
+.list-header .MuiFormControl-root{
+    width: 50%;
+} */
+
 .label-mobile {
     display: none;
 }
@@ -220,7 +225,7 @@ td button:hover {
 }
 
 .users-management .modal-header {
-    padding: 4px 16px;
+    padding: 40px 50px;
     background-color: #7F43F5;
     color: white;
     border-radius: 20px 20px 0 0;
@@ -244,40 +249,12 @@ td button:hover {
     flex-direction: column;
     margin: 0;
     border: 0;
+    margin: 2rem 0;
 }
 
-.users-management .modal-content form input {
-    align-items: center;
+.users-management .modal-content form .MuiFormControl-root {
     width: 100%;
-    height: 2.5rem;
-    box-sizing: border-box;
-    border: 1px solid #7F43F5!important;
-    border-radius: 10px;
-    font-size: 16px;
-    background-color: transparent!important;
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 0 1rem;
     margin: 1rem 0;
-}
-
-.users-management .modal-content form select {
-    align-items: center;
-    width: 100%;
-    height: 2.5rem;
-    box-sizing: border-box;
-    border: 1px solid #7F43F5!important;
-    border-radius: 10px;
-    font-size: 16px;
-    background-color: transparent!important;
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 0 1rem;
-    margin: 1rem 0;
-}
-
-.users-management .modal-content form .export {
-    width: 100%;
 }
 
 .users-management .modal-content button {
@@ -285,16 +262,17 @@ td button:hover {
     justify-content: center;
     align-items: center;
     height: 2.5rem;
-    width: 40%;
+    height: 50%;
+    width: 30%;
     border-radius: 10px!important;
     border: 0px;
     padding: 1rem!important;
-    background: #00a651;
+    background: #7F43F5;
     color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
     transition: 0.2s;
-    margin: 0.7rem 0;
+    margin: 3rem 0;
 }
 
 .users-management .modal-content button:hover {

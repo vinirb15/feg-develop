@@ -31,6 +31,7 @@ const NewAnnouncement: React.FC = () => {
     const [imageFile, setImageFile] = useState({})
     const [description, setDescription] = useState<string>()
     const [subject, setSubject] = useState<string>()
+    const [confirmation, setConfirmation] = useState<boolean>(false)
 
     const history = useHistory();
 
@@ -84,7 +85,7 @@ const NewAnnouncement: React.FC = () => {
     const id = localStorage.getItem('id');
 
 
-    async function activeUser() {
+    async function createAnnouncement() {
         const data = {
             groups_ids: group,
             owner_id: id,
@@ -96,6 +97,7 @@ const NewAnnouncement: React.FC = () => {
         try {
             await axios.post(`/api/v1/announcements`, data)
             console.log(data)
+            setConfirmation(false)
             alert("Announcement created")
             history.push(`/announcements`)
         } catch (error) {
@@ -149,6 +151,28 @@ const NewAnnouncement: React.FC = () => {
                 onChange={handleSelectLocation}
             />
 
+        </div>
+    )
+
+    const myModal = (
+        <div id="myModal" style={{ display: confirmation ? "block" : "none" }} className="modal">
+            <div className="modal-content">
+                <div className="modal-header">
+                    <span onClick={() => setConfirmation(false)} className="close">&times;</span>
+                    <h2>
+                        Your announcement is about to be published.
+                        When publishing an announcement all selected users will receive an email and will be able
+                        to read the announcement on their pages.
+                        Would you like to publish it now?
+                    </h2>
+                </div>
+                <div className="modal-confirmation">
+                    <form>
+                        <button type="button" onClick={() => setConfirmation(false)} className="cancelbtn">No</button>
+                        <button type="button" onClick={() => () => createAnnouncement()} className="deletebtn">Yes</button>
+                    </form>
+                </div>
+            </div>
         </div>
     )
 
@@ -216,7 +240,10 @@ const NewAnnouncement: React.FC = () => {
                     onChange={e => setDescription(e.target.value)}
                 />
             </div>
-            <button onClick={() => activeUser()}>Publish</button>
+            <button onClick={() => setConfirmation(true)}>Publish</button>
+            {
+                myModal
+            }
         </div>
     );
 }

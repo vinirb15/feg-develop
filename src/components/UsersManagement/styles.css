@@ -391,7 +391,7 @@ td button:hover {
     .export {
         margin-top: 1rem;
     }
-    .modal-content {
+    .users-management .modal-content {
         width: 90%;
     }
 }

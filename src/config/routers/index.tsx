@@ -17,6 +17,7 @@ const Routes: React.FC = () => {
   async function handleLogin() {
     try {
       const jwt: any = (match?.params?.id || '')
+      sessionStorage.setItem('token', jwt)
       setToken(jwt)
       await axios.get(`/api/v1/accounts/${jwt}`).then((response: any) => {
         localStorage.setItem('id', jwt)

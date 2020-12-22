@@ -169,7 +169,7 @@ const NewAnnouncement: React.FC = () => {
                 <div className="modal-confirmation">
                     <form>
                         <button type="button" onClick={() => setConfirmation(false)} className="cancelbtn">No</button>
-                        <button type="button" onClick={() => () => createAnnouncement()} className="deletebtn">Yes</button>
+                        <button type="button" onClick={() => createAnnouncement()} className="deletebtn">Yes</button>
                     </form>
                 </div>
             </div>

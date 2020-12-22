@@ -19,7 +19,8 @@ const Management = () => {
             company_name: "",
             createdAt: "",
             email: "",
-            firstName: "",
+            first_name: "",
+            full_name: "",
             group_id: "",
             group_name: "",
             id: "",
@@ -31,6 +32,8 @@ const Management = () => {
             phone_number: "",
             profile_id: "",
             status: "",
+            updatedAt: "",
+            url_image: "",
         }
     ]);
 
@@ -71,7 +74,7 @@ const Management = () => {
 
     async function handleUpdate(id: string) {
         if (name === "") {
-            setName(modalDate.firstName)
+            setName(modalDate.first_name)
         }
         if (email === "") {
             setEmail(modalDate.email)
@@ -85,7 +88,7 @@ const Management = () => {
 
         else if (group !== "" && location !== "" && email !== "" && name !== "") {
             const data = {
-                "firstName": name,
+                "first_name": name,
                 "email": email,
                 "location_id": location,
                 "group_id": group,
@@ -201,9 +204,9 @@ const Management = () => {
                         {users.map(user => (
                             <tr key={user.id}>
                                 <td id="image">
-                                    <img src={Image} alt="user.png" />
+                                    <img src={user.url_image} alt="user.png" />
                                 </td>
-                                <td><p className="label-mobile">USER:</p> {user.firstName} {user.lastName}</td>
+                                <td><p className="label-mobile">USER:</p> {user.first_name} {user.lastName}</td>
                                 <td><p className="label-mobile">LOCATION:</p> {user.location_name}</td>
                                 <td><p className="label-mobile">EMAIL:</p> {user.email}</td>
                                 <td><p className="label-mobile">GROUP:</p> {user.group_name}</td>
@@ -229,7 +232,7 @@ const Management = () => {
                                 <TextField
                                     id="standard-basic"
                                     label="Name:"
-                                    placeholder={modalDate ? modalDate.firstName : ""}
+                                    placeholder={modalDate ? modalDate.first_name : ""}
                                     onChange={e => setName(e.target.value)}
                                 />
                                 <FormControl required>

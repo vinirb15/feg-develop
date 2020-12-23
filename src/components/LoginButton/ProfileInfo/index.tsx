@@ -6,13 +6,14 @@ import './styles.css';
 import Monograma from '../../../assets/Monograma.png';
 
 const ProfileInfo = () => {
-
+    const image = localStorage.getItem('image_url')
     const [update, setUpdate] = useState(false);
     const [updateFirstName, setUpdateFirstName] = useState(false);
     const [updateLastName, setUpdateLastName] = useState(false);
     const [updatePicture, setPicture] = useState(false);
     const [name, setName] = useState('')
     const [nameLast, setNameLast] = useState('')
+    const [imageFile, setImageFile] = useState({})
 
     const firstName = localStorage.getItem('firstName')
     const lastName = localStorage.getItem('lastName')
@@ -20,7 +21,18 @@ const ProfileInfo = () => {
     const email = localStorage.getItem('email')
 
     function fileSelect(props: any) {
-        console.log(props)
+        console.log('imageset', props[0])
+        const reader = new FileReader()
+        reader.readAsDataURL(props[0])
+
+        reader.onload = (e: any) => {
+            console.log('imageset', props[0].type)
+
+            setImageFile({
+                selectedFile: e?.target?.result,
+                type: props[0].type
+            })
+        }
     }
 
     function updateBtn() {
@@ -72,8 +84,9 @@ const ProfileInfo = () => {
 
         else if (name !== "" && nameLast !== "") {
             const data = {
-                "firstName": name,
-                "lastName": nameLast
+                firstName: name,
+                lastName: nameLast,
+                image: imageFile,
             }
             try {
                 await axios.put(`/api/v1/accounts/${id}`, data);
@@ -115,7 +128,7 @@ const ProfileInfo = () => {
                 className="profile-typefile"
                 type="file"
                 accept="image/*"
-                onChange={fileSelect}
+                onChange={event => fileSelect(event.target.files)}
             />
         </>
     )
@@ -144,7 +157,7 @@ const ProfileInfo = () => {
 
                 <h4>Picture</h4>
                 <div className="options">
-                <img src={Monograma} alt="FEG LOGO" />
+                    <img src={image ? image : Monograma} alt="FEG LOGO" />
                     <button className="button" onClick={showPicture}>edit</button>
                     {
                         (updatePicture ? changePicture : <></>)
@@ -159,7 +172,7 @@ const ProfileInfo = () => {
 
     return (
         <div className="profile-box">
-            <img src={Monograma} alt="FEG LOGO" />
+            <img src={image ? image : Monograma} alt="FEG LOGO" />
             <div className="about">
                 <h2>{firstName} {lastName}</h2>
                 <div className="container">

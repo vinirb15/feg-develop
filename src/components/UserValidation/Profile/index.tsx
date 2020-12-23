@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-import Monograma from '../../../assets/Monograma.png'
 import axios from '../../../services/axios';
 import Loader from '../../Loader';
 

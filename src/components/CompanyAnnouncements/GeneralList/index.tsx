@@ -55,18 +55,25 @@ const Announcements: React.FC = () => {
         (
             loaded ? <Loader /> :
                 <div className="company-announcements">
-                    {announcements.map(request => (
-                        <>
-                            <div className="announcement-options">
-                                <Link to={`/announcements/company/${request.id}`}>
-                                    <h1>{request.subject}</h1>
-                                </Link>
-                                <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(request.id); console.log(request) }} color='#808080' size={20}/></button>
-                            </div>
-                            <p>{request.createdAt.split('').splice(0, 10).join('')} {request.createdAt.split('').splice(11, 5).join('')}</p>
-                            <p>author: <b>{request.firstName} {request.lastName}</b></p>
-                        </>
-                    ))}
+                    {
+                        announcements[0] ?
+                            (
+                                announcements.map(request => (
+                                    <>
+                                        <div className="announcement-options">
+                                            <Link to={`/announcements/company/${request.id}`}>
+                                                <h1>{request.subject}</h1>
+                                            </Link>
+                                            <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(request.id); console.log(request) }} color='#808080' size={20} /></button>
+                                        </div>
+                                        <p>{request.createdAt.split('').splice(0, 10).join('')} {request.createdAt.split('').splice(11, 5).join('')}</p>
+                                        <p>author: <b>{request.firstName} {request.lastName}</b></p>
+                                    </>
+                                ))
+                            )
+                            :
+                            <h1>No General results</h1>
+                    }
                     <div id="myModal" style={{ display: confirmation ? "block" : "none" }} className="modal">
                         <div className="modal-content">
                             <div className="modal-header">

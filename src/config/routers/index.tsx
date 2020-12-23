@@ -27,6 +27,7 @@ const Routes: React.FC = () => {
       localStorage.setItem('firstName', tokenDecode.first_name)
       localStorage.setItem('lastName', tokenDecode.last_name)
       localStorage.setItem('email', tokenDecode.email)
+      localStorage.setItem('image_url', tokenDecode.url_image)
 
 
     } catch (error) {

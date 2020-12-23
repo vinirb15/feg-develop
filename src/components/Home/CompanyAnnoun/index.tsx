@@ -49,16 +49,23 @@ const Content = () => {
             <Link to="/announcements">
                 <h1>Company Announcements</h1>
             </Link>
-            <p>{announcements.createdAt.split('').splice(0, 10).join('')} {announcements.createdAt.split('').splice(11, 5).join('')}</p>
-            <div className="content">
-                <img style={{ display: loaded ? "none" : "block" }} src={announcements.url_image} onLoad={() => setLoaded(false)} alt="Announcement" />
-                {
-                    (loaded ? <Loader /> : <></>)
-                }
-                <h1>{announcements.subject}</h1>
-                <h2 className="text">{announcements.info}</h2>
-                <button onClick={handleRedirect}>See more...</button>
-            </div>
+            {
+                announcements.id ?
+                    (<>
+                        <p>{announcements.createdAt.split('').splice(0, 10).join('')} {announcements.createdAt.split('').splice(11, 5).join('')}</p>
+                        <div className="content">
+                            <img style={{ display: loaded ? "none" : "block" }} src={announcements.url_image} onLoad={() => setLoaded(false)} alt="Announcement" />
+                            {
+                                (loaded ? <Loader /> : <></>)
+                            }
+                            <h1>{announcements.subject}</h1>
+                            <h2 className="text">{announcements.info}</h2>
+                            <button onClick={handleRedirect}>See more...</button>
+                        </div>
+                    </>)
+                    :
+                    <h1>No have last general results</h1>
+            }
         </div>
     );
 }

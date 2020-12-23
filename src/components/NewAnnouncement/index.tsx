@@ -26,8 +26,8 @@ const NewAnnouncement: React.FC = () => {
     const [checked, setChecked] = useState(false);
     const [locationChecked, setLocationChecked] = useState(false);
     const [optEveryone, setOptEveryone] = useState(false);
-    const [group, setGroup] = useState<any>()
-    const [location, setLocation] = useState<any>()
+    const [group, setGroup] = useState<any>([])
+    const [location, setLocation] = useState<any>([])
     const [imageFile, setImageFile] = useState({})
     const [description, setDescription] = useState<string>()
     const [subject, setSubject] = useState<string>()
@@ -88,6 +88,13 @@ const NewAnnouncement: React.FC = () => {
 
 
     async function createAnnouncement() {
+        if (group === "") {
+            setGroup([])
+        }
+        if (location === "") {
+            setLocation([])
+        }
+        
         const data = {
             groups_ids: group,
             owner_id: id,
@@ -96,6 +103,7 @@ const NewAnnouncement: React.FC = () => {
             subject: subject,
             info: description,
         }
+
         try {
             await axios.post(`/api/v1/announcements`, data)
             console.log(data)

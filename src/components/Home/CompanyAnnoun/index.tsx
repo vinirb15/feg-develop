@@ -50,7 +50,7 @@ const Content = () => {
                 <h1>Company Announcements</h1>
             </Link>
             {
-                announcements.id ?
+                announcements?.id ?
                     (<>
                         <p>{announcements.createdAt.split('').splice(0, 10).join('')} {announcements.createdAt.split('').splice(11, 5).join('')}</p>
                         <div className="content">
@@ -64,7 +64,10 @@ const Content = () => {
                         </div>
                     </>)
                     :
-                    <h1>No have last general results</h1>
+                    <>
+                        <br />
+                        <h1>No have last general results</h1>
+                    </>
             }
         </div>
     );

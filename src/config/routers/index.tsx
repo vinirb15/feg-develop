@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from "react-router-dom"
-import axios from '../../services/axios';
 import jwt from "jsonwebtoken"
 
 import SignRoutes from './signRoutes'
@@ -23,7 +22,7 @@ const Routes: React.FC = () => {
       const tokenDecode: any = jwt.verify(token.toString(), '8Zz5tw0Ionm3XPZZfN0NOml3z9FMfmpgXwovR9fp6ryDIoGRM8EPHAB6iHsc0fb')
       console.log(tokenDecode)
 
-      localStorage.setItem('token', token)
+      localStorage.setItem('token', token.toString())
       localStorage.setItem('id', tokenDecode.id)
       localStorage.setItem('firstName', tokenDecode.first_name)
       localStorage.setItem('lastName', tokenDecode.last_name)

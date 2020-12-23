@@ -9,14 +9,14 @@ import axios from '../../../services/axios';
 const Content = () => {
 
     const [loaded, setLoaded] = useState<boolean>(true);
-    const [announcements, setAnnouncements] = useState([
+    const [announcements, setAnnouncements] = useState(
         {
             id: "",
             subject: "",
             info: "",
             url_image: "",
             createdAt: "",
-        }]
+        }
     );
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const Content = () => {
 
     async function loadUsersValidate() {
         try {
-            await axios.get(`/api/v1/announcements`).then(response => {
+            await axios.get(`/api/v1/announcements/last`).then(response => {
                 setAnnouncements(response.data.results);
                 console.log(response);
                 setLoaded(true)
@@ -41,7 +41,7 @@ const Content = () => {
 
     function handleRedirect(e: any) {
         e.preventDefault()
-        history.push(`/announcements/company/${announcements[0].id}`)
+        history.push(`/announcements/company/${announcements.id}`)
     }
 
     return (
@@ -49,14 +49,14 @@ const Content = () => {
             <Link to="/announcements">
                 <h1>Company Announcements</h1>
             </Link>
-            <p>{announcements[0].createdAt.split('').splice(0, 10).join('')} {announcements[0].createdAt.split('').splice(11, 5).join('')}</p>
+            <p>{announcements.createdAt.split('').splice(0, 10).join('')} {announcements.createdAt.split('').splice(11, 5).join('')}</p>
             <div className="content">
-                <img style={{ display: loaded ? "none" : "block" }} src={announcements[0].url_image} onLoad={() => setLoaded(false)} alt="Announcement" />
+                <img style={{ display: loaded ? "none" : "block" }} src={announcements.url_image} onLoad={() => setLoaded(false)} alt="Announcement" />
                 {
                     (loaded ? <Loader /> : <></>)
                 }
-                <h1>{announcements[0].subject}</h1>
-                <h2 className="text">{announcements[0].info}</h2>
+                <h1>{announcements.subject}</h1>
+                <h2 className="text">{announcements.info}</h2>
                 <button onClick={handleRedirect}>See more...</button>
             </div>
         </div>

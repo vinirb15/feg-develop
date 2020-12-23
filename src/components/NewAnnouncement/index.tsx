@@ -26,8 +26,8 @@ const NewAnnouncement: React.FC = () => {
     const [checked, setChecked] = useState(false);
     const [locationChecked, setLocationChecked] = useState(false);
     const [optEveryone, setOptEveryone] = useState(false);
-    const [group, setGroup] = useState()
-    const [location, setLocation] = useState()
+    const [group, setGroup] = useState<any>()
+    const [location, setLocation] = useState<any>()
     const [imageFile, setImageFile] = useState({})
     const [description, setDescription] = useState<string>()
     const [subject, setSubject] = useState<string>()
@@ -54,6 +54,8 @@ const NewAnnouncement: React.FC = () => {
     function handleEveryone() {
         if (optEveryone === false) {
             setOptEveryone(true)
+            setGroup([])
+            setLocation([])
         } else if (optEveryone === true) {
             setOptEveryone(false)
         }

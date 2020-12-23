@@ -34,7 +34,7 @@ const Announcements: React.FC = () => {
     }, []);
 
     async function loadRequests() {
-        await axios.get('api/v1/announcements').then(response => {
+        await axios.get('api/v1/announcements/companies').then(response => {
             setAnnouncements(response.data.results);
             setLoaded(false)
         })

@@ -11,7 +11,7 @@ const SideBar = (props: any) => {
     return (
         <div className="sidebar">
             <img src={Monograma} alt="FEG LOGO" />
-            <Link to={`/home/${localStorage.getItem('id')}`} className={props.home} title="Home"><FiHome size={20} /></Link>
+            <Link to={`/home/${localStorage.getItem('token')}`} className={props.home} title="Home"><FiHome size={20} /></Link>
             <Link to="/user" className={props.validate} title="Users Validations"><FiUserCheck size={20} /></Link>
             <Link to="/announcements" className={props.announcements} title="Company Announcements"><FiBookOpen size={20} /></Link>
             <Link to="/management" className={props.users} title="Users Management"><FiUsers size={20} /></Link>

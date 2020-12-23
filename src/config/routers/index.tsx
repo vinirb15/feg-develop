@@ -1,41 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from "react-router-dom"
 import axios from '../../services/axios';
+import jwt from "jsonwebtoken"
 
 import SignRoutes from './signRoutes'
 import PrivateRoutes from './privateRoutes'
 
 const Routes: React.FC = () => {
-  const [token, setToken] = useState<any>(null)
+  const [token2, setToken] = useState<any>(null)
   const match: any = useRouteMatch('/home/:id');
 
   useEffect(() => {
     handleLogin()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   async function handleLogin() {
     try {
-      const jwt: any = (match?.params?.id || '')
-      sessionStorage.setItem('token', jwt)
-      setToken(jwt)
-      await axios.get(`/api/v1/accounts/${jwt}`).then((response: any) => {
-        localStorage.setItem('id', jwt)
-        localStorage.setItem('firstName', response.data.results.firstName)
-        localStorage.setItem('lastName', response.data.results.lastName)
-        localStorage.setItem('email', response.data.results.email)
-      }
-      )
+      const token: any = (match?.params?.id || '')
+      setToken(token.toString())
+
+      const tokenDecode: any = jwt.verify(token.toString(), '8Zz5tw0Ionm3XPZZfN0NOml3z9FMfmpgXwovR9fp6ryDIoGRM8EPHAB6iHsc0fb')
+      console.log(tokenDecode)
+
+      localStorage.setItem('token', token)
+      localStorage.setItem('id', tokenDecode.id)
+      localStorage.setItem('firstName', tokenDecode.first_name)
+      localStorage.setItem('lastName', tokenDecode.last_name)
+      localStorage.setItem('email', tokenDecode.email)
 
 
     } catch (error) {
-      console.log(error)
-      console.log("alskdalkdajk")
+      alert(error)
     }
   }
 
 
-  if (token) {
+  if (token2) {
     return <PrivateRoutes />
   }
 

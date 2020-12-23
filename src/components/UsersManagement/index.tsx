@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { FiEdit, FiTrash, FiToggleLeft } from 'react-icons/fi';
 import axios from '../../services/axios';
 
-import Image from '../../assets/Monograma.png';
-
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -42,7 +40,8 @@ const Management = () => {
     const [confirmation, setConfirmation] = useState(false)
     const [switchConfirmation, setSwitchConfirmation] = useState(false)
     const [modalDate, setModalDate] = useState<any>()
-    const [name, setName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [location, setLocation] = useState('');
     const [group, setGroup] = useState('');
@@ -73,8 +72,11 @@ const Management = () => {
     }
 
     async function handleUpdate(id: string) {
-        if (name === "") {
-            setName(modalDate.first_name)
+        if (firstName === "") {
+            setFirstName(modalDate.first_name)
+        }
+        if (lastName === "") {
+            setLastName(modalDate.last_name)
         }
         if (email === "") {
             setEmail(modalDate.email)
@@ -86,9 +88,10 @@ const Management = () => {
             setGroup(modalDate.group_id)
         }
 
-        else if (group !== "" && location !== "" && email !== "" && name !== "") {
+        else if (group !== "" && location !== "" && email !== "" && firstName !== "" && lastName !== "") {
             const data = {
-                "first_name": name,
+                "first_name": firstName,
+                "last_name": lastName,
                 "email": email,
                 "location_id": location,
                 "group_id": group,
@@ -231,9 +234,15 @@ const Management = () => {
                             <form onSubmit={() => handleDeleteUser}>
                                 <TextField
                                     id="standard-basic"
-                                    label="Name:"
+                                    label="First Name:"
                                     placeholder={modalDate ? modalDate.first_name : ""}
-                                    onChange={e => setName(e.target.value)}
+                                    onChange={e => setFirstName(e.target.value)}
+                                />
+                                <TextField
+                                    id="standard-basic"
+                                    label="Last Name:"
+                                    placeholder={modalDate ? modalDate.last_name : ""}
+                                    onChange={e => setLastName(e.target.value)}
                                 />
                                 <FormControl required>
                                     <InputLabel id="demo-simple-select-label">Select Location</InputLabel>
@@ -306,21 +315,21 @@ const Management = () => {
                                         id="demo-simple-select-required"
                                         value={group}
                                         onChange={handleChangeGroup}>
-                                        <MenuItem value={"fb006748-92f7-4756-8e55-a53764741e99"}>General Manager</MenuItem>
-                                        <MenuItem value={"6efcdeb0-0292-4a5f-bc5a-64078b5b9c49"}>Technical </MenuItem>
-                                        <MenuItem value={"008e07d7-ffa0-4461-8685-aed3c917deb3"}>Merchandise Office</MenuItem>
-                                        <MenuItem value={"c7229861-fef2-487a-b77f-8d86913078b3"}>Supervisor</MenuItem>
-                                        <MenuItem value={"cef0ac62-0cda-42cf-9472-a80a64f806dc"}>Assistant GMs</MenuItem>
-                                        <MenuItem value={"408ac245-fc8f-48e7-b5e8-f5ff5adca51f"}>Regional Director/VP</MenuItem>
-                                        <MenuItem value={"333d091e-5179-4470-b229-dfe97009d6c8"}>SVP</MenuItem>
-                                        <MenuItem value={"5c48e49d-4a8a-47ed-8e7f-bac2a4672036"}>Graphics Office</MenuItem>
-                                        <MenuItem value={"66817e9a-e53c-413a-b5a1-0985afdc95c0"}>Merchandise Manager</MenuItem>
-                                        <MenuItem value={"46a9135d-7617-495a-a477-b98d2685970d"}>Equipment Office</MenuItem>
-                                        <MenuItem value={"f455720f-b1d2-4fe9-9010-170c837535f3"}>Read Only (Partners)</MenuItem>
-                                        <MenuItem value={"60c9e68c-c351-414a-9021-441fe07bb5c4"}>Office </MenuItem>
-                                        <MenuItem value={"270c8457-837d-4a79-af4c-1005948b0e2e"}>Great Wolf Lodge</MenuItem>
-                                        <MenuItem value={"bbbfbf18-0ab7-4533-b63a-cdf41e91b201"}>Sacoa/Embed/CenterEdge</MenuItem>
-                                        <MenuItem value={"128e5e58-3c0a-4e63-9be1-d0b6fc2f871e"}>Super Admin</MenuItem>
+                                        <MenuItem value={'fb006748-92f7-4756-8e55-a53764741e99'}>General Manager</MenuItem>
+                                        <MenuItem value={'6efcdeb0-0292-4a5f-bc5a-64078b5b9c49'}>Technical </MenuItem>
+                                        <MenuItem value={'008e07d7-ffa0-4461-8685-aed3c917deb3'}>Merchandise Office</MenuItem>
+                                        <MenuItem value={'c7229861-fef2-487a-b77f-8d86913078b3'}>Supervisor</MenuItem>
+                                        <MenuItem value={'cef0ac62-0cda-42cf-9472-a80a64f806dc'}>Assistant GMs</MenuItem>
+                                        <MenuItem value={'408ac245-fc8f-48e7-b5e8-f5ff5adca51f'}>Regional Director/VP</MenuItem>
+                                        <MenuItem value={'333d091e-5179-4470-b229-dfe97009d6c8'}>SVP</MenuItem>
+                                        <MenuItem value={'5c48e49d-4a8a-47ed-8e7f-bac2a4672036'}>Graphics Office</MenuItem>
+                                        <MenuItem value={'66817e9a-e53c-413a-b5a1-0985afdc95c0'}>Merchandise Manager</MenuItem>
+                                        <MenuItem value={'46a9135d-7617-495a-a477-b98d2685970d'}>Equipment Office</MenuItem>
+                                        <MenuItem value={'f455720f-b1d2-4fe9-9010-170c837535f3'}>Read Only (Partners)</MenuItem>
+                                        <MenuItem value={'60c9e68c-c351-414a-9021-441fe07bb5c4'}>Office </MenuItem>
+                                        <MenuItem value={'270c8457-837d-4a79-af4c-1005948b0e2e'}>Great Wolf Lodge</MenuItem>
+                                        <MenuItem value={'bbbfbf18-0ab7-4533-b63a-cdf41e91b201'}>Sacoa/Embed/CenterEdge</MenuItem>
+                                        <MenuItem value={'128e5e58-3c0a-4e63-9be1-d0b6fc2f871e'}>Super Admin</MenuItem>
                                     </Select>
                                 </FormControl>
 

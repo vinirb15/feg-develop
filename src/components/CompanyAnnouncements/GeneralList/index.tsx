@@ -24,8 +24,7 @@ const Announcements: React.FC = () => {
             createdAt: "",
             updatedAt: "",
             location_name: "",
-            firstName: "",
-            lastName: ""
+            full_name: ""
         }
     ]);
 
@@ -36,6 +35,7 @@ const Announcements: React.FC = () => {
     async function loadRequests() {
         await axios.get('api/v1/announcements/companies').then(response => {
             setAnnouncements(response.data.results);
+            console.log(response.data.results);
             setLoaded(false)
         })
     }
@@ -67,7 +67,7 @@ const Announcements: React.FC = () => {
                                             <button><FiTrash onClick={() => { setConfirmation(true); setModalDate(request.id); console.log(request) }} color='#808080' size={20} /></button>
                                         </div>
                                         <p>{request.createdAt.split('').splice(0, 10).join('')} {request.createdAt.split('').splice(11, 5).join('')}</p>
-                                        <p>author: <b>{request.firstName} {request.lastName}</b></p>
+                                        <p>author: <b>{request.full_name}</b></p>
                                     </>
                                 ))
                             )

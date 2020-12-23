@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit, FiTrash, FiToggleLeft } from 'react-icons/fi';
 import axios from '../../services/axios';
+import {saveAs} from 'file-saver'
 
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -71,6 +72,21 @@ const Management = () => {
         }
     }
 
+    async function exportCSV(e: any) {
+        fetch(`https://api-systemfegllc.herokuapp.com/api/v1/accounts/export/${e}`, {
+            method: 'GET',
+        }).then(function (response) {
+            return response.blob();
+        }
+        )
+            .then(function (blob) {
+                saveAs(blob, `export.${e}`);
+            })
+            .catch(error => {
+                alert(error)
+            })
+    }
+
     async function handleUpdate(id: string) {
         if (firstName === "") {
             setFirstName(modalDate.first_name)
@@ -132,15 +148,15 @@ const Management = () => {
         }
     }
 
-    async function handleSearchUser(value: string) {
-        try {
-            const response: any = await axios.get(`/api/v1/accounts/${value}`)
-            setUsers(response.data.results)
-        } catch (error) {
-            alert('Error')
-            console.log(error)
-        }
-    }
+    // async function handleSearchUser(value: string) {
+    //     try {
+    //         const response: any = await axios.get(`/api/v1/accounts/${value}`)
+    //         setUsers(response.data.results)
+    //     } catch (error) {
+    //         alert('Error')
+    //         console.log(error)
+    //     }
+    // }
 
 
     function parser(actived: string) {
@@ -174,18 +190,18 @@ const Management = () => {
 
             <div className="users-management">
                 <div className="list-header">
-                    <TextField
+                    {/* <TextField
                         id="standard-basic"
                         label="Search..."
                         onChange={e => handleSearchUser(e.target.value)}
-                    />
+                    /> */}
                     <h2>User Management</h2>
                     <div className="export">
-                        <select name="">
+                        <select onChange={e => exportCSV(e.target.value)} name="">
                             <option value="">Export</option>
-                            <option value="">CSV</option>
-                            <option value="">Excel</option>
-                            <option value="">Print</option>
+                            <option value="csv">CSV</option>
+                            <option value="excel">Excel</option>
+                            {/* <option value="">Print</option> */}
                         </select>
                         {/* <button>New Record</button> */}
                     </div>

@@ -65,7 +65,7 @@ export const locationsData = [
     { value: '66817e9a-e53c-413a-b5a1-0985afdc95c0', label: 'Merchandise Manager'},
     { value: '46a9135d-7617-495a-a477-b98d2685970d', label: 'Equipment Office'},
     { value: 'f455720f-b1d2-4fe9-9010-170c837535f3', label: 'Read Only (Partners)'},
-    { value: '60c9e68c-c351-414a-9021-441fe07bb5c4', label: 'Office '},
+    { value: '60c9e68c-c351-414a-9021-441fe07bb5c4', label: 'Office'},
     { value: '270c8457-837d-4a79-af4c-1005948b0e2e', label: 'Great Wolf Lodge'},
     { value: 'bbbfbf18-0ab7-4533-b63a-cdf41e91b201', label: 'Sacoa/Embed/CenterEdge'},
     { value: '128e5e58-3c0a-4e63-9be1-d0b6fc2f871e', label: 'Super Admin'},

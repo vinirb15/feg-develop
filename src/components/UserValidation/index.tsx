@@ -40,7 +40,7 @@ const Register = () => {
     async function loadRequests() {
         await axios.get('/api/v1/accounts?status=INACTIVE&group=profile').then(response => {
             setRequests(response.data.results);
-            console.log(response.data);
+            console.log(response.data.results.Employee);
             setLoaded(true)
         })
     }

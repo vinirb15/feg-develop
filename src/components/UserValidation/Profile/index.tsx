@@ -21,10 +21,11 @@ const Profile: React.FC = () => {
                 full: "",
             },
             email: "",
-            firstName: "",
-            lastName: "",
+            first_name: "",
+            last_name: "",
             location_name: "",
             phone_number: "",
+            url_image: "",
         }
     );
 
@@ -85,11 +86,11 @@ const Profile: React.FC = () => {
         (loaded ?
             <>
                 <div className="user-validation">
-                    <img src={Monograma} alt="FEG LOGO" />
+                    <img src={requests.url_image} alt="FEG LOGO" />
 
                     <div className="description">
-                        <h2>Name: <b>{requests.firstName}</b></h2>
-                        <h2>Last Name: <b>{requests.lastName}</b></h2>
+                        <h2>Name: <b>{requests.first_name}</b></h2>
+                        <h2>Last Name: <b>{requests.last_name}</b></h2>
                         <h2>Email: <b>{requests.email}</b></h2>
                         <h2>Personal Address: <b>{requests.addresses.full}</b></h2>
                         <h2>Phone Number: <b>{requests.phone_number}</b></h2>

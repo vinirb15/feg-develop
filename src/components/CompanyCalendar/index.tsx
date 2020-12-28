@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import listPlugin from '@fullcalendar/list';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -19,11 +19,14 @@ import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
 import { green, grey } from '@material-ui/core/colors';
 
+import axios from '../../services/axios';
+
 import './styles.css';
 
 
 const Calendar: React.FC = () => {
   const [currentEvents, setCurrentEvents] = useState([])
+  const [allEvents, setAllEvents] = useState(INITIAL_EVENTS)
   const [show, setShow] = useState(false)
   const [modal, setModal] = useState<boolean>(false)
   const [title, setTitle] = useState<string>()
@@ -39,6 +42,22 @@ const Calendar: React.FC = () => {
   const [endTime, setEndTime] = useState<string>()
   const [personal, setPersonal] = useState<boolean>(false)
   const [general, setGeneral] = useState<boolean>(false)
+
+  useEffect(() => {
+    handleLoaded()
+  })
+
+  async function handleLoaded() {
+    try {
+      // const response: any = await axios.get(`/api/v1/accounts`)
+      console.log("response")
+      // setAllEvents(response)
+
+    } catch (error) {
+      alert(error)
+    }
+
+  }
 
   function handleDateSelect(selectInfo: any) {
     let title = prompt('Please enter a new title for your event')
@@ -213,6 +232,7 @@ const Calendar: React.FC = () => {
           <form>
             <TextField id="standard-basic" label="Add Title"
               placeholder=""
+              inputProps={{ maxLength: 250 }}
               onChange={e => setTitle(e.target.value)}
             />
 
@@ -282,6 +302,7 @@ const Calendar: React.FC = () => {
               id="standard-multiline-static"
               label="Description"
               multiline
+              inputProps={{ maxLength: 4950 }}
               onChange={e => setDescription(e.target.value)}
               rowsMax={4}
             />
@@ -362,16 +383,12 @@ const Calendar: React.FC = () => {
               selectMirror={true}
               dayMaxEvents={true}
               weekends={true}
-              initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+              initialEvents={allEvents} // alternatively, use the `events` setting to fetch from a feed
               select={handleDateSelect}
               eventContent={renderEventContent} // custom render function
               eventClick={handleEventClick}
               eventsSet={handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:
-            eventAdd={function(){}}
-            eventChange={function(){}}
-            eventRemove={function(){}}
-            */
+
             />
           </div>
         </div>

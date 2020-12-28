@@ -1,9 +1,9 @@
 
 let eventGuid = 0
-// let todayStr = new Date().toISOString().replace(/T.*$/, '') // YYYY-MM-DD of today
+// let todayStr = new Date().toISOString().split('T')[1].replace(/\..*$/, '') // time of today
+// let todayStrbr = new Date().toISOString().replace(/T.*$/, '') // YYYY-MM-DD of today
 
 export const INITIAL_EVENTS = {
-  eventColor: 'green',
   events: [
     {
       id: 'a32s1d3a21sd1',
@@ -17,10 +17,25 @@ export const INITIAL_EVENTS = {
       }
     },
     {
+      allDay: true,
+      id: 'asddddadas',
+      address: "event address or meeting link",
+      color: "#ffc138",
+      description: "description",
+      end: "2020-12-09T10:35",
+      extendedProps: { department: "Employe" },
+      group: [{ value: "fb006748-92f7-4756-8e55-a53764741e99", label: "General Manager" }, { value: "fb006748-92f7-4756-8e55-a53764741e99", label: "Manager" }],
+      location: [{ value: "fb006748-92f7-4756-8e55-a53764741e99", label: "General Manager" }, { value: "fb006748-92f7-4756-8e55-a53764741e99", label: "Manager" }],
+      start: "2020-12-09T10:30",
+      title: "Group Event",
+      type: "02"
+    },
+    {
       id: 'a32s1asdada1',
       groupId: '999',
       title: 'Local Events',
       start: '2020-12-09T16:00:00',
+      end: '2020-12-09T17:00:00',
       color: '#F74F41',
       extendedProps: {
         department: 'Partner'

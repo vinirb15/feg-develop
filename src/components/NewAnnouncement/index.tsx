@@ -234,6 +234,7 @@ const NewAnnouncement: React.FC = () => {
                     type="text"
                     name="nameInput"
                     value={subject}
+                    maxLength={250}
                     onChange={e => setSubject(e.target.value)}
                 />
                 <h4>Picture</h4>
@@ -247,6 +248,7 @@ const NewAnnouncement: React.FC = () => {
                 <h4>Announcement</h4>
                 <textarea
                     value={description}
+                    maxLength={4950}
                     onChange={e => setDescription(e.target.value)}
                 />
             </div>

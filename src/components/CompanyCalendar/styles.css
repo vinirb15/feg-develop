@@ -109,6 +109,12 @@
 .calendar-app .modal-body button:hover {
   opacity: .5;
 }
+
+.calendar-app .modal-body button:disabled {
+  background: #808080!important;
+  opacity: .5;
+}
+
 .calendar-app .modal-body .groupsSection button {
   width: 21%;
 }
@@ -138,6 +144,10 @@
 }
 
 .calendar-app .MuiFormControl-root {
+  width: 90%;
+}
+
+.calendar-app .modal-box .basic-multi-select {
   width: 90%;
 }
 

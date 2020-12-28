@@ -12,6 +12,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
+import Selection from 'react-select';
+import { locationsData, groupsData } from '../../data';
+
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
 import { green, grey } from '@material-ui/core/colors';
@@ -24,11 +27,18 @@ const Calendar: React.FC = () => {
   const [show, setShow] = useState(false)
   const [modal, setModal] = useState<boolean>(false)
   const [title, setTitle] = useState<string>()
+  const [eventAddress, setEventAddress] = useState<string>()
   const [type, setType] = useState<string>('')
   const [group, setGroup] = useState<string>('')
+  const [location, setLocation] = useState<string>('')
+  const [description, setDescription] = useState<string>('')
+  const [color, setColor] = useState<string>('#FFC138')
+  const [showGroup, setShowGroup] = useState<boolean>(false)
+  const [showLocation, setShowLocation] = useState<boolean>(false)
   const [startTime, setStartTime] = useState<string>()
   const [endTime, setEndTime] = useState<string>()
-  // const [location, setLocation] = useState<string>()
+  const [personal, setPersonal] = useState<boolean>(false)
+  const [general, setGeneral] = useState<boolean>(false)
 
   function handleDateSelect(selectInfo: any) {
     let title = prompt('Please enter a new title for your event')
@@ -49,9 +59,10 @@ const Calendar: React.FC = () => {
   }
 
   function handleEventClick(clickInfo: any) {
-    if (window.confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-      clickInfo.event.remove()
-    }
+    console.log(clickInfo.event)
+    // if (window.confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+    //   clickInfo.event.remove()
+    // }
   }
 
   function handleEvents(events: any) {
@@ -93,23 +104,24 @@ const Calendar: React.FC = () => {
   }
 
   async function handleUpdate() {
-    // if (location === "") {
-    //   alert("invalid location")
-    // }
     if (title === "") {
       alert("invalid title")
     }
 
-    else if (title !== "" 
-    // && location !== ""
+    else if (title !== ""
+      && type !== ""
     ) {
       const data =
       {
         title: title,
-        // location: location,
+        type: type,
+        location: location,
+        group: group,
+        address: eventAddress,
+        description: description,
         start: startTime,
         end: endTime,
-        color: '#FFC138',
+        color: color,
         extendedProps: {
           department: 'Employe'
         }
@@ -125,14 +137,59 @@ const Calendar: React.FC = () => {
     }
   }
 
+  function handleShowGroup() {
+    if (showGroup === true) {
+      setShowGroup(false)
+      setColor('')
+    }
+    if (showGroup === false) {
+      setShowGroup(true)
+      setColor('#ffc138')
+    }
+  }
+
+  function handleShowLocation() {
+    if (showLocation === true) {
+      setShowLocation(false)
+      setColor('')
+    }
+    if (showLocation === false) {
+      setShowLocation(true)
+      setColor('#f74f41')
+    }
+  }
+
+  function handlePersonalEvent() {
+    if (personal === true) {
+      setPersonal(false)
+      setColor('')
+    }
+    if (personal === false) {
+      setPersonal(true)
+      setColor('#418dee')
+    }
+  }
+
+  function handleGeneralEvent() {
+    if (general === true) {
+      setGeneral(false)
+      setColor('')
+    }
+    if (general === false) {
+      setGeneral(true)
+      setColor('#007619')
+    }
+  }
+
   const handleChangeType = (event: React.ChangeEvent<{ value: unknown }>) => {
     setType(event.target.value as string)
-    console.log(event.target.value as string)
   };
 
-  const handleChangeGroup = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setGroup(event.target.value as string)
-    console.log(event.target.value as string)
+  const handleSelectGroup = (event: any) => {
+    setGroup(event)
+  };
+  const handleSelectLocation = (event: any) => {
+    setLocation(event)
   };
 
   withStyles({
@@ -176,42 +233,47 @@ const Calendar: React.FC = () => {
             </FormControl>
 
             <div className="groupsSection">
-              <button className="button" style={{ background: "#418dee" }} type="button">Personal Event</button>
-              <button className="button" style={{ background: "#f74f41" }} type="button">Local Event</button>
-              <button className="button" style={{ background: "#ffc138" }} type="button">Group Event</button>
-              <button className="button" style={{ background: "#007619" }} type="button">General Event</button>
+              <button className="button" style={{ background: "#418dee" }} disabled={general} type="button" onClick={() => handlePersonalEvent()}>Personal Event</button>
+              <button className="button" style={{ background: "#f74f41" }} disabled={personal || general} type="button" onClick={() => handleShowLocation()} >Local Event</button>
+              <button className="button" style={{ background: "#ffc138" }} disabled={personal || general} type="button" onClick={() => handleShowGroup()} >Group Event</button>
+              <button className="button" style={{ background: "#007619" }} disabled={personal} type="button" onClick={() => handleGeneralEvent()}>General Event</button>
             </div>
 
-            <FormControl>
-              <InputLabel id="demo-simple-select-label">Select Group</InputLabel>
-              <Select
-                value={group}
-                onChange={handleChangeGroup}
-              >
-                <MenuItem value={1}>General Manager</MenuItem>
-                <MenuItem value={2}>Technical </MenuItem>
-                <MenuItem value={3}>Merchandise Office</MenuItem>
-                <MenuItem value={4}>Supervisor</MenuItem>
-                <MenuItem value={5}>Assistant GMs</MenuItem>
-                <MenuItem value={6}>Regional Director/VP</MenuItem>
-                <MenuItem value={7}>SVP</MenuItem>
-                <MenuItem value={8}>Graphics Office</MenuItem>
-                <MenuItem value={9}>Merchandise Manager</MenuItem>
-                <MenuItem value={10}>Equipment Office</MenuItem>
-                <MenuItem value={11}>Read Only (Partners)</MenuItem>
-                <MenuItem value={12}>Office </MenuItem>
-                <MenuItem value={13}>Great Wolf Lodge</MenuItem>
-                <MenuItem value={14}>Sacoa/Embed/CenterEdge</MenuItem>
-                <MenuItem value={15}>Super Admin</MenuItem>
-              </Select>
-            </FormControl>
+            <div style={{
+              display: showLocation ? "block" : "none",
+              width: "100%",
+              marginLeft: "10%",
+            }}>
+              <Selection
+                isMulti
+                name="colors"
+                options={locationsData}
+                className="basic-multi-select"
+                placeholder="Select Locations"
+                onChange={handleSelectLocation}
+              />
+            </div>
 
-            <br />
+            <div style={{
+              display: showGroup ? "block" : "none",
+              width: "100%",
+              marginLeft: "10%",
+              marginTop: "1rem"
+            }}>
+              <Selection
+                isMulti
+                name="colors"
+                options={groupsData}
+                className="basic-multi-select"
+                placeholder="Select Groups"
+                onChange={handleSelectGroup}
+              />
+            </div>
 
             <TextField id="standard-basic"
               label="Event Address or Meeting Link"
               placeholder=""
-              onChange={e => setTitle(e.target.value)}
+              onChange={e => setEventAddress(e.target.value)}
             />
 
             <br />
@@ -220,6 +282,7 @@ const Calendar: React.FC = () => {
               id="standard-multiline-static"
               label="Description"
               multiline
+              onChange={e => setDescription(e.target.value)}
               rowsMax={4}
             />
 
@@ -249,7 +312,6 @@ const Calendar: React.FC = () => {
               }}
             />
             <button className="button" onClick={() => handleUpdate()} type="button">Create Event</button>
-
           </form>
         </div>
       </div>
